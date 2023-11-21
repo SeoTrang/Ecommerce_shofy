@@ -1,0 +1,187 @@
+.slide-banner2{
+    color: #fff;
+}
+
+.slide-banner2 .swiper-slide{
+    opacity: 0 !important;
+    transition: 0.2s;
+}
+
+.slide-banner2 .swiper-slide-active{
+    opacity: 1 !important;
+    transition: 0.2s;
+}
+
+.slide-banner2 .mySwiper .content-left{
+
+}
+
+.slide-banner2 .mySwiper .content-left .text-top{
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: #fffc;
+    animation-delay: .3s;
+    animation-duration: 1s;
+}
+
+.slide-banner2 .mySwiper .content-left h1{
+    font-size: 54px;
+    font-weight: 800;
+}
+
+.slide-banner2 .mySwiper .content-left .old-price{
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -.02em;
+    text-decoration-line: line-through;
+    color: #ffffffb3;
+}
+
+.slide-banner2 .mySwiper .content-left .current-price{
+    font-size: 40px;
+    line-height: 30px;
+    font-weight: 500;
+    letter-spacing: -.04em;
+    color: #ffffff;
+}
+
+.slide-banner2 .mySwiper .content-left .btn-buy a{
+    padding: 8px 25px;
+    border: none;
+    transition: 0.3s;
+}
+
+.slide-banner2 .mySwiper .content-left .btn-buy a:hover{
+    background-color: #fff;
+    color: #000;
+    border: none;
+    transition: 0.3s;
+}
+
+.slide-banner2 .mySwiper .content-right{
+    display: flex;
+    /* align-content: end; */
+    justify-content: end;
+    position: relative;
+}
+
+.slide-banner2 .mySwiper .content-right .circle{
+    position: absolute;
+    top: -6%;
+    left: 0%;
+    width: 400px;
+    height: 400px;
+    display: inline-block;
+    background-image: radial-gradient(50% 50% at 50% 50%,rgba(171,215,255,.25) 0%,rgba(3,76,219,.35) 100%);
+    border-radius: 50%;
+    z-index: -1;
+}
+.slide-banner2 .mySwiper .content-right .img{
+    position: relative;
+}
+.slide-banner2 .mySwiper .content-right .img-absolute{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+}
+
+.slide-banner2 .mySwiper .content-slide .img>img{
+    width: 80%;
+}
+
+@media screen  and (min-width:992px){
+    .slide-banner2 .swiper-wrapper .swiper-slide{
+        height: 100% !important;
+    }
+    .slide-banner2 .mySwiper{
+        height: 500px !important;
+    }
+    
+    /* .slide-banner2 .swiper-wrapper .swiper-slide img{
+        height: 100%;
+    } */
+
+    .slide-banner2 .mySwiper .content-slide{
+        padding: 64px 80px 69px;
+    }
+
+
+}
+
+@media screen  and (max-width:992px){
+    .slide-banner2 .mySwiper{
+        height: 800px !important;
+    }
+    .slide-banner2 .swiper-wrapper .swiper-slide{
+        height: 100% !important;
+    }
+    .slide-banner2 .mySwiper .content-slide{
+        padding: 64px 80px 69px;
+    }
+}
+
+@media screen  and (max-width:770px){
+    .slide-banner2 .mySwiper .content-slide{
+        padding: 64px 10px 69px;
+    }
+}
+
+@media screen  and (max-width:500px){
+    .slide-banner2 .mySwiper .content-slide .img{
+        display: flex;
+        justify-content: end;
+    }
+    .slide-banner2 .mySwiper .content-slide .img>img{
+        width: 80%;
+    }
+}
+
+@media screen  and (max-width:768px){
+    .slide-banner2 .mySwiper .content-slide .content-right{
+        margin-top: 40px;
+    }
+}
+
+@media screen and (max-width:425px){
+    
+    .slide-banner2 .mySwiper .content-left .text-top{
+        font-weight: 500;
+        font-size: 14px;
+        letter-spacing: .05em;
+        text-transform: uppercase;
+        color: #fffc;
+        animation-delay: .3s;
+        animation-duration: 1s;
+    }
+
+    .slide-banner2 .mySwiper .content-left h1{
+        font-size: 35px;
+        font-weight: 800;
+    }
+
+    .slide-banner2 .mySwiper .content-left .old-price{
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: -.02em;
+        text-decoration-line: line-through;
+        color: #ffffffb3;
+    }
+
+    .slide-banner2 .mySwiper .content-left .current-price{
+        font-size: 30px;
+        line-height: 30px;
+        font-weight: 500;
+        letter-spacing: -.04em;
+        color: #ffffff;
+    }
+}
+
+
+@keyframes fade-in-up{
+    0%{
+
+    }
+}

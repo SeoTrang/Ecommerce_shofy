@@ -1,0 +1,55 @@
+.list-action-category .action{
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.list-action-category .view i{
+    color: rgb(34, 197, 94);
+}
+
+.list-action-category .view:hover{
+    background-color: rgb(34, 197, 94);
+    color: #ffffff;
+}
+.list-action-category .view:hover > i{
+    color: #ffffff;
+}
+.list-action-category .edit i{
+    color: rgb(255, 171, 0);
+}
+
+.list-action-category .edit:hover{
+    background-color: rgb(255, 171, 0);
+    color: #ffffff;
+}
+.list-action-category .edit:hover > i{
+    color: #ffffff;
+}
+
+.list-action-category .delete i{
+    color: rgb(255 86 48);
+}
+
+.list-action-category .delete:hover{
+    background-color: rgb(255 86 48);
+    color: #ffffff;
+}
+
+.list-action-category .delete:hover > i{
+    color: #ffffff;
+}
+
+.brand-page .table-brand .img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    box-shadow: rgba(145, 158, 171, 0.16) 0px 1px 2px 0px;
+}
+
+.brand-page .table-brand img{
+    width: 100%;
+}
+
+

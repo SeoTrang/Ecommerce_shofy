@@ -1,0 +1,108 @@
+
+#profile{
+    font-family: 'Jost', sans-serif;
+}
+
+
+.container-profile{
+    background-color: #fcfcfc !important;
+}
+
+.content-profile{
+    background-color: #ffffff;
+    padding: 25px 30px 30px;
+    box-shadow: 0 30px 50px #052f281f;
+
+}
+
+#profile .side-bar .profile-side-bar-lg{
+    background-color: #ffffff;
+    padding: 25px 30px 30px;
+    box-shadow: 0 30px 50px #052f281f;
+    margin-right: 40px;
+}
+
+#profile .home-profile .img-top img{
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+}
+
+#profile .home-profile .img-top .name{
+    font-weight: 500;
+}
+
+#profile .home-profile .img-top .action-logout button{
+    font-weight: 500;
+}
+#profile .home-profile .list-box img{
+    width: 60px !important;
+
+} 
+#profile .home-profile .list-box i{
+    width: 60px !important;
+    font-size: 60px;
+
+} 
+#profile .home-profile .list-box svg{
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+
+
+#profile .home-profile .list-box .box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+#profile .home-profile .list-box .box .box-content{
+    border: 1px solid #767a7d;
+    padding: 15px 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+#profile .home-profile .list-box .badge{
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    color: #fff;
+    font-size: 15px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0989ff;
+}
+
+@media screen and (max-width:768px) {
+    #profile{
+        min-height: 95vh;
+        position: relative;
+        background-color: #ffffff !important;
+    }
+    #profile .content-profile{
+        min-height: 80vh;
+    }
+    #profile .home-profile .img-top img{
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+    }
+    
+    #profile .home-profile .img-top .action-logout button{
+        font-weight: 500;
+    }
+
+    #profile .home-profile .list-box img, #profile .home-profile .list-box svg{
+        width: 50px;
+    }
+}
+

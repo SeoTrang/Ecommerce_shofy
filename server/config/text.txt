@@ -1,0 +1,175 @@
+
+
+-- Tạo bảng Category
+CREATE TABLE Category (
+    id INT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
+-- Tạo bảng Product
+CREATE TABLE Product (
+    id INT PRIMARY KEY,
+    category_id INT,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    product_image VARCHAR(255),
+    FOREIGN KEY (category_id) REFERENCES Category(id)
+);
+
+-- Tạo bảng Variation
+CREATE TABLE Variation (
+    id INT PRIMARY KEY,
+    product_id INT,
+    SKU VARCHAR(50) NOT NULL,
+    qty_in_stock INT,
+    product_image VARCHAR(255),
+    price DECIMAL(10, 2),
+    FOREIGN KEY (product_id) REFERENCES Product(id)
+);
+
+-- Tạo bảng Option_p
+CREATE TABLE Option_p (
+    id INT PRIMARY KEY,
+    category_id INT,
+    name VARCHAR(255) NOT NULL,
+    FOREIGN KEY (category_id) REFERENCES Category(id)
+);
+
+-- Tạo bảng Option_value
+CREATE TABLE Option_value (
+    id INT PRIMARY KEY,
+    option_id INT,
+    value VARCHAR(255) NOT NULL,
+    FOREIGN KEY (option_id) REFERENCES Option_p(id)
+);
+
+-- Tạo bảng Combination
+CREATE TABLE Combination (
+    id INT PRIMARY KEY,
+    variation_id INT,
+    option_value_id INT,
+    FOREIGN KEY (variation_id) REFERENCES Variation(id),
+    FOREIGN KEY (option_value_id) REFERENCES Option_value(id)
+);
+
+
+
+
+
+
+
+-- Chèn dữ liệu vào bảng Category
+INSERT INTO Category (id, name) VALUES
+(1, 'Electronics'),
+(2, 'Clothing');
+
+-- Chèn dữ liệu vào bảng Product
+INSERT INTO Product (id, category_id, name, description, product_image) VALUES
+(1, 1, 'Laptop', 'Powerful laptop for work and play', 'laptop_image.jpg'),
+(2, 2, 'T-shirt', 'Comfortable cotton T-shirt', 'tshirt_image.jpg'),
+(3, 1, 'Custom Laptop', 'Custom laptop with multiple variations', 'custom_laptop_image.jpg'),
+(4, 1, 'Custom Laptop 2', 'Custom laptop with multiple variations and 2 colors', 'custom_laptop_image_2.jpg');
+
+-- Chèn dữ liệu vào bảng Variation
+INSERT INTO Variation (id, product_id, SKU, qty_in_stock, product_image, price) VALUES
+(1, 1, 'LT001', 10, 'laptop_item_image.jpg', 1200.00),
+(2, 1, 'LT002', 5, 'laptop_item_image.jpg', 1500.00),
+(3, 2, 'TS001', 20, 'tshirt_item_image.jpg', 25.00),
+(4, 2, 'TS002', 15, 'tshirt_item_image.jpg', 30.00),
+(5, 3, 'CLT001', 15, 'custom_laptop_item_image.jpg', 1800.00),
+(6, 4, 'CLT002-Silver', 10, 'custom_laptop_item_image_silver.jpg', 1900.00),
+(7, 4, 'CLT002-Black', 8, 'custom_laptop_item_image_black.jpg', 1950.00);
+
+-- Chèn dữ liệu vào bảng Option
+INSERT INTO Option_p (id, category_id, name) VALUES
+(1, 1, 'Color'),
+(2, 1, 'Storage Capacity'),
+(3, 2, 'Size'),
+(4, 1, 'Size');
+
+-- Chèn dữ liệu vào bảng Option_value
+INSERT INTO Option_value (id, option_id, value) VALUES
+(1, 1, 'Silver'),
+(2, 1, 'Black'),
+(3, 2, '256GB'),
+(4, 2, '512GB'),
+(5, 3, 'Small'),
+(6, 4, 'Medium'),
+(7, 3, 'Large');
+
+-- Chèn dữ liệu vào bảng Combination
+INSERT INTO Combination (id, variation_id, option_value_id) VALUES
+(1, 1, 1),
+(2, 1, 3),
+(3, 2, 2),
+(4, 2, 4),
+(5, 3, 5),
+(6, 3, 7),
+(7, 4, 6),
+(8, 5, 1),
+(9, 5, 3),
+(10, 5, 6),
+(11, 6, 1),
+(12, 6, 3),
+(13, 6, 6),
+(14, 7, 2),
+(15, 7, 3),
+(16, 7, 6);
+
+
+
+select * from Product
+
+select * from Product
+join Variation on Product.id = Variation.product_id
+
+select * from Option_p where Option_p.category_id = 1
+
+select * from Option_p where Option_p.category_id = 2
+
+
+SELECT * FROM Product
+JOIN Variation ON Product.id = Variation.product_id
+JOIN Combination ON Variation.id = Combination.variation_id
+JOIN Option_value ON Combination.option_value_id = Option_value.id AND Option_value.value = 'Medium'
+WHERE 
+    Product.id = 2
+    
+
+SELECT * FROM Product
+JOIN Variation ON Product.id = Variation.product_id
+JOIN Combination ON Variation.id = Combination.variation_id
+JOIN Option_value ON Combination.option_value_id = Option_value.id  AND Option_value.value = 'Silver'
+LEFT JOIN (
+    SELECT Combination.variation_id, Combination.option_value_id, Option_value.value
+    FROM Combination
+    JOIN Option_value ON Combination.option_value_id = Option_value.id
+	where
+		Option_value.value  = '256GB'
+) AS option2 ON Variation.id = option2.variation_id
+WHERE 
+    Product.id = 1
+   
+
+
+
+
+SELECT * FROM Product
+JOIN Variation ON Product.id = Variation.product_id
+JOIN Combination ON Variation.id = Combination.variation_id
+JOIN Option_value ON Combination.option_value_id = Option_value.id AND Option_value.value = 'Silver'
+LEFT JOIN (
+    SELECT Combination.variation_id as variation_id, Combination.option_value_id, Option_value.value
+    FROM Combination
+    JOIN Option_value ON Combination.option_value_id = Option_value.id and Option_value.value  = '256GB'
+) AS option2 ON Variation.id = option2.variation_id
+LEFT JOIN (
+    SELECT Combination.variation_id, Combination.option_value_id, Option_value.value
+    FROM Combination
+    JOIN Option_value ON Combination.option_value_id = Option_value.id and Option_value.value  = 'Medium'
+) AS option3 ON Variation.id = option3.variation_id
+WHERE 
+    Product.id = 4
+    
+
+

@@ -1,0 +1,16 @@
+.profile-side-bar-lg a{
+    color: #767a7d !important;
+    padding: 14px 30px;
+    transition: 0.3s;
+}
+
+.profile-side-bar-lg .profile-nav-active{
+    color: #0989ff !important;
+    background-color: #0989ff0f;
+
+}
+
+.profile-side-bar-lg a:hover{
+    color: #0989ff !important;
+    background-color: #0989ff0f;
+}

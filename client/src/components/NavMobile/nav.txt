@@ -1,0 +1,119 @@
+Đồ điện tử:
+    Điện thoại di động và phụ kiện
+    Máy tính và laptop
+    Máy ảnh và máy quay phim
+    Thiết bị điện tử gia đình
+Thời trang:
+    Quần áo
+    Giày dép
+    Đồ trang sức và đồng hồ
+    Túi xách và ví
+Đồ gia dụng:
+    Tủ lạnh và máy giặt
+    Đồ nội thất
+    Đồ dùng nhà bếp
+    Đèn và thiết bị chiếu sáng
+Thực phẩm và đồ uống:
+    Thực phẩm tươi sống
+    Thực phẩm đóng hộp và đồ ăn nhanh
+    Đồ uống (rượu, nước ngọt, trà, cà phê)
+Sức khỏe và làm đẹp:
+    Mỹ phẩm
+    Thực phẩm bổ sung
+    Thiết bị y tế cá nhân
+    Thuốc và dược phẩm
+Đồ chơi và giải trí:
+    Đồ chơi cho trẻ em
+    Trò chơi video và máy chơi game
+    Sách, âm nhạc và phim ảnh
+Công cụ và thiết bị xây dựng:
+    Công cụ thủ công và thiết bị xây dựng
+    Đồ nghề và dụng cụ sửa chữa
+    Vật liệu xây dựng
+Ôtô, xe máy và phụ tùng:
+    Ôtô và xe máy mới và đã qua sử dụng
+    Phụ tùng và phụ kiện ôtô
+    Dịch vụ bảo dưỡng và sửa chữa
+Thể thao và ngoại trời:
+    Thiết bị thể thao (ví dụ: vợt, gậy golf, giày chạy bộ)
+    Đồ trượt tuyết và trang thiết bị ngoại trời
+    Các sản phẩm liên quan đến cắm trại và du lịch
+Văn phòng phẩm và thiết bị:
+    Máy in và máy tính
+    Giấy và văn phòng phẩm
+    Đồ nghề và vật dụng học tập
+Thú cưng:
+    Thức ăn và chăm sóc thú cưng
+    Lồng và thiết bị thú cưng
+    Đồ chơi và phụ kiện cho thú cưng
+Sách và vật lý phẩm:
+    Sách mới và cũ
+    Sách điện tử (e-books)
+    Tranh, in ảnh và sản phẩm nghệ thuật
+
+
+
+Electronics:
+    Mobile phones and accessories
+    Computers and laptops
+    Cameras and camcorders
+    
+
+Fashion:
+    Clothing
+    Shoes
+    Jewelry and watches
+    Bags and wallets
+
+Home Appliances:
+    Refrigerators and washing machines
+    Furniture
+    Kitchen appliances
+    Lights and lighting fixtures
+
+Food and Drinks:
+    Fresh food
+    Canned food and fast food
+    Beverages (wine, soft drinks, tea, coffee)
+
+Health and Beauty:
+    Cosmetics
+    Dietary supplements
+    Personal medical equipment
+    Medicines and pharmaceuticals
+
+Toys and Entertainment:
+    Toys for children
+    Video games and gaming consoles
+    Books, music, and movies
+
+Tools and Construction Equipment:
+    Hand tools and construction equipment
+    Craftsmanship and repair tools
+    Building materials
+
+Cars, Motorcycles, and Parts:
+    New and used cars and motorcycles
+    Car and motorcycle parts and accessories
+    Maintenance and repair services
+
+Sports and Outdoors:
+    Sports equipment (e.g., rackets, golf clubs, running shoes)
+    Snow sports and outdoor equipment
+    Products related to camping and travel
+
+Office Supplies and Equipment:
+    Printers and computers
+    Paper and office supplies
+    School supplies and study tools
+
+Pets:
+    Pet food and care products
+    Pet cages and equipment
+    Toys and accessories for pets
+
+Books and Physical Products:
+    New and used books
+    E-books
+    Paintings, prints, and art products
+

@@ -1,0 +1,151 @@
+.nav-mobile{
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    /* left: ; */
+    height: 100vh;
+    background-color: #fff;
+    width: 380px;
+    padding: 15px;
+    overflow-y: scroll;
+}
+
+.nav-mobile{
+    /* max-height: 40vh; */
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* font-size: 15px; */
+    scrollbar-width: thin; /* Thiết lập thanh cuộn mỏng */
+    scrollbar-color: transparent transparent; /* Đặt màu thanh cuộn thành trong suốt */
+}
+
+.nav-mobile::-webkit-scrollbar {
+    width: 5px; /* Chiều rộng của thanh cuộn */
+}
+
+/* Màu của ngón tay cuộn */
+.nav-mobile::-webkit-scrollbar-thumb {
+    /* background-color: transparent;  */
+    
+}
+
+.nav-mobile .body-overlay{
+    top: 0;
+    left: 0;
+    position: fixed;
+    opacity: 0;
+    width: 100vi;
+    height: 100vh;
+    background-color: #010F1C;
+    z-index: 98;
+    
+}
+
+@media screen and (max-width:380px) {
+    .nav-mobile{
+        width: 100%;
+    }
+}
+.nav-mobile .action-top .logo{
+    width: 100%;
+}
+
+.nav-mobile .action-top .logo img{
+    width: 80%;
+}
+
+.nav-mobile .close-side{
+    background-color: #ececec;
+    transition: 0.3s;
+}
+
+.nav-mobile .close-side:hover{
+    background-color: #e94560;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.nav-mobile .nav-category .nav-icon-down{
+    /* border: 1px solid #ccc; */
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+
+.nav-mobile .nav-category .nav-icon-down:hover{
+    
+    background-color: #0989FF;
+    color: #fff;
+}
+
+.nav-mobile .nav-category .nav-icon-down i{
+    transition: 0.3s;
+}
+
+/* .nav-mobile .nav-category .nav-icon-down:hover > i{
+    transform: rotate(90deg);
+    transition: 0.3s;
+} */
+
+.nav-active{
+    transform: rotate(90deg);
+    transition: 0.3s;
+}
+
+
+/*  */
+.nav-mobile .list-nav .nav-parent .nav-title{
+    font-weight: 500;
+
+}
+
+.nav-mobile .list-nav .nav-parent li{
+    list-style: none;
+}
+
+.nav-mobile .list-nav .nav-parent li a{
+    color: #818487 !important;
+}
+.nav-mobile .list-nav .nav-child-2 li{
+    list-style: disc !important;
+    color: #818487;
+}
+
+.nav-mobile-side-bar .body-overlay{
+    top: 0;
+    left: 0;
+    position: fixed;
+    opacity: 0;
+    width: 100vi;
+    height: 100vh;
+    background-color: #010F1C;
+    z-index: 199;
+}
+
+.nav-mobile-side-bar .opened{
+    opacity: 0.7;
+}
+
+/* profile */
+.nav-mobile-side-bar .list-nav .nav-profile{
+    font-weight: 500;
+}
+.nav-mobile-side-bar .list-nav .nav-profile img{
+    width: 46px;
+    height: 46px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.nav-mobile-side-bar .list-nav .nav-profile-action div{
+    background-color: #ececec;
+    width: 35px;
+    height: 35px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}

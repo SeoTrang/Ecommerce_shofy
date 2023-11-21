@@ -1,0 +1,71 @@
+#wishlist{
+    font-family: 'Jost', sans-serif;
+}
+#wishlist .list-items .product-des img{
+    width: 45px;
+}
+
+#wishlist th{
+    border-bottom: none;
+}
+
+#wishlist th, #wishlist td {
+    /* text-align: center; */
+    vertical-align: middle;
+}
+
+@media screen and (min-width:426px) {
+    #wishlist .list-items .product-des img{
+        width:78px;
+    }
+
+}
+
+#wishlist .list-items .add-to-cart i{
+    border: none;
+    padding: 5px ;
+    color: #31B757;
+    /* color: #e94560c9; */
+    border-radius: 5px;
+}
+
+#wishlist .list-items .action-remove i{
+    border: none;
+    padding: 5px ;
+    color: #e94560;
+    /* color: #e94560c9; */
+    border-radius: 5px;
+}
+
+#wishlist .list-items .product-des .name{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    /* line-height: 20px; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* font-weight: 500; */
+}
+
+#wishlist .list-items .price{
+    font-weight: 500;
+}
+
+
+#wishlist .list-items .action-lg button{
+    font-size: 14px;
+    background-color: #0989FF;
+    color: #fff;
+    padding: 8px 13px;
+    border: none;
+    /* justify-content: space-around; */
+}
+
+#wishlist .list-items .action-lg button i{
+    color: #fff;
+    
+}
+
+#wishlist .list-items .action-lg .action-remove button{
+    background-color: #e94560;
+}

@@ -1,0 +1,418 @@
+.header{
+    width: 100%;
+    /* background-color: #0989ff; */
+    /* padding: 20px; */
+}
+
+.header .header-top-1{
+    background-color: #000;
+    color: #fff;
+    font-size: 14px;
+}
+
+.header .item-left{
+
+}
+
+.header .item-left svg{
+    /* fill: #FFB342; */
+    color: #FFB342;
+    width: 22px;
+}
+
+
+.header .language-lg{
+
+}
+
+.header .languege-lg img{
+    width: 30px;
+    transition: 0.3s;
+}
+.header .languege-lg img:hover{
+    transform: scale(1.1);
+    
+}
+
+.header .languege-lg .show{
+    border-color: transparent !important;
+}
+
+.header .header-top-1  .dropdown-menu{
+    box-shadow: rgba(145, 158, 171, 0.24) 0px 0px 2px 0px, rgba(145, 158, 171, 0.24) -20px 20px 40px -4px;
+}
+
+.header .languege-lg .languege-active{
+    flex-wrap: nowrap;
+    /* width: 100px; */
+    align-items: center;
+}
+
+.header .languege-lg .dropdown-toggle::after{
+    display: none !important;
+}
+
+.header .header-top-1 .setting svg{
+    width: 24px;
+    height: 24px;
+    /* color: rgb(99, 115, 129); */
+    color: #ffffff;
+    fill: #ffffff;
+    cursor: pointer;
+
+}
+
+.header .header-top-1 .setting .icon{
+    padding: 5px;
+    border-radius: 50%;
+    transition: 0.3s;
+    animation: spinAround 10s linear infinite;
+    
+}
+
+.header .header-top-1 .setting .icon:hover{
+    background-color: #0988ff76;
+
+    
+}
+
+@keyframes spinAround{
+    0%{
+        transform: rotate(0);
+    }
+    25%{
+        transform: rotate(90deg);
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    75%{
+        transform: rotate(270deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+
+
+
+
+
+.header .box-search input:focus{
+    outline: none;
+}
+
+.header .box-search{
+    border: 1px solid #0989ff;
+}
+
+.header .box-search .btn-search{
+    background-color: #0989ff;
+    color: #fff;
+}
+
+.header .header-top{
+    min-height: 50px;
+    /* background-color: gray; */
+}
+
+.header .shofy-container{
+    /* height: 100%; */
+    min-height: 50px;
+}
+
+.shofy-h-50{
+    min-height: 50px;
+}
+.shofy-h-66{
+    min-height: 66px;
+}
+.header .user-name .hello{
+    font-size: 12px;
+}
+
+.header .header-profile svg{
+    width: 17;
+    height: 21px;
+}
+
+/* .header .header-profile .avatar{
+    width: 40px;
+} */
+
+.header .header-profile .img{
+    width: 44px;
+    height: 44px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header .header-profile .img img{
+    width: 40px;
+    border-radius: 50%;
+
+}
+
+.header .header-profile .name{
+
+}
+
+.header .Wishlist svg{
+    width: 22px;
+    height: 20px;
+}
+
+.header .cart svg{
+    width: 22px;
+    height: 20px;
+}
+
+.header .Wishlist a{
+    color: #000;
+}
+
+.header .cart button{
+    border: none;
+    background-color: transparent;
+}
+.header .Wishlist {
+    position: relative;
+}
+
+.header .Wishlist .badge{
+    position: absolute;
+    top: -15px;
+    right: -14px;
+}
+
+.header .cart{
+    position: relative;
+}
+
+.header .cart .badge{
+    position: absolute;
+    top: -15px;
+    right: -11px;
+}
+
+.header .user-action .badge span {
+    color: #fff;
+    width: 19px;
+    height: 19px;
+    background-color: #fd4b6b;
+    border-radius: 50%;
+    
+    
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+/* .header .user-action .badge span{
+    line-height: 23px;
+} */
+
+.header .menu button{
+    border: none;
+    background-color: transparent;
+    
+}
+
+.header .shofy-header-bottom{
+    border-top: 1px solid rgba(1,15,28,.1);
+}
+
+.header .shofy-header-bottom .items-1 button{
+    background-color: #0989ff;
+    color: #fff;
+    /* justify-content: space-between; */
+}
+
+.header a{
+    text-decoration: none;
+    color: #000;
+}
+
+.header .shofy-header-bottom .dropdown-toggle::after {
+    display: none;
+  }
+
+  .header .shofy-header-bottom .menu-dropdown{
+    width: 93%;
+  }
+
+.header .shofy-header-bottom .menu-dropdown li:hover a{
+    color: #0989ff;
+}
+
+.header .shofy-header-bottom .menu-dropdown img{
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    /* justify-content: space-between; */
+}
+
+.header .shofy-header-bottom .menu-dropdown li a{
+    border-bottom: 1px solid #cccccc4c;
+}
+
+
+.header .shofy-header-bottom .menu-dropdown li{
+    position: relative;
+}
+
+.header .shofy-header-bottom .menu-dropdown li .list-group {
+    min-width: 306px;
+    position: absolute;
+    top: 0;
+    left: 150%; /* Bắt đầu ẩn bên phải ngoài màn hình */
+    width: auto; /* Đặt lại chiều rộng tự động */
+    visibility: hidden;
+    opacity: 0;
+    transition: left 0.5s, visibility 0s 0.5s, opacity 0.5s;
+  }
+  
+  .header .shofy-header-bottom .menu-dropdown li:hover .list-group {
+    left: 101%; /* Hiện menu con bằng cách dịch từ bên phải vào */
+    visibility: visible;
+    opacity: 1;
+    transition: left 0.5s, visibility 0s, opacity 0.5s;
+  }
+
+
+.header .list-nav a:hover{
+    color: #0989ff;
+    transition: 0.3s;
+}
+
+/* .header .list-nav  .nav-parent{
+    position: relative;
+} */
+
+.header .shofy-header-bottom .nav-chil-home .nav-chil{
+    position: absolute;
+    z-index: 99;
+    background-color: gray;
+    left: 0;
+    right: 0;
+    top: 200px;
+    background-color: #ffffff;
+    box-shadow: 0 20px 30px #010f1c1a;
+    color: #000;
+    transition: 0.3s;
+    visibility: hidden;
+    opacity: 0;
+    transition-duration: .1s;
+    transform-origin: top;
+    transform: perspective(300px) rotateX(-18deg);
+
+    /* width: 84dvi;
+    left: -723%; */
+}
+
+.header .nav-chil-home .List-items{
+    font-weight: 300;
+}
+
+.header .nav-chil-home a:hover .nav-chil{
+    visibility: visible;
+    opacity: 1;
+    transition-duration: .2s;
+    transform: perspective(300px) rotateX(0);
+}
+
+.header .shofy-hotline svg{
+    width: 18px;
+    color: #0989ff;
+}
+
+.header .shofy-hotline .title{
+    font-size: 12px;
+}
+
+.header .shofy-hotline .value{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.header .header-sticky{
+    box-shadow: 0 4px 10px #03041c1a;
+}
+
+.header .header-sticky  .list-nav .nav-chil{
+    position: absolute;
+    z-index: 99;
+    background-color: gray;
+    left: 0;
+    right: 0;
+    top: 69%;
+    background-color: #ffffff;
+    box-shadow: 0 20px 30px #010f1c1a;
+    color: #000;
+    transition: 0.3s;
+    visibility: hidden;
+    opacity: 0;
+    transition-duration: .1s;
+    transform-origin: top;
+    transform: perspective(300px) rotateX(-18deg);
+
+    /* width: 84dvi;
+    left: -723%; */
+}
+
+/* Ban đầu, ẩn phần tử */
+.header .header-sticky {
+    position: fixed;
+    z-index: 99;
+    visibility: hidden;
+    opacity: 0;
+    top: -48px;
+    /* width: 100%; */
+    width: 100vi;
+    background-color: #fff;
+}
+
+
+
+.sticky-2{
+    visibility: visible !important;
+    opacity: 1 !important;
+    animation: .5s ease-in-out 0s normal none 1 running fadeInDown;
+}
+
+
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header .input-search-1{
+    position: fixed;
+    z-index: 99;
+    top: 10px;
+    left: 0;
+    background-color: #000000c3;
+    min-height: 100vh;
+    width: 100vi;
+}
+
+.header .input-search-1 .box-search-1{
+    width: 100vi;
+    min-height: 50px;
+}

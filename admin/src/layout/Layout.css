@@ -1,0 +1,363 @@
+/* #components-layout-demo-custom-trigger .trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+  } */
+
+.layout{
+    font-family: 'Public Sans', sans-serif;
+    display: flex;
+    background-color: #f4f6f8;
+    height: 100vh;
+    padding: 15px;
+
+    color: rgb(99, 115, 129);
+    overflow-y: scroll;
+    /* font-size: 17px; */
+    
+}
+
+.ant-drawer-content-wrapper{
+    /* margin-bottom: 50px; */
+    width: 315px !important;
+    color: rgb(99, 115, 129);
+    /* padding-bottom: 50px; */
+    
+}
+
+.ant-drawer-content-wrapper a{
+    text-decoration: none;
+    color: rgb(99, 115, 129);
+}
+
+.layout a{
+    text-decoration: none;
+    color: rgb(99, 115, 129);
+}
+
+.box-side-bar{
+    width: 280px;
+}
+.side-bar{
+    width: 280px;
+    position: fixed;
+    height: 95vh;
+    /* height: 100%; */
+    overflow-y: scroll;
+    overflow-x: hidden;
+    font-weight: 500;
+}
+.side-bar-modal{
+    height: 80vh;
+    /* height: 100%; */
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+
+.side-bar::-webkit-scrollbar {
+    width: 0px; /* Chiều rộng của thanh cuộn */
+  }
+  
+.side-bar::-webkit-scrollbar-thumb {
+    background-color: #0988ffc3; /* Màu của ngón tay cuộn */
+  }
+  
+  /* Thay đổi màu ngón tay cuộn khi hover */
+.side-bar::-webkit-scrollbar-thumb:hover {
+    background-color: #0989FF;
+  }
+
+.side-bar .logo{
+    width: 100%;
+}
+
+.side-bar .logo img{
+    width: 80%;
+}
+
+/* user */
+.side-bar .user{
+    display: flex;
+    align-items: center;
+}
+.side-bar .user .img img{
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.side-bar .user .user-name{
+    font-size: 17px;
+}
+
+
+/* nav */
+.side-bar .v-expansion-panel{
+    margin-top: 10px;
+    background-color: transparent;
+    box-shadow: none;
+    color: rgb(99, 115, 129);
+    transition: 0.3s;
+}
+
+.side-bar .v-expansion-panel-title--active{
+    color: #078dee;
+    background-color: #078dee14;
+}
+
+.side-bar .v-expansion-panel-title:hover{
+    background-color: rgb(145 158 171 / 8%);
+}
+
+.side-bar .v-expansion-panel-text .dot-text-child{
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    margin-right: 16px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+
+.side-bar .v-expansion-panel-text:hover{
+    background-color: rgb(145 158 171 / 8%);
+}
+
+.side-bar .v-expansion-panel-text .dot-text-child::before{
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: rgb(145, 158, 171);
+    transition: transform 200ms cubic-bezier(0.4, 0, 0.2)
+}
+
+.side-bar .v-expansion-panel-text .text-child{
+    display: flex;
+    align-items: center;
+    
+}
+
+.side-bar .v-expansion-panel img{
+    color: rgb(99, 115, 129);
+}
+
+.side-bar .v-expansion-panel .text{
+    font-size: 16px;
+}
+
+.side-bar .list-one-item .v-expansion-panel-title__icon{
+    display: none;
+}
+
+.side-bar .v-expansion-panel .v-expansion-panel__shadow{
+    box-shadow: none;
+    
+}
+
+.box-side-bar .v-expansion-panel:not(:first-child)::after{
+    border: none;
+}
+
+.box-side-bar .side-bar .icon{
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    margin-right: 16px;
+}
+
+.box-side-bar .icon span{
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    /* color: red; */
+    background-color: currentcolor;
+}
+
+.box-side-bar .icon .icon-home{
+    
+    -webkit-mask: url("https://minimals.cc/assets/icons/navbar/ic_dashboard.svg") center center / contain no-repeat;
+}
+
+.box-side-bar .icon .icon-icon-cate{
+    -webkit-mask: url("https://minimals.cc/assets/icons/navbar/ic_menu_item.svg") center center / contain no-repeat;
+}
+
+.box-side-bar .icon .icon-icon-product{
+    -webkit-mask: url("https://minimals.cc/assets/icons/navbar/ic_product.svg") center center / contain no-repeat;
+}
+.box-side-bar .icon .icon-icon-order{
+    -webkit-mask: url("https://minimals.cc/assets/icons/navbar/ic_order.svg") center center / contain no-repeat;
+
+}
+
+.box-side-bar .icon .icon-icon-user{
+    -webkit-mask: url("https://minimals.cc/assets/icons/navbar/ic_user.svg") center center / contain no-repeat;
+
+}
+
+
+
+
+/* header */
+
+
+.side-right{
+    background-image: none;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    /* position: fixed; */
+    top: 0px;
+    left: auto;
+    right: 0px;
+    color: inherit;
+    box-shadow: none;
+    height: 80px;
+    z-index: 99;
+    backdrop-filter: blur(6px);
+    background-color: rgba(244, 246, 248, 0.8);
+    transition: height 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    width: 100%;
+}
+/* side-right */
+@media screen and (min-width: 1200px) {
+    .side-right{
+        /* width: calc(100%-280px); */
+        width: calc(100% - 300px);
+    }
+     .header{
+        /* width: calc(100% - 281px) !important; */
+        width: 100%;
+    }
+}
+@media screen and (min-width: 768px) {
+    .side-right{
+        padding: 0 20px;
+    }
+     .header{
+        width: calc(100% - 40px) !important;
+    }
+
+    
+}
+@media screen and (max-width: 767px) {
+    .side-right{
+        padding: 0 10px;
+    }
+     .header{
+        width: calc(100% - 20px) !important;
+    }
+
+    
+}
+
+.header {
+    min-height: 60px;
+    padding: 15px;
+}
+
+ .header{
+    position: fixed;
+    min-height: 60px;
+    z-index: 999;
+    top: 0;
+    /* right: 15px; */
+    right: 0;
+    width: 100%;
+    background-color: rgb(244 246 248 / 80%);
+    /* padding: 15px; */
+    
+}
+.header .user img{
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%; 
+}
+
+.header .header-left{
+    font-size: 18px;
+}
+
+ .header .icon-header{
+    transition: 0.3s;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    display:flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.header .show-menu{
+    display: none !important;
+}
+
+
+
+@media (max-width: 1199px) {
+    .header .show-menu {
+      
+        display:flex !important;
+        align-items: center;
+        justify-content: start;
+    }
+    .header{
+        width:100% !important;
+
+    }
+}
+
+@media (min-width: 1200px) {
+    .header{
+        width: calc(100% - 300px) !important;
+    }
+}
+
+ .header .icon-header:hover{
+  
+    cursor: pointer;
+    color: #078dee;
+    border-radius: 50%;
+    transition: 0.5s;
+    /* background-color: #078dee14; */
+}
+
+.header-right{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.header .header-right .user-header{
+    display: flex;
+    align-items: center;
+
+}
+
+.header .header-right .user-header img{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.header .header-right .setting{
+    /* transform: rotate(180deg); */
+}
+
+
+/* content */
+.content{
+    padding-top: 62px;
+    padding-bottom: 30px;
+}
+
+

@@ -1,0 +1,305 @@
+.product-page {
+    font-family: 'Jost', sans-serif;
+}
+
+.product-page .filter-left{
+    color: #55585b;
+}
+
+.product-page .filter-left .filter-range-price .rc-slider-track-1{
+    background-color: #0989FF;
+}
+
+.product-page .filter-left .filter-range-price .rc-slider-handle{
+    border-radius: 0 !important;
+    border: none !important;
+    background-color: #0989FF !important;
+    width: 5px;
+    height: 17px;
+}
+
+.product-page .filter-left .filter-range-price .rc-slider-handle:hover{
+    border-color: #0989FF !important;
+}
+
+.product-page .filter-left .filter-range-price .price-value-init{
+    color: #55637d;
+}
+
+.product-page .filter-left .filter-range-price .value-filter{
+    font-weight: 500;
+}
+
+.product-page .filter-left .filter-range-price button{
+    border: none;
+    font-size: 14px;
+    background-color: #f5f5f5;
+    padding: 5px 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+
+.product-page .filter-left .filter-range-price button:hover{
+    background-color: #55637d;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.product-page .filter-left .title{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* product status */
+.product-page .filter-left .product-status{
+
+}
+.product-page .filter-left .product-status button{
+    border: none;
+    font-size: 14px;
+    background-color: #f5f5f5;
+    padding: 5px 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.product-page .filter-left .product-status button:hover{
+    background-color: #55637d;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.product-page .filter-left .product-status .value{
+    cursor: pointer;
+}
+
+
+/*  */
+.product-page .filter-left .box-filter-category{
+    padding-right: 10px;
+}
+
+.product-page .filter-left .box-filter-category a{
+    /* color: #0989FF; */
+    transition: 0.3s;
+    padding: 5px ;
+    font-size: 15px;
+    color: #55585b;
+}
+
+.product-page .filter-left .box-filter-category li:hover{
+    color: #0989FF !important;
+    transition: 0.3s;
+
+}
+
+.product-page .filter-left .box-filter-category li:hover a{
+    color: #0989FF !important;
+    transition: 0.3s;
+}
+
+.product-page .filter-left .box-filter-category a i{
+    transition: 0.3s;
+}
+
+.product-page .filter-left .box-filter-category a:hover i{
+    transform: translateX(10px);
+    transition: 0.3s;
+    
+}
+
+.product-page .filter-left .box-filter-category {
+    height: 288px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+
+/*  */
+.product-page .filter-left .content{
+
+}
+
+.product-page .filter-left .content .color{
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.product-page .filter-left .content .colorActive{
+    box-shadow: 0 1px 2px #010f1c33;
+    border: 4px solid #fff;
+}
+
+
+.product-page .products-right .filter-top .text-left{
+    font-weight: 400;
+    font-size: 20px;
+    color: #818487;
+    margin-bottom: 0;
+}
+
+.product-page .products-right .filter-top .filter-right .custom-select{
+    /* width: 30%; */
+    font-size: 14px;
+    
+}
+
+.product-page .products-right .filter-top .filter-right .custom-select-filter-top{
+    cursor: pointer;
+    background-color: #f9f9f9;
+    padding: 7px 25px;
+    border: 1px solid rgba(1,15,28,.1);
+    /* display: inline-block; */
+    
+}
+
+.product-page .products-right .filter-top .filter-right .sort-active{
+    font-weight: 500;
+}
+
+.product-page .products-right .filter-top .filter-right .custom-select-list{
+    position: absolute;
+    list-style: none;
+    padding: 0;
+    background-color: #fff;
+    box-shadow: 0 0 0 1px #4444441c;
+    padding-left: 25px;
+    padding-right: 25px;
+    z-index: 99;
+    width: 100%;
+}
+
+.product-page .products-right .filter-top .filter-right .custom-select-list li{
+    transition: 0.3s;
+}
+
+.product-page .products-right .filter-top .filter-right .custom-select-list li:hover{
+    font-weight: 500;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.product-page .products-right .filter-top .filter-right .custom-select-filter-top i{
+    /* transform: rotate(180deg); */
+    transition: transform 0.3s;
+}
+
+.product-page .products-right .filter-top .filter-right .open-select-filter-top i{
+
+    transform: rotate(-180deg);
+    transition: transform 0.3s;
+}
+
+
+.product-page .my-pagination .MuiPagination-ul{
+    flex-wrap: nowrap !important;
+}
+
+/* filter mobile */
+.product-page .button-filter{
+    background-color: #f5f5f5;
+}
+
+.filter-product-mobile{
+
+}
+
+
+
+
+.filter-product-mobile{
+    color: #55585b;
+}
+
+.filter-product-mobile .filter-range-price .rc-slider-track-1{
+    background-color: #0989FF;
+}
+
+.filter-product-mobile .filter-range-price .rc-slider-handle{
+    border-radius: 0 !important;
+    border: none !important;
+    background-color: #0989FF !important;
+    width: 5px;
+    height: 17px;
+}
+
+.filter-product-mobile .filter-range-price .rc-slider-handle:hover{
+    border-color: #0989FF !important;
+}
+
+.filter-product-mobile .filter-range-price .price-value-init{
+    color: #55637d;
+}
+
+.filter-product-mobile .filter-range-price .value-filter{
+    font-weight: 500;
+}
+
+.filter-product-mobile .filter-range-price button{
+    border: none;
+    font-size: 14px;
+    background-color: #f5f5f5;
+    padding: 5px 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+
+.filter-product-mobile .filter-range-price button:hover{
+    background-color: #55637d;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.filter-product-mobile .title{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* product status */
+.filter-product-mobile .product-status{
+
+}
+.filter-product-mobile .product-status button{
+    border: none;
+    font-size: 14px;
+    background-color: #f5f5f5;
+    padding: 5px 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.filter-product-mobile .product-status button:hover{
+    background-color: #55637d;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.filter-product-mobile .product-status .value{
+    cursor: pointer;
+}
+
+
+
+
+/*  */
+.filter-product-mobile .content{
+
+}
+
+.filter-product-mobile .content .color{
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.filter-product-mobile .content .colorActive{
+    box-shadow: 0 1px 2px #010f1c33;
+    border: 4px solid #fff;
+}

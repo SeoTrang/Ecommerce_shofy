@@ -1,0 +1,56 @@
+GET  http://localhost:5000/product
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiYWRtaW4iOjAsImlhdCI6MTcwMDA2MDQzMCwiZXhwIjoxNzAwMDYyMjMwfQ.q3337dMk88GNrKP3GuTy3vBNeBD_Kpd2Qlmd4hUzJ7Q
+
+
+###
+GET  http://localhost:5000/get-attributes-category/7
+
+###
+GET  http://localhost:5000/get-attributesvalue/2
+
+
+
+# auth 
+###
+
+POST http://localhost:5000/auth/register
+content-type: application/json
+
+{
+    "data": 
+        {
+            "UserName": "Trang1",
+            "Email": "trang1@gmail.com",
+            "Pass": "trang789"
+        }
+
+    
+}
+
+###
+
+POST http://localhost:5000/auth/login
+content-type: application/json
+
+{
+    "data": 
+        {
+            "Email": "seotrangbh24@gmail.com",
+            "Pass": "trang789"
+        }
+
+    
+}
+
+###
+
+POST http://localhost:5000/auth/logout
+content-type: application/json
+Authorization: Bearer 
+
+
+
+# user
+###
+GET http://localhost:5000/get-user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzAwMTI5MjkxLCJleHAiOjE3MDAxMzEwOTF9.bkgiFI1w0kbmF-kjjyY2_KMNkck9KqtY385AHLGFgMI

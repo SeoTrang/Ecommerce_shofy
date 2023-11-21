@@ -1,0 +1,68 @@
+
+#profile .profile-info .col-12 input {
+    border: none; /* Ẩn border mặc định của input */
+    outline: none; /* Loại bỏ border xung quanh input khi focus */
+}
+  
+
+#profile .profile-info .col-12 input:focus {
+    border: none; /* Ẩn border của input khi focus */
+}
+  
+
+#profile .profile-info .input:focus-within {
+    border: 1px solid #0989ff; /* Hiển thị border cho div cha khi input hoặc con của nó focus */
+}
+
+#profile .profile-info .input{
+    display: inline-block;
+}
+
+#profile .profile-info .input{
+    width: 100%;
+    border: 1px solid #EAEAEF ;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 26px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 15px;
+    
+}
+
+#profile .profile-info .input input{
+    margin-left: 10px;
+}
+
+#profile .profile-info select{
+    width: 100%;
+    border: 1px solid #EAEAEF ;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 26px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 15px;
+}
+
+#profile .profile-info select option{
+    height: 60px;
+}
+
+#profile .profile-info select:focus{
+    border: 1px solid #0989ff;
+}
+
+#profile .profile-info textarea{
+    border: 1px solid #EAEAEF;
+    padding: 15px;
+}
+
+#profile .profile-info textarea:focus{
+    border: 1px solid #0989ff;
+    outline: #0989ff;
+}

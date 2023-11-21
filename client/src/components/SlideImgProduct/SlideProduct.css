@@ -1,0 +1,80 @@
+.slide-product{
+
+}
+.mySwiperImgThumb{
+
+}
+
+.mySwiperImgMain{
+
+}
+
+.slide-product .swiper-wrapper .swiper-slide{
+    height: auto !important;
+}
+
+.slide-product .mySwiperImgMain img{
+    width: 100%;
+}
+
+.slide-product .mySwiperImgThumb img{
+    width: 100%;
+}
+
+.slide-product .mySwiperImgThumb .swiper-wrapper{
+    display: flex;
+    flex-direction: column;
+    /* height: auto !important; */
+    height: 520px;
+    overflow-y:scroll ;
+    scrollbar-width: thin; /* Kích thước của thanh cuộn */
+    scrollbar-color: transparent transparent; /* Màu thanh cuộn và con trỏ */
+}
+
+.slide-product .mySwiperImgThumb .swiper-wrapper::-webkit-scrollbar {
+    width: 6px; /* Độ rộng của thanh cuộn */
+    height: 6px; /* Độ cao của thanh cuộn */
+}
+
+.slide-product .mySwiperImgThumb .swiper-wrapper::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Màu của thanh cuộn */
+    
+}
+
+
+.slide-product .mySwiperImgThumb .swiper-wrapper .swiper-slide{
+    height: auto !important;
+    width: 100% !important;
+    /* height: auto !important; */
+    padding: 0 !important;
+    margin-right: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f5f7;
+    margin-bottom: 8px;
+}
+
+.slide-product .mySwiperImgThumb .swiper-wrapper .swiper-slide:hover{
+    border: 1px solid #000;
+    transition: 0.3s;
+}
+
+.slide-product .mySwiperImgThumb .swiper-wrapper .swiper-slide-thumb-active{
+    border: 1px solid #000;
+}
+
+@media screen and (max-width: 1500px) {
+    
+
+    .slide-product .mySwiperImgThumb .swiper-wrapper{
+        display: flex;
+        flex-direction: column;
+        /* height: auto !important; */
+        height: 500px;
+        overflow-y:scroll ;
+        scrollbar-width: thin; /* Kích thước của thanh cuộn */
+        scrollbar-color: transparent transparent; /* Màu thanh cuộn và con trỏ */
+    }
+    
+  }

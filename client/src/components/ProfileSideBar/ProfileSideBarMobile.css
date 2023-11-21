@@ -1,0 +1,33 @@
+.profile-nav-mobile{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    /* padding: 25px 30px 30px; */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-shadow: 0 4px 10px #03041c1a;
+    width: 100vi;
+    min-height: 50px;
+
+}
+
+.profile-nav-mobile a{
+    color: #767a7d !important;
+    font-size: 1.1em;
+    /* padding: 20px; */
+    
+}
+
+.profile-nav-mobile .col-2{
+    padding-right:0px ;
+}
+
+.profile-nav-mobile .profile-nav-active{
+    color: #0989ff !important;
+    /* background-color: #0989ff0f; */
+}
+.profile-nav-mobile .profile-nav-active i{
+    font-size: 1.2em;
+}

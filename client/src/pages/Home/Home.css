@@ -1,0 +1,492 @@
+#home{
+    min-height: 130vh;
+}
+a{
+    text-decoration: none;
+}
+
+.home-pages .list-cate .cate-product{
+    /* background-color: #ebf5ff; */
+    border-radius: 50%;
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.home-pages .list-cate .cate-product .img{
+    width: 180px;
+    height: 180px;
+    background-color: #ebf5ff;
+    /* display: flex; */
+    line-height: 180px;
+    /* text-align: center; */
+    border-radius: 50%;
+
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px)
+{
+    .home-pages .list-cate .cate-product .img{
+        width: 150px;
+        height: 150px;
+        line-height: 150px;
+        /* text-align: center; */
+        border-radius: 50%;
+    }
+}
+/* .tp-product-category-thumb a {
+    width: 150px;
+    height: 150px;
+} */
+
+.home-pages .list-cate .cate-product .title{
+    font-size: 20px;
+    /* font-style: bold; */
+    font-weight: 500;
+}
+
+.home-pages .list-cate .cate-product .des{
+    font-size: 14px;
+    color: #55585b;
+}
+
+.home-pages .slogan .slogan-item{
+    width: 96%;
+    background-color: #f6f7f9;
+    padding: 27px 40px;
+    /* margin: 0 0.5em; */
+    margin: 0 auto;
+}
+
+.home-pages .slogan .slogan-item svg{
+    color: #FD4B6B;
+}
+
+.home-pages .slogan .col{
+    padding: 0 3px;
+    /* margin: 0; */
+}
+
+.home-pages .slogan .slogan-item-1{
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.home-pages .slogan .slogan-item-4{
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.home-pages .slogan .slogan-item .title{
+    font-style: bold;
+    font-weight: 600;
+
+}
+
+.home-pages .slogan .slogan-item .des{
+    color: #55585b;
+    font-size: 14px;
+    margin-top: 2px;
+}
+
+
+/* trending */
+.trending-product {
+
+}
+
+.trending-product .title h1{
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.trending-product .line hr{
+    height: 2px;
+    background-color: #a0a2a4;
+    color: #a0a2a4;
+
+}
+
+.trending-product .action{
+    color: #a0a2a4;
+    font-size: 20px;
+}
+
+.trending-product .action-active{
+    color: #000;
+}
+
+.home-pages .shofy-banner-1{
+    
+}
+.home-pages .shofy-banner-1 .col-parrent {
+    overflow: hidden;
+    position: relative;
+}
+
+.home-pages .shofy-banner-1 .col-left,
+.home-pages .shofy-banner-1 .col-right {
+    border-radius: 5px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.home-pages .shofy-banner-1 .col-left::before,
+.home-pages .shofy-banner-1 .col-right::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transition: transform 0.3s;
+}
+
+.home-pages .shofy-banner-1 .col-left::before {
+    background-image: url("https://shofy-angular.vercel.app/assets/img/product/banner/product-banner-1.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.home-pages .shofy-banner-1 .col-right::before {
+    background-image: url("https://shofy-angular.vercel.app/assets/img/product/banner/product-banner-2.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.home-pages .shofy-banner-1 .col-item:hover::before {
+    transform: scale(1.05);
+}
+
+
+
+.home-pages .shofy-banner-1 .col-left{
+    padding: 52px 60px 32px 60px;
+}
+
+.home-pages .shofy-banner-1 .col-right{
+    height: 100%;
+    padding: 50px 40px ;
+}
+
+.home-pages .shofy-banner-1 a{
+    text-decoration: none;
+    color: #000;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.home-pages .shofy-banner-1 .col-left a:hover{
+    color: #0989FF;
+    transition: 0.3s;
+}
+
+.home-pages .shofy-banner-1 a i{
+    transition: 0.3s;
+}
+
+.home-pages .shofy-banner-1 a:hover > i{
+    transform: translateX(5px);
+    transition: 0.3s;
+}
+
+.home-pages .Deal-of-The-Day{
+    background-color: #ECF2F7;
+}
+
+.home-pages .Deal-of-The-Day .title-top h1{
+    font-size: 36px;
+    color: #212529;
+}
+
+.home-pages .Deal-of-The-Day .title-top .line {
+    background-color: #fff;
+    color: #fff;
+    height: 2px;
+}
+
+.home-pages .Deal-of-The-Day .title-top .action button{
+    border: none;
+    background-color: #0989FF;
+    color: #fff;
+    padding: 8px 15px;
+    transition: 0.3s;
+}
+.home-pages .Deal-of-The-Day .title-top .action button i{
+    transition: 0.3s;
+}
+.home-pages .Deal-of-The-Day .title-top .action button:hover>i{
+    transform: translateX(3px);
+    transition: 0.3s;
+    /* color: #fff; */
+}
+
+.home-pages .Deal-of-The-Day .title-top .action button:hover{
+    background-color: #000;
+    transition: 0.3s;
+}
+
+
+/* electronics */
+.home-pages .electronics{
+
+}
+
+.home-pages .electronics .banner-bottom{
+    background-image: url("https://shofy-angular.vercel.app/assets/img/product/gadget/gadget-banner-1.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.home-pages .electronics .box-menu-top{
+
+}
+
+/* .home-pages .electronics .box-menu-top .menu-left{
+    width: 50%;
+} */
+
+.home-pages .electronics a{
+    text-decoration: none;
+    color: #000;
+}
+
+.home-pages .electronics .box-menu-top{
+    border: 3px solid #FF3494;
+    border-radius: 5px;
+    padding: 40px 0 0px 40px;
+}
+
+.home-pages .electronics .box-menu-top li{
+    margin-top: 5px;
+}
+
+.home-pages .electronics .box-menu-top .btn-bottom{
+    margin-top: 25px;
+    margin-bottom: 40px;
+}
+
+.home-pages .electronics .box-menu-top .img-right{
+    /* padding-left: 20px; */
+}
+
+.home-pages .electronics .box-menu-top .img-right img{
+    margin-top: 70px;
+    /* object-fit: contain; */
+    
+}
+
+@media screen  and (max-width: 372px) {
+    .home-pages .electronics .box-menu-top{
+        border: 3px solid #FF3494;
+        border-radius: 5px;
+        padding: 40px 0 0px 0px;
+    }
+    .home-pages .electronics .box-menu-top .img-right{
+        padding-right: 0;
+    }
+}
+
+/* .home-pages .electronics .box-menu-top .title h3:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    width: 150px;
+    height: 1px;
+    background-color: #0989FF;
+    bottom: 0;
+} */
+
+.home-pages .electronics .box-menu-top .line{
+    /* color: #0989FF; */
+    /* border-width: 3px; */
+    background-color: #0989FF;
+    min-height: 2px;
+}
+.home-pages .electronics .box-menu-top li{
+    transition: 0.3s;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+.home-pages .electronics .box-menu-top li:hover{
+    color: #0989FF;
+    transition: 0.3s;
+
+}
+
+.home-pages .electronics .box-menu-top .btn-bottom a{
+    font-size: 13px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.home-pages .electronics .box-menu-top .btn-bottom a:hover{
+    color: #0989FF;
+    transition: 0.3s;
+}
+.home-pages .electronics .box-menu-top .btn-bottom i{
+    transition: 0.3s;
+}
+.home-pages .electronics .box-menu-top .btn-bottom a:hover > i{
+    transform: translateX(6px);
+    transition: 0.3s;
+}
+
+.home-pages .banner-bottom{
+    padding: 45px 30px 41px 30px;
+    /* border: 1px solid #000; */
+    color: #fff;
+    border-radius: 5px;
+}
+
+@media screen and (min-width:1024px){
+    .home-pages .electronics .list-products{
+        max-height: 600px;
+        overflow-y: scroll;
+        scrollbar-width: thin; /* Thiết lập thanh cuộn mỏng */
+        scrollbar-color: transparent transparent; /* Đặt màu thanh cuộn thành trong suốt */
+    }
+    /* Tùy chỉnh thanh cuộn cho Firefox */
+    .home-pages .electronics .list-products::-webkit-scrollbar {
+        width: 6px; /* Chiều rộng của thanh cuộn */
+    }
+
+    .home-pages .electronics .list-products::-webkit-scrollbar-thumb {
+        background-color: transparent; /* Màu của ngón tay cuộn */
+    }
+
+
+}
+
+@media screen and (max-width:425px) {
+   
+
+    .box-product .col-6{
+        padding-right: 8px !important;
+        padding-left: 8px !important;
+    }
+}
+
+
+/* article news */
+.home-pages .news-article{
+
+}
+
+.home-pages .news-articles .news .img img{
+    border-radius: 5px;
+    width: 100%;
+    object-fit: contain;
+}
+
+.home-pages .news-articles .news .tag{
+    font-size: 14px;
+    color: #55585b;
+    font-weight: 500;
+}
+.home-pages .news-articles .news .tag i{
+    color: #0989FF;
+}
+
+.home-pages .news-articles .news .short-des{
+    color: #55585b;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.home-pages .news-articles .news a{
+    border: 2px solid rgb(4 9 45 / 10%);
+    font-weight: 500;
+}
+
+.home-pages .news-articles .news a i{
+    transition: 0.3s;
+}
+
+.home-pages .news-articles .news a:hover{
+    background-color: #0989FF;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.home-pages .news-articles .news a:hover i{
+    transform: translateX(5px);
+    transition: 0.3s;
+}
+
+.home-pages .news-articles .swiper-wrapper{
+    padding-bottom: 35px;
+}
+
+
+/* subscribe */
+.home-pages .subscribe{
+    /* display: none; */
+    
+    position: relative;
+    justify-content: space-between;
+}
+
+.pt-70 {
+    padding-top: 70px;
+}
+.pb-65 {
+    padding-bottom: 65px;
+}
+
+.home-pages .subscribe{
+    color: #fff;
+}
+
+.home-pages .subscribe .shape{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-color: #0989FF;
+    width: 100vi;
+    height: 100%;
+}
+
+.home-pages .subscribe .shape .img-left{
+    width: 100vi;
+}
+
+.home-pages .subscribe .shape .img-left img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    opacity: 0.4;
+    mix-blend-mode: luminosity;
+}
+
+.home-pages .subscribe .shape .img-right{
+    object-fit: cover;
+    opacity: 0.4;
+    mix-blend-mode: luminosity;
+}
+
+.home-pages .subscribe .shape .img-left span{
+    font-weight: 500;
+}
+
+.home-pages .subscribe .shape .img-left h1{
+    font-weight: 800;
+}
+
+.home-pages .subscribe .input-right button {
+    color: #fff;
+}
+
+.home-pages .subscribe .input-right input{
+    padding: 20px;
+}

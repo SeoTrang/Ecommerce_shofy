@@ -1,0 +1,234 @@
+//category =============================================================
+GET http://localhost:5000/admin/category?type=all
+
+###
+GET http://localhost:5000/admin/get-one-category?id=2
+
+###
+POST http://localhost:5000/admin/category
+content-type: application/json
+
+{
+    "data": {
+        "Name": "Test Category 2"
+    }
+}
+
+###
+PUT  http://localhost:5000/admin/category?id=1
+content-type: application/json
+
+{
+    "data": {
+        "Name": "Test Category 1 update"
+    }
+}
+
+###
+DELETE   http://localhost:5000/admin/category?id=1
+
+###
+GET    http://localhost:5000/category
+
+
+/// brand ===================================================================
+###
+
+POST http://localhost:5000/admin/brand
+content-type: application/json
+
+{
+    "data": {
+        "Name": "Test Brand 2",
+        "Avatar": "/img/imgUpload/1de9df6e63e5b4bbedf4.jpg",
+        "CategoryId":"2"
+    }
+}
+
+###
+
+PUT  http://localhost:5000/admin/brand/2
+content-type: application/json
+
+{
+    "data": {
+        "Name": "Test Brand 2 update",
+        "Avatar": "/img/imgUpload/1de9df6e63e5b4bbedf4.jpg",
+        "CategoryId":"2"
+    }
+}
+
+###
+
+GET http://localhost:5000/admin/brand
+
+###
+
+GET http://localhost:5000/admin/one-brand/2
+
+###
+
+DELETE  http://localhost:5000/admin/brand/2
+
+
+/// product ===================================================================
+###
+
+POST http://localhost:5000/admin/product
+content-type: application/json
+
+{
+    "data": {
+        "Name": "iPhone 14 Pro Max",
+        "Version": "128GB",
+        "Article":"Article 1",
+        "BrandId": "9",
+        "CategoryId": "7"
+    }
+}
+
+
+
+/// attribute ===================================================================
+###
+
+POST http://localhost:5000/admin/attribute
+content-type: application/json
+
+{
+    "data": {
+        "Name": "Ram",
+        "CategoryId": "7"
+    }
+}
+
+###
+
+GET  http://localhost:5000/admin/attribute
+
+###
+
+GET  http://localhost:5000/admin/get-attribute-by-category/9
+
+
+/// attribute ===================================================================
+###
+
+POST http://localhost:5000/admin/product
+content-type: application/json
+
+{
+    "data": {
+        "Name": "iPhone 15",
+        "CategoryId": "7",
+        "BrandId": "9",
+        "Version": "128GB",
+        "Article": "Jabra Evolve2 75 USB-A MS Teams Stereo Headset The Jabra Evolve2 75 USB-A MS Teams Stereo Headset has replaced previous hybrid working standards. Industry-leading call quality thanks to top-notch audio engineering. With this intelligent headset, you can stay connected and productive from the first call of the day to the last train home. With an ergonomic earcup design, this headset invented a brand-new dual-foam technology."
+    }
+}
+
+###
+GET  http://localhost:5000/admin/product
+
+
+/// color ===================================================================
+###
+
+POST http://localhost:5000/admin/color
+content-type: application/json
+
+{
+    "data": {
+        "Name": "Đen",
+        "CategoryId": "7",
+        "Color": "test",
+        "ImportPrice": "200",
+        "Price": "250",
+        "DiscountPrice": "235",
+        "Avatar": "Avatar",
+        "NumberOfRate": "49",
+        "AverageRate": "5",
+        "Sold": "235",
+        "ProductId": 2
+
+    }
+}
+
+
+
+/// color ===================================================================
+###
+
+POST http://localhost:5000/admin/attribute-value
+content-type: application/json
+
+{
+    "data": 
+        [
+            {
+                "ColorId": 1,
+                "AttributeId": 1,
+                "Value": "OLED"
+            },
+            {
+                "ColorId": 1,
+                "AttributeId": 2,
+                "Value": "4 GB"
+            },
+            {
+                "ColorId": 1,
+                "AttributeId": 5,
+                "Value": "12 MP"
+            },
+            {
+                "ColorId": 1,
+                "AttributeId": 6,
+                "Value": "Hỗ trợ 5G"
+            },
+            {
+                "ColorId": 1,
+                "AttributeId": 7,
+                "Value": " 2815 mAh"
+            },
+            {
+                "ColorId": 1,
+                "AttributeId": 8,
+                "Value": " 20 W"
+            }
+        ]
+
+    
+}
+
+
+
+/// list - img ===================================================================
+###
+
+POST http://localhost:5000/admin/list-img
+content-type: application/json
+
+{
+    "data": 
+        [
+            {
+                "ColorId": 1,
+                "Url": "/img/imgUpload/logo_xiaomi.png"
+            },
+            {
+                "ColorId": 1,
+                "Url": "/img/imgUpload/logo_xiaomi1.png"
+            },
+            {
+                "ColorId": 1,
+                "Url": "/img/imgUpload/logo_xiaomi2.png"
+            }
+        ]
+
+    
+}
+
+
+###
+GET  http://localhost:5000/admin/get-list-img-color/1
+

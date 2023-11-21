@@ -1,0 +1,47 @@
+{
+    "categories": {
+      "get": {
+        "controller": "categoryController.getCategory",
+        "checkLogin": true,
+        "checkAdmin": false
+      },
+      "post": {
+        "controller": "categoryController.postCategory",
+        "checkLogin": true,
+        "checkAdmin": true
+      },
+      "put": {
+        "controller": "categoryController.putCategory",
+        "checkLogin": true,
+        "checkAdmin": true
+      },
+      "delete": {
+        "controller": "categoryController.deleteCategory",
+        "checkLogin": true,
+        "checkAdmin": true
+      }
+    },
+    "products": {
+      "get": {
+        "controller": "productController.getProduct",
+        "checkLogin": true,
+        "checkAdmin": false
+      },
+      "post": {
+        "controller": "productController.postProduct",
+        "checkLogin": true,
+        "checkAdmin": true
+      },
+      "put": {
+        "controller": "productController.putProduct",
+        "checkLogin": true,
+        "checkAdmin": true
+      }
+    },
+    "test-1":{
+        "get": {
+            "controller":"productController.getProduct"
+        }
+    }
+  }
+  

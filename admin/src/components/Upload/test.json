@@ -1,0 +1,56 @@
+[
+  {
+    "uid": "vc-upload-1699542363285-13",
+    "lastModified": 1698564602292,
+    "lastModifiedDate": "2023-10-29T07:30:02.292Z",
+    "name": "download_image_1698564602136.png",
+    "size": 361677,
+    "type": "image/png",
+    "percent": 100,
+    "originFileObj": "[object File]",
+    "status": "done",
+    "response": "/img/imgUpload/download_image_1698564602136.png",
+    "xhr": "[object XMLHttpRequest]"
+  },
+  {
+    "uid": "vc-upload-1699542363285-14",
+    "lastModified": 1698564494879,
+    "lastModifiedDate": "2023-10-29T07:28:14.879Z",
+    "name": "download_image_1698564494743.png",
+    "size": 329231,
+    "type": "image/png",
+    "percent": 100,
+    "originFileObj": "[object File]",
+    "status": "done",
+    "response": "/img/imgUpload/download_image_1698564494743.png",
+    "xhr": "[object XMLHttpRequest]"
+  },
+  {
+    "uid": "vc-upload-1699542363285-15",
+    "lastModified": 1698564348465,
+    "lastModifiedDate": "2023-10-29T07:25:48.465Z",
+    "name": "download_image_1698564348329.png",
+    "size": 410185,
+    "type": "image/png",
+    "percent": 100,
+    "originFileObj": "[object File]",
+    "status": "done",
+    "response": "/img/imgUpload/download_image_1698564348329.png",
+    "xhr": "[object XMLHttpRequest]"
+  },
+  {
+    "uid": "vc-upload-1699542363285-13",
+    "name": "download_image_1698564602136.png",
+    "url": "blob:http://localhost:5173/cd25eb8e-d213-4b49-839c-558becf2dac1"
+  },
+  {
+    "uid": "vc-upload-1699542363285-14",
+    "name": "download_image_1698564494743.png",
+    "url": "blob:http://localhost:5173/4740b8b5-a7be-49a4-9c95-b2f2afd9d5de"
+  },
+  {
+    "uid": "vc-upload-1699542363285-15",
+    "name": "download_image_1698564348329.png",
+    "url": "blob:http://localhost:5173/8a595aad-9d8a-4b15-ad81-fa755a70b1fc"
+  }
+]

@@ -1,0 +1,38 @@
+.add-product-page{
+
+}
+
+.add-product-page .box-form .input-color{
+    display: inline-block;
+    width: 20%;
+}
+
+.add-product-page .box-form .box-upload-avatar{
+    min-height: 200px;
+}
+
+.add-product-page .box-form .btn-add-new-input{
+    padding: 15px 20px;
+
+}
+
+.add-product-page .box-form .btn-action-botom button{
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 17px;
+    
+}
+
+.add-product-page .box-form .btn-action-botom button.btn-cancel{
+    background-color: #e94560;
+}
+
+.add-product-page .box-form .btn-action-botom button.btn-submit{
+    background-color: rgb(34, 197, 94);
+}

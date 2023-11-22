@@ -145,8 +145,8 @@ import { toast } from 'vue3-toastify';
 import { useRoute } from 'vue-router';
 import { useStore } from "vuex";
 
-import Avatar from '../../components/Upload/Avatar.vue'
-import BrandAPI from '../../services/NodeAPI/BrandAPI'
+import Avatar from '../../../components/Upload/Avatar.vue'
+import BrandAPI from '../../../services/NodeAPI/BrandAPI'
 export default {
     components:{
         Avatar

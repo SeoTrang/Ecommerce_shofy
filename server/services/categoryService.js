@@ -17,6 +17,7 @@ const categoryService = {
     delete: async (id) => {
         return await CategoryRepository.delete(id);
     }
+    
 }
 
 module.exports = categoryService;

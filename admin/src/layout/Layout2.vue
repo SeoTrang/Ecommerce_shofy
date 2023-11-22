@@ -74,7 +74,7 @@
                                             <img src="https://minimals.cc/assets/icons/navbar/ic_menu_item.svg" alt="">
                                         </div> -->
                                         <div class="text ms-1">
-                                            Quản lý danh mục
+                                            Quản lý danh mục 123
                                         </div>
                                     </div>
                                 </v-expansion-panel-title>
@@ -102,7 +102,7 @@
                                         </span>
                                         <span class="text-child-2">
                                             
-                                            Danh mục con
+                                        Thêm danh mục
                                         </span>
                                         </div>
                                     </v-expansion-panel-text>
@@ -118,13 +118,11 @@
                                         </span>
                                         <span class="text-child-2">
                                             
-                                         Nhãn hiệu
+                                        Thêm danh mục
                                         </span>
                                         </div>
                                     </v-expansion-panel-text>
                                 </router-link>
-
-                                
                             </v-expansion-panel>
 
                             <v-expansion-panel>
@@ -155,7 +153,7 @@
                                         </span>
                                         <span class="text-child-2">
                                             
-                                            Xem sản phẩm
+                                        Xem sản phẩm
                                         </span>
                                         </div>
                                     </v-expansion-panel-text>
@@ -170,7 +168,7 @@
                                         </span>
                                         <span class="text-child-2">
                                             
-                                            Thêm sản phẩm
+                                        Thêm sản phẩm
                                         </span>
                                         </div>
                                     </v-expansion-panel-text>
@@ -392,14 +390,12 @@
                                         </span>
                                         <span class="text-child-2">
                                             
-                                            Danh mục
+                                        Xem danh mục
                                         </span>
                                         </div>
                                     </v-expansion-panel-text>
                                 </router-link>
-                                
-
-                                <router-link to="/brand">
+                                <router-link to="">
                                     <v-expansion-panel-text>
                                         <div class="text-child">
                                             <span class="dot-text-child">
@@ -407,7 +403,7 @@
                                         </span>
                                         <span class="text-child-2">
                                             
-                                         Nhãn hiệu
+                                        Thêm danh mục
                                         </span>
                                         </div>
                                     </v-expansion-panel-text>

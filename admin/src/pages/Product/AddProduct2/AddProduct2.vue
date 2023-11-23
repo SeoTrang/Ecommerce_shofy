@@ -32,9 +32,15 @@
                     <a-tab-pane :key="1" :tab="'Thêm sản phẩm'">
                         <AddProductVue/>
                     </a-tab-pane>
-                    <a-tab-pane :key="2" :tab="'Thêm Option'">Thêm option</a-tab-pane>
-                    <a-tab-pane :key="3" :tab="'Biến thể'">Thêm biến thể</a-tab-pane>
-                    <a-tab-pane :key="4" :tab="'Thuộc tính'">Thêm thuộc tính</a-tab-pane>
+                    <a-tab-pane :key="2" :tab="'Thêm Option'">
+                        <Option/>
+                    </a-tab-pane>
+                    <a-tab-pane :key="3" :tab="'Biến thể'">
+                        <Variation/>
+                    </a-tab-pane>
+                    <a-tab-pane :key="4" :tab="'Thuộc tính'">
+                        <Attribute/>
+                    </a-tab-pane>
                     <a-tab-pane :key="5" :tab="'Thêm'" disabled>Thêm</a-tab-pane>
                 </a-tabs>
             </div>
@@ -47,10 +53,16 @@
 <script>
 import { ref } from 'vue';
 import AddProductVue from './Product/AddProduct.vue';
+import Option from './Option/Option.vue';
+import Variation from './Variaction/Variation.vue';
+import Attribute from './Attribute/Attribute.vue';
 
 export default {
     components:{
-        AddProductVue
+        AddProductVue,
+        Option,
+        Variation,
+        Attribute
     },
     setup(){
         const activeKey = ref(1);

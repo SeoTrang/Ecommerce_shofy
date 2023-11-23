@@ -355,6 +355,7 @@ export default {
             handleGetLinkImgUpdate
         }
     }
+    
 }
 </script>
 <style scoped>

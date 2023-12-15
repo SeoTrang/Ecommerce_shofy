@@ -36,7 +36,7 @@ const BrandRepository = {
             const result = await Brand.findAll(
                 {
                     where:{
-                        categoryId: categoryId
+                        category_id: categoryId
                     }
                 }
             );

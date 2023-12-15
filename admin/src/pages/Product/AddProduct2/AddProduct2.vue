@@ -30,18 +30,18 @@
                     >
                     <!-- <a-tab-pane v-for="i in 5" :key="i" :tab="`Tab-${i}`">Content of tab {{ i }}</a-tab-pane> -->
                     <a-tab-pane :key="1" :tab="'Thêm sản phẩm'">
-                        <AddProductVue/>
+                        <AddProductVue :handleAddproducted="handleAddproducted"/>
                     </a-tab-pane>
-                    <a-tab-pane :key="2" :tab="'Thêm Option'">
-                        <Option/>
+                    <a-tab-pane :key="2" :tab="'Thêm Option'" :disabled="!productAdded">
+                        <Option />
                     </a-tab-pane>
-                    <a-tab-pane :key="3" :tab="'Biến thể'">
+                    <a-tab-pane :key="3" :tab="'Biến thể'" :disabled="!productAdded">
                         <Variation/>
                     </a-tab-pane>
-                    <a-tab-pane :key="4" :tab="'Thuộc tính'">
+                    <a-tab-pane :key="4" :tab="'Thuộc tính'" :disabled="!productAdded">
                         <Attribute/>
                     </a-tab-pane>
-                    <a-tab-pane :key="5" :tab="'Thêm'" disabled>Thêm</a-tab-pane>
+                    
                 </a-tabs>
             </div>
 
@@ -51,7 +51,7 @@
     </div>
 </template>
 <script>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import AddProductVue from './Product/AddProduct.vue';
 import Option from './Option/Option.vue';
 import Variation from './Variaction/Variation.vue';
@@ -66,9 +66,22 @@ export default {
     },
     setup(){
         const activeKey = ref(1);
+        const productAdded = ref(false);
+
+        if(localStorage.getItem('productId')){
+            console.log("hello world "+localStorage.getItem('productId'));
+        }
+        const handleAddproducted = (value) => {
+            productAdded.value = value;
+        }
+        watch(productAdded,(newVal,oldVal)=>{
+            console.log(productAdded.value);
+        })
 
         return {
-            activeKey
+            activeKey,
+            productAdded,
+            handleAddproducted
         }
     }
 }

@@ -52,7 +52,7 @@ export default function SlideBanner2() {
                             </div>
 
                             <div className="btn-buy mt-5">
-                                <Link className="btn btn-md btn-dark" >
+                                <Link className="btn btn-md btn-dark text-white" >
                                     Shop now
                                 </Link>
                             </div>

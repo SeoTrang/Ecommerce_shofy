@@ -40,10 +40,10 @@
                                         <td><input type="checkbox"></td>
                                         <td>
                                             <div class="img d-flex align-items-center justify-content-center">
-                                                <img :src="brand.Avatar ? API_URL + brand.Avatar : ''" alt="">
+                                                <img :src="brand.avatar ? API_URL + brand.avatar : ''" alt="">
                                             </div>
                                         </td>
-                                        <td>{{brand?.Name}}</td>
+                                        <td>{{brand?.name}}</td>
                                         <td>{{brand?.CategoryName}}</td>
                                         <td>20</td>
                                         <td>
@@ -61,7 +61,7 @@
                                                         <v-list-item
                                                         >
                                                             <v-list-item-title>
-                                                                <div class="edit action" @click="showModalEdit(brand?.id,brand?.Name,brand.Avatar  )">
+                                                                <div class="edit action" @click="showModalEdit(brand?.id,brand?.name,brand.avatar  )">
                                                                     <i class="fa-solid fa-pen-to-square"></i>
                                                                     <span class="ms-3">Sửa</span>
                                                                 </div>

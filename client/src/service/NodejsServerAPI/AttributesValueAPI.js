@@ -1,10 +1,10 @@
 import axiosCustom from '../../config/axiosBaseUrl/axiosCustom'
 
 const AttributesValueAPI = {
-    getByProductId: async(categoryId)=>{
+    getVariationId: async(variation_id)=>{
         try {
             let result = null;
-            await axiosCustom.get(`/get-attributesvalue/${categoryId}`)
+            await axiosCustom.get(`/get-attributesvalue/${variation_id}`)
             .then( res => {
                 result = res.data;
             })

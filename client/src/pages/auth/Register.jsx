@@ -26,9 +26,9 @@ const Register = () => {
         if(!isValidEmail(email)) return toast.error('Email không hợp lệ 😊 !');
 
         const data = {
-            UserName: userName,
-            Email: email,
-            Pass: pass
+            user_name: userName,
+            email: email,
+            pass: pass
         }
 
         const result = await AuthAPI.register(data);

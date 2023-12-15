@@ -9,14 +9,14 @@ const RefreshToken = sequelize.define('refreshTokens',{
         autoIncrement: true,
         primaryKey: true
     },
-    RefreshToken:{
+    refreshToken:{
         type: DataTypes.STRING,
         allowNull: false
     }
 })
 
 RefreshToken.belongsTo(User,{
-    primaryKey: 'UserId'
+    primaryKey: 'user_id'
 })
 
 User.hasMany(RefreshToken)

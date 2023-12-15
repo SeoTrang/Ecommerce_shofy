@@ -8,8 +8,8 @@ const AttributeValueService = {
     getAll: async () => {
         return AttributeValueRepository.getAll();
     },
-    getByProduct: async (ProductId) => {
-        return AttributeValueRepository.getByProduct(ProductId);
+    GetByVariation: async (variation_id) => {
+        return AttributeValueRepository.GetByVariation(variation_id);
     },
     getOne: async (id) => {
         return AttributeValueRepository.getOne(id);

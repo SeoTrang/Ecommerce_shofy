@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -6,34 +6,96 @@ import Modal from 'react-bootstrap/Modal';
 import './Cart.css';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart, fetchCartData, removeFromCart, updateCart } from '../../redux/actions/cartAction';
+import formatCurrencyVND from '../../../util/formatCurrencyVND';
 
 const Cart = () => {
-    const [quantity,setQuantity] = useState(1);
+
     const notifySuccess = () => toast.success('Added 1 product successfully!');
     const notifyWarning = () => toast.success('Successfully reduced 1 product!');
-    const notifyError = () => toast.error('product cannot be less than 1!');
 
-    const handleAddProduct = () => {
-        setQuantity(quantity+1)
+    const [totalPrice,setTotalPrice] = useState();
+
+
+    const handleAddProduct = async (id,quantity) => {
+        let result = updateCart(id, {quantity: (quantity+1)})
+        await result()
+        dispatch(fetchCartData());
         notifySuccess();
     }
-    const handleReducedProduct = () => {
+    const handleReducedProduct = async (id,quantity) => {
         if(quantity==1){
-            return notifyError();
+            return toast.error('Số lượng sản phẩm không được nhỏ hơn 1!');
         }
-        setQuantity(quantity-1)
+        let result = updateCart(id, {quantity: (quantity-1)})
+        await result();
+        dispatch(fetchCartData());
+        
         notifyWarning();
     }
 
 
     const [showModalDelete, setShowModalDelete] = useState(false);
+    const [productNameDelete,setProductNameDelete] = useState();
+    const [idProductDelete,setIdProductDelete] = useState();
+
 
     const handleCloseModalDelete = () => setShowModalDelete(false);
-    const handleShowModalDelete = () => setShowModalDelete(true);
-    const handleDeleteCart = () => {
+    const handleShowModalDelete = (id,productName) => {
+        setProductNameDelete(productName);
+        setIdProductDelete(id);
+        setShowModalDelete(true);
+    }
+    const handleDeleteCart = async() => {
+        let result = removeFromCart(idProductDelete)
+        await result();
+        dispatch(fetchCartData());
         toast.success('Remove 1 product successfully!');
         setShowModalDelete(false);
     }
+
+
+    // cart state
+    const cart = useSelector((state) => state.cart.carts);
+    
+    const dispatch = useDispatch();
+    // console.log(user);
+
+    useEffect(()=>{
+        
+        dispatch(fetchCartData());
+        
+    },[])
+
+    useEffect(()=>{
+        console.log(cart);
+    },[cart])
+
+
+    const handleActive = (id,currentActive) => {
+        let result = dispatch(updateCart(id, {active: (!currentActive)}))
+        dispatch(fetchCartData());
+    }
+
+    // handle total price
+    const calculateTotalPrice = () => {
+        let sum = 0;
+        for (let index = 0; index < cart.length; index++) {
+            if(cart[index].active){
+                sum += (cart[index].variation.sale_price*cart[index].quantity);
+            }
+        }
+        return sum;
+    }
+
+    useEffect(()=>{
+        const tempTotalPrice = calculateTotalPrice();
+        // console.log(tempTotalPrice);
+        setTotalPrice(tempTotalPrice);
+    },[cart]);
+
+
     return (
         <div className='shofy-app'>
             <div id='cart' className='mt-3 mb-5'>
@@ -64,193 +126,63 @@ const Cart = () => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td style={{padding:'0'}}>
-                                                    <div className='check-box' >
-                                                        <input type="checkbox" name="" id="" />
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div className="product-des d-flex align-items-center">
-                                                        <div className="img ">
-                                                            <img src="https://i.ibb.co/kxGMcrw/ipad-1.png" alt="" />
-                                                        </div>
-                                                        <div className="name ">
-                                                            Apple iPad Air
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span className='price'>
-                                                        $999.00
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <div className="quantity d-flex align-items-center justify-content-around">
-                                                        <button 
-                                                        onClick={handleReducedProduct}
-                                                        className=''>
-                                                            <i class="fa-solid fa-minus"></i>
-                                                        </button>
-                                                        <span className='quantity-value'>
-                                                            {quantity}
-                                                        </span>
-                                                        <button
-                                                        onClick={handleAddProduct}
-                                                        >
-                                                            <i class="fa-solid fa-plus"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div 
-                                                    onClick={handleShowModalDelete}
-                                                    className="action-remove">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                            {
+                                                cart &&
+                                                cart.map((value,index)=>{
+                                                    return(
+                                                        <tr key={index} className='pt-3 pb-3'>
+                                                            <td style={{padding:'0'}}>
+                                                                <div className='check-box' >
+                                                                    <input onClick={()=>{handleActive(value.id,value.active)}} type="checkbox" name="" id="" checked={value.active} />
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div className="product-des d-flex align-items-center">
+                                                                    <div className="img ">
+                                                                        <img src={import.meta.env.VITE_API_URL+ value.variation.product.img_preview} alt="" />
+                                                                    </div>
+                                                                    <div className="name ">
+                                                                        {value.variation.name}
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <span className='price'>
+                                                                    {formatCurrencyVND(value.variation.sale_price*value.quantity)+'₫'}
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <div className="quantity d-flex align-items-center justify-content-around">
+                                                                    <button 
+                                                                    onClick={()=>{handleReducedProduct(value.id,value.quantity);}}
+                                                                    className=''>
+                                                                        <i class="fa-solid fa-minus"></i>
+                                                                    </button>
+                                                                    <span className='quantity-value'>
+                                                                        {value.quantity}
+                                                                    </span>
+                                                                    <button
+                                                                    onClick={()=>{handleAddProduct(value.id,value.quantity)}}
+                                                                    >
+                                                                        <i class="fa-solid fa-plus"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div 
+                                                                onClick={()=>{
+                                                                    handleShowModalDelete(value.id,value.variation.name)
+                                                                }}
+                                                                className="action-remove">
+                                                                    <i class="fa-solid fa-trash"></i>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    )
+                                                })
+                                            }
 
-                                            <tr>
-                                                <td style={{padding:'0'}}>
-                                                    <div className='check-box' >
-                                                        <input type="checkbox" name="" id="" />
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div className="product-des d-flex align-items-center">
-                                                        <div className="img ">
-                                                            <img src="https://i.ibb.co/WVdTgR8/headphone-1.png" alt="" />
-                                                        </div>
-                                                        <div className="name ">
-                                                            Headphones Wireless.
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span className='price'>
-                                                        $999.00
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <div className="quantity d-flex align-items-center justify-content-around">
-                                                        <button 
-                                                        onClick={handleReducedProduct}
-                                                        className=''>
-                                                            <i class="fa-solid fa-minus"></i>
-                                                        </button>
-                                                        <span className='quantity-value'>
-                                                            {quantity}
-                                                        </span>
-                                                        <button
-                                                        onClick={handleAddProduct}
-                                                        >
-                                                            <i class="fa-solid fa-plus"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div 
-                                                    onClick={handleShowModalDelete}
-                                                    className="action-remove">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </div>
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td style={{padding:'0'}}>
-                                                    <div className='check-box' >
-                                                        <input type="checkbox" name="" id="" />
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div className="product-des d-flex align-items-center">
-                                                        <div className="img ">
-                                                            <img src="https://i.ibb.co/kxGMcrw/ipad-1.png" alt="" />
-                                                        </div>
-                                                        <div className="name ">
-                                                            Apple iPad Air
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span className='price'>
-                                                        $999.00
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <div className="quantity d-flex align-items-center justify-content-around">
-                                                        <button 
-                                                        onClick={handleReducedProduct}
-                                                        className=''>
-                                                            <i class="fa-solid fa-minus"></i>
-                                                        </button>
-                                                        <span className='quantity-value'>
-                                                            {quantity}
-                                                        </span>
-                                                        <button
-                                                        onClick={handleAddProduct}
-                                                        >
-                                                            <i class="fa-solid fa-plus"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div 
-                                                    onClick={handleShowModalDelete}
-                                                    className="action-remove">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </div>
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td style={{padding:'0'}}>
-                                                    <div className='check-box' >
-                                                        <input type="checkbox" name="" id="" />
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div className="product-des d-flex align-items-center">
-                                                        <div className="img ">
-                                                            <img src="https://i.ibb.co/WVdTgR8/headphone-1.png" alt="" />
-                                                        </div>
-                                                        <div className="name ">
-                                                            Headphones Wireless.
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span className='price'>
-                                                        $999.00
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <div className="quantity d-flex align-items-center justify-content-around">
-                                                        <button 
-                                                        onClick={handleReducedProduct}
-                                                        className=''>
-                                                            <i class="fa-solid fa-minus"></i>
-                                                        </button>
-                                                        <span className='quantity-value'>
-                                                            {quantity}
-                                                        </span>
-                                                        <button
-                                                        onClick={handleAddProduct}
-                                                        >
-                                                            <i class="fa-solid fa-plus"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div 
-                                                    onClick={handleShowModalDelete}
-                                                    className="action-remove">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                            
 
                                             
                                             
@@ -281,15 +213,15 @@ const Cart = () => {
                                     <div className="action col-12 col-md-6 col-lg-6 col-xl-12">
                                         <div className="subtotal d-flex justify-content-between">
                                             <h6>
-                                                Subtotal:
+                                                Tạm tính:
                                             </h6>
                                             <h6>
-                                                $1774.65
+                                                {formatCurrencyVND(totalPrice)+'₫'}
                                             </h6>
                                         </div>
                                         <div className="shiping mt-1 d-flex justify-content-between">
                                             <div>
-                                                Shipping:
+                                                Phí giao:
                                             </div>
                                             <div>
                                                 ---
@@ -297,7 +229,7 @@ const Cart = () => {
                                         </div>
                                         <div className="discount mt-1 d-flex justify-content-between">
                                             <div>
-                                                Discount:
+                                                Giảm giá:
                                             </div>
                                             <div>
                                                 ---
@@ -306,10 +238,10 @@ const Cart = () => {
                                         <hr />
                                         <div className="total-price mt-2 d-flex justify-content-between">
                                             <h4>
-                                                Total:
+                                                Tổng:
                                             </h4>
                                             <h4>
-                                                $2610.00
+                                                {formatCurrencyVND(totalPrice)+'₫'}
                                             </h4>
                                         </div>
 
@@ -331,15 +263,15 @@ const Cart = () => {
 
             <Modal show={showModalDelete} onHide={handleCloseModalDelete}>
                 <Modal.Header closeButton>
-                <Modal.Title>Warning</Modal.Title>
+                <Modal.Title>Cảnh báo</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Do you want to remove the product from your shopping cart?</Modal.Body>
+                <Modal.Body>Bạn chắc chắn muốn xóa '{productNameDelete}' khỏi giỏ hàng của bạn?</Modal.Body>
                 <Modal.Footer>
                 <Button className='btn-sm' variant="secondary" onClick={handleCloseModalDelete}>
-                    Close
+                    Hủy
                 </Button>
                 <Button className='btn-sm' variant="danger" onClick={handleDeleteCart}>
-                    Remove
+                    Xóa
                 </Button>
                 </Modal.Footer>
             </Modal>

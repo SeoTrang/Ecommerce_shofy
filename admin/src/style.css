@@ -184,8 +184,7 @@ body a{
 .options-top .action .box-menu:hover{
   background-color: #63738114;
 }
-
-.modal-ok-primary .ant-btn-primary{
-  color: #ffffff;
+.ant-btn-primary{
+  color: #ffffff !important;
 }
 

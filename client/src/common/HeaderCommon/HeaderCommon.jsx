@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserData } from '../../redux/actions/userAction';
 import Cookies from 'js-cookie';
+import { fetchCartData } from '../../redux/actions/cartAction';
 
 const HeaderCommon = () => {
     const { t, i18n } = useTranslation()
@@ -67,7 +68,9 @@ const HeaderCommon = () => {
 
 
     // user
-    const user = useSelector((state) => state.user.user)
+    const user = useSelector((state) => state.user.user);
+    const cart = useSelector((state) => state.cart.carts);
+    
     const dispatch = useDispatch();
     // console.log(user);
 
@@ -75,12 +78,14 @@ const HeaderCommon = () => {
         let accessTokenTemp = Cookies.get("accessToken");
         if(accessTokenTemp && !user){
             dispatch(fetchUserData());
+            dispatch(fetchCartData());
         }
     },[])
 
-    useEffect(()=>{
-        console.log(user);
-    },[user]);
+    // useEffect(()=>{
+    //     dispatch(fetchUserData());
+    //     dispatch(fetchCartData());
+    // },[user,cart]);
 
     return (
         <div className={ " header"}>
@@ -95,11 +100,11 @@ const HeaderCommon = () => {
                         <div className="col-xl-4 col-lg-5  col-6 d-none d-lg-block">
                             <div className="shofy-h-66 list-nav">
                                 <div className='d-flex shofy-h-66 align-items-center'>
-                                    <Link className='ms-3'>
+                                    <Link to={'/'} className='ms-3'>
                                         <span>{t('app.header.Home')}</span>
                                     </Link>
                                     <Link className='ms-3 nav-parent'>
-                                        <span>Product</span>
+                                        <span>Danh mục</span>
                                         <div className="container nav-chil">
                                             <div className="row pe-5 ps-5">
                                             <div className="category col-3">
@@ -158,15 +163,15 @@ const HeaderCommon = () => {
                                         </div>
                                     </Link>
                                     
-                                    <Link className='ms-3'>
-                                        <span>Accessories</span>
+                                    <Link to={'/product'} className='ms-3'>
+                                        <span>Sản phẩm</span>
                                     </Link>
-                                    <Link className='ms-3'>
-                                        <span>Blog</span>
+                                    <Link className='ms-3 d-none d-xxl-block'>
+                                        <span>Bài viết</span>
                                     </Link>
-                                    <Link className='ms-3'>
-                                        <span>Contact</span>
-                                    </Link>
+                                    <a href='#footer' className='ms-3'>
+                                        <span>Liên hệ</span>
+                                    </a>
                                 </div>
                                 
                             </div>
@@ -210,18 +215,18 @@ const HeaderCommon = () => {
                                             <svg _ngcontent-ng-c3631614527="" width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path _ngcontent-ng-c3631614527="" fill-rule="evenodd" clip-rule="evenodd" d="M6.48626 20.5H14.8341C17.9004 20.5 20.2528 19.3924 19.5847 14.9348L18.8066 8.89359C18.3947 6.66934 16.976 5.81808 15.7311 5.81808H5.55262C4.28946 5.81808 2.95308 6.73341 2.4771 8.89359L1.69907 14.9348C1.13157 18.889 3.4199 20.5 6.48626 20.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path _ngcontent-ng-c3631614527="" d="M6.34902 5.5984C6.34902 3.21232 8.28331 1.27803 10.6694 1.27803V1.27803C11.8184 1.27316 12.922 1.72619 13.7362 2.53695C14.5504 3.3477 15.0081 4.44939 15.0081 5.5984V5.5984" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path _ngcontent-ng-c3631614527="" d="M7.70365 10.1018H7.74942" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path _ngcontent-ng-c3631614527="" d="M13.5343 10.1018H13.5801" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                                         </button>
                                         <div className='badge'>
-                                        <span>1</span>
+                                        <span>{cart? cart.length : 0}</span>
                                         </div>
                                     </div>
 
                                     <div className="header-profile ms-3 align-items-center d-none d-lg-block ">
                                         <div className="shofy-user d-flex">
-                                            <Link to={'/profile/Home'} 
+                                            <Link to={user? '/profile/Home' : '/login'} 
                                             
                                             className="img me-3 d-flex align-items-center justify-content-center">
                                                 {
                                                     user?
-                                                    <img src={import.meta.env.VITE_API_URL+user.Avatar} alt="" />
+                                                    <img src={import.meta.env.VITE_API_URL+user.avatar} alt="" />
                                                     :
                                                     <svg _ngcontent-ng-c3631614527="" width="17" height="21" viewBox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg"><circle _ngcontent-ng-c3631614527="" cx="8.57894" cy="5.77803" r="4.77803" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></circle><path _ngcontent-ng-c3631614527="" fill-rule="evenodd" clip-rule="evenodd" d="M1.00002 17.2014C0.998732 16.8655 1.07385 16.5337 1.2197 16.2311C1.67736 15.3158 2.96798 14.8307 4.03892 14.611C4.81128 14.4462 5.59431 14.336 6.38217 14.2815C7.84084 14.1533 9.30793 14.1533 10.7666 14.2815C11.5544 14.3367 12.3374 14.4468 13.1099 14.611C14.1808 14.8307 15.4714 15.27 15.9291 16.2311C16.2224 16.8479 16.2224 17.564 15.9291 18.1808C15.4714 19.1419 14.1808 19.5812 13.1099 19.7918C12.3384 19.9634 11.5551 20.0766 10.7666 20.1304C9.57937 20.2311 8.38659 20.2494 7.19681 20.1854C6.92221 20.1854 6.65677 20.1854 6.38217 20.1304C5.59663 20.0773 4.81632 19.9641 4.04807 19.7918C2.96798 19.5812 1.68652 19.1419 1.2197 18.1808C1.0746 17.8747 0.999552 17.5401 1.00002 17.2014Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                                                 }

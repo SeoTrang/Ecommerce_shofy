@@ -21,13 +21,13 @@ const attributeValueController = {
         }
     },
 
-    GetByProduct: async (req,res)=>{
+    GetByVariation: async (req,res)=>{
         try {
 
-            const productId = req.params.productId;
-            console.log(productId);
-            if(!productId) return res.status(400).json('missing data');
-            const result = await AttributeValueService.getByProduct(productId);
+            const variation_id = req.params.variation_id;
+            console.log(variation_id);
+            if(!variation_id) return res.status(400).json('missing data');
+            const result = await AttributeValueService.GetByVariation(variation_id);
             if(result) {
                 return res.status(200).json(result);
             }

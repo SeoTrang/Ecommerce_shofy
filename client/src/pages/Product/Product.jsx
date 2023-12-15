@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import 'rc-slider/assets/index.css';
 import Slider from 'rc-slider';
@@ -10,9 +10,32 @@ import Pagination from '@mui/material/Pagination';
 import CardMd from '../../components/Card/CardMd/CardMd';
 
 import './Product.css';
+import ProductAPI from '../../service/NodejsServerAPI/ProductAPI';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
 
 const Product = () => {
+    
+
+    // product
+    
+    const [products,setProducts] = useState();
+
+    useEffect(()=>{
+        let productTemp = ProductAPI.GetAll();
+        productTemp
+        .then(data => setProducts(data))
+        .catch(err => console.log(err))
+    },[])
+
+    useEffect(()=>{
+        console.log(products);
+    },[products])
+
+
+
+    // filter
+
     const [minPriceFilter,setMinpriceFilter] = useState(1);
     const [maxPriceFilter,setMaxpriceFilter] = useState(50);
     function logRange(value) {
@@ -37,16 +60,47 @@ const Product = () => {
 
     const handleCloseFilter = () => setShowFilter(false);
     const handleShowFilter = () => setShowFilter(true);
+
+    const [sort,setSort] = useState('default');
+
+    const handleChangeSort = (e) => {
+        // console.log(e.target.value);
+        setSort(e.target.value);
+    }
+    function sortByPriceLowToHigh() {
+        const sorted = products.slice().sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+        setProducts(sorted);
+    }
     
+    function sortByPriceHighToLow() {
+        const sorted = products.slice().sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+        setProducts(sorted);
+    }
+
+    useEffect(()=>{
+        console.log(sort);
+        switch(sort){
+            case 'default':
+                
+                break;
+            case 'low-to-hight':
+                console.log('hello');
+                sortByPriceLowToHigh();
+                break;
+            case 'hight-to-low':
+                sortByPriceHighToLow();
+                break;
+            default:
+                break;
+        }
+    },[sort])
+
+    
+
     return (
 
         <div className='shofy-app'>
-
-        
-
             <div className='product-page'>
-                
-                
                 <div className="container">
                     <div className="route">
                         <span><i class="fa-solid fa-house"></i></span>
@@ -332,12 +386,12 @@ const Product = () => {
                                 <div className="filter-top row">
                                     <div className="text-left col-4 col-md-6 col-lg-6 col-xl-6 d-flex align-items-center">
                                         <i class="fa-brands fa-trello me-2 d-none d-md-block d-sm-block d-xl-block d-lg-block"></i>
-                                        3 results
+                                        {products ? products.length + ' sản phẩm': 'Không có sản phẩm'}
                                     </div>
 
                                     <div className="filter-right col-8 col-md-6 col-lg-6 col-xl-6 d-flex justify-content-end">
                                        
-                                        <div className="custom-select position-relative">
+                                        {/* <div className="custom-select position-relative">
                                             <div
                                             className={`d-flex align-items-center justify-content-between custom-select-filter-top  ${isOpen ? 'open-select-filter-top' : ''}`}
                                             onClick={toggleSelect}
@@ -352,14 +406,30 @@ const Product = () => {
                                                 <li className='pt-2 '>On Sale</li>
                                             </ul>
                                             )} 
-                                        </div>
+                                        </div> */}
+                                        <FormControl fullWidth>
+                                            {/* <InputLabel id="demo-simple-select-label">Sắp xếp</InputLabel> */}
+                                            <Select
+                                                labelId="demo-simple-select-label"
+                                                id="demo-simple-select"
+                                                value={sort}
+                                                // label="Sắp xếp"
+                                                onChange={handleChangeSort}
+                                            >
+                                                <MenuItem value={'default'}>Mặc định</MenuItem>
+                                                <MenuItem value={'low-to-hight'}>Thấp đến cao</MenuItem>
+                                                <MenuItem value={'hight-to-low'}>Cao đến thấp</MenuItem>
+                                            </Select>
+                                        </FormControl>
                                     </div>
                                 </div>
                                 <div className="products mt-4">
                                     <div className='row list-products box-product'>
-                                        {[1, 2, 3, 4, 5].map((index) => (
-                                            <div className='col-6 col-xl-4 col-lg-6 col-md-6'>
-                                                <CardMd key={index} />
+                                        {
+                                        products &&
+                                        products.map((value,index) => (
+                                            <div className='col-6 col-xl-4 col-lg-6 col-md-6 mb-3'>
+                                                <CardMd key={index} item={value} />
                                             </div>
                                         ))}
                                     </div>

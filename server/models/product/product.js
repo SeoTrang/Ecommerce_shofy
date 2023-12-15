@@ -9,60 +9,40 @@ const Product = sequelize.define('products',{
         autoIncrement:true,
         primaryKey:true
     },
-    Name: {
+    name: {
         type: DataTypes.STRING,
         allowNull:false
     },
-    Version: {
+    img_preview:{
         type: DataTypes.STRING,
-        allowNull:false
+        allowNull: false
     },
-    NumberOfRate:{
-        type: DataTypes.INTEGER,
-        allowNull:true,
-        defaultValue:0
+    price:{
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: 0 
     },
-    AverageRate:{
-        type: DataTypes.INTEGER,
-        allowNull: true,
-        defaultValue:0
-    },
-    Article: {
+    description: {
         type: DataTypes.TEXT,
         allowNull: true
     },
-    // BrandId: {
-    //     type: DataTypes.INTEGER,
-    //     allowNull:false,
-    //     references:{
-    //         model:'brands',
-    //         key:'id'
-    //     }
-    // },
-    // CategoryId: {
-    //     type: DataTypes.INTEGER,
-    //     allowNull:false,
-    //     references:{
-    //         model:'categories',
-    //         key:'id'
-    //     }
-    // }
+    
     
 })
 
 Category.hasMany(Product,{
-    foreignKey: 'CategoryId',
+    foreignKey: 'category_id',
 })
 Brand.hasMany(Product,{
-    foreignKey: 'BrandId',
+    foreignKey: 'brand_id',
 })
 
 Product.belongsTo(Brand, {
-    foreignKey: 'BrandId', // This specifies the foreign key column name
+    foreignKey: 'brand_id', // This specifies the foreign key column name
     
 });
 Product.belongsTo(Category, {
-    foreignKey: 'CategoryId', // This specifies the foreign key column name
+    foreignKey: 'category_id', // This specifies the foreign key column name
     
 });
 

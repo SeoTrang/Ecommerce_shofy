@@ -81,7 +81,7 @@ const AttributeRepository = {
             const result = await Attribute.findAll(
                 {
                     where:{
-                        CategoryId: id
+                        category_id: id
                     },
                 },
                

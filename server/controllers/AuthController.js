@@ -9,8 +9,8 @@ const AuthController = {
             
             let user = req.body.data;
             if(!user) return res.status(400).json('missing data')
-            if(user.Email){
-                let user_temp = await UserService.findByEmail(user.Email);
+            if(user.email){
+                let user_temp = await UserService.findByEmail(user.email);
                 if(user_temp) return res.status(409).json("Email đã tồn tại")
             }
 
@@ -48,10 +48,10 @@ const AuthController = {
             // Get the random avatar URL using the random index
             const randomAvatar = listAvatar[randomIndex];
 
-            const encodePass = await bcrypt.hash(user?.Pass);
+            const encodePass = await bcrypt.hash(user?.pass);
 
-            user.Pass = encodePass;
-            user.Avatar = randomAvatar;
+            user.pass = encodePass;
+            user.avatar = randomAvatar;
 
             const result = await UserService.register(user);
             if(result) return res.status(200).json('success');
@@ -64,11 +64,11 @@ const AuthController = {
     login: async (req, res) => {
         try {
             const data = req.body.data;
-            const user = await UserService.findByEmail(data.Email);
+            const user = await UserService.findByEmail(data.email);
             if(!user) {
                 return res.status(404).json("not found");
             }
-            if(!await bcrypt.compare(data.Pass,user.Pass)) return res.status(404).json('username or pass invalid');
+            if(!await bcrypt.compare(data.pass,user.pass)) return res.status(404).json('username or pass invalid');
             let accessToken;
             let refreshToken;
             if (user) {

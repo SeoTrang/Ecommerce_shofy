@@ -22,9 +22,9 @@ const BrandAPI = {
     AddBrand: async (Name,Avatar,CategoryId) => {
         try {
             const data = {
-               Name,
-               Avatar,
-               CategoryId
+               name : Name,
+               avatar: Avatar,
+               category_id: CategoryId
             }
             let result = false;
             await axios.post('/brand', {data: data})
@@ -64,8 +64,8 @@ const BrandAPI = {
         try {
             let result = false;
             const data = {
-                Name,
-                Avatar
+                name : Name,
+               avatar: Avatar
             }
             await axios.put(`/brand/${id}`,{data:data})
             .then(res=>{

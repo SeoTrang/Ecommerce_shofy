@@ -14,6 +14,7 @@ import NavMobile from '../../components/NavMobile/NavMobile';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserData } from '../../redux/actions/userAction';
 import Cookies from 'js-cookie';
+import { fetchCartData } from '../../redux/actions/cartAction';
 
 const Header = () => {
     const { t, i18n } = useTranslation()
@@ -107,20 +108,26 @@ const Header = () => {
 
 
     // user
-    const user = useSelector((state) => state.user.user)
+    // const [user,setUser] = useState();
     const dispatch = useDispatch();
     // console.log(user);
+    const user = useSelector((state) => state.user.user);
+    const cart = useSelector((state) => state.cart.carts);
+    
 
     useEffect(()=>{
         let accessTokenTemp = Cookies.get("accessToken");
+        
         if(accessTokenTemp && !user){
             dispatch(fetchUserData());
+            dispatch(fetchCartData());
         }
     },[])
 
     useEffect(()=>{
         console.log(user);
-    },[user]);
+        console.log(cart);
+    },[user,cart]);
 
     return (
         <>
@@ -138,7 +145,7 @@ const Header = () => {
                             <div className="col-xl-6 col-lg-6  d-none d-lg-block">
                                 <div className="shofy-h-66 list-nav">
                                     <div className='d-flex shofy-h-66 align-items-center'>
-                                    <Link className='ms-3'>
+                                    <Link to={'/'} className='ms-3'>
                                         <span>{t('app.header.Home')}</span>
                                     </Link>
                                     <Link className='ms-3 nav-parent'>
@@ -280,8 +287,8 @@ const Header = () => {
                                     </Link>
                                     
                                    
-                                    <Link className='ms-3'>
-                                        <span>{t('app.header.About')}</span>
+                                    <Link to={'/product'} className='ms-3'>
+                                        <span>{t('app.header.Product')}</span>
                                     </Link>
                                     <Link className='ms-3'>
                                         <span>{t('app.header.Blog')}</span>
@@ -319,7 +326,7 @@ const Header = () => {
                                                 <svg _ngcontent-ng-c3631614527="" width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path _ngcontent-ng-c3631614527="" fill-rule="evenodd" clip-rule="evenodd" d="M6.48626 20.5H14.8341C17.9004 20.5 20.2528 19.3924 19.5847 14.9348L18.8066 8.89359C18.3947 6.66934 16.976 5.81808 15.7311 5.81808H5.55262C4.28946 5.81808 2.95308 6.73341 2.4771 8.89359L1.69907 14.9348C1.13157 18.889 3.4199 20.5 6.48626 20.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path _ngcontent-ng-c3631614527="" d="M6.34902 5.5984C6.34902 3.21232 8.28331 1.27803 10.6694 1.27803V1.27803C11.8184 1.27316 12.922 1.72619 13.7362 2.53695C14.5504 3.3477 15.0081 4.44939 15.0081 5.5984V5.5984" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path _ngcontent-ng-c3631614527="" d="M7.70365 10.1018H7.74942" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path _ngcontent-ng-c3631614527="" d="M13.5343 10.1018H13.5801" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                                             </button>
                                             <div className='badge'>
-                                            <span>1</span>
+                                            <span>{cart? cart.length : 0}</span>
                                             </div>
                                         </div>
 
@@ -464,12 +471,12 @@ const Header = () => {
                                         <Link to={'/profile/Home'} className='header-profile d-flex align-items-center d-none d-lg-block'>
                                             <div className="shofy-user d-flex align-items-center">
                                                 <div className="img">
-                                                    <img src={import.meta.env.VITE_API_URL+user.Avatar} alt="" />
+                                                    <img src={import.meta.env.VITE_API_URL+user.avatar} alt="" />
                                                 </div>
                                                 <div className="name ms-2">
                                                     <span>
                                                         {
-                                                            user.UserName
+                                                            user.user_name
                                                         }
                                                     </span>
                                                 </div>
@@ -514,7 +521,7 @@ const Header = () => {
                                                 <svg _ngcontent-ng-c3631614527="" width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path _ngcontent-ng-c3631614527="" fill-rule="evenodd" clip-rule="evenodd" d="M6.48626 20.5H14.8341C17.9004 20.5 20.2528 19.3924 19.5847 14.9348L18.8066 8.89359C18.3947 6.66934 16.976 5.81808 15.7311 5.81808H5.55262C4.28946 5.81808 2.95308 6.73341 2.4771 8.89359L1.69907 14.9348C1.13157 18.889 3.4199 20.5 6.48626 20.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path _ngcontent-ng-c3631614527="" d="M6.34902 5.5984C6.34902 3.21232 8.28331 1.27803 10.6694 1.27803V1.27803C11.8184 1.27316 12.922 1.72619 13.7362 2.53695C14.5504 3.3477 15.0081 4.44939 15.0081 5.5984V5.5984" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path _ngcontent-ng-c3631614527="" d="M7.70365 10.1018H7.74942" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path _ngcontent-ng-c3631614527="" d="M13.5343 10.1018H13.5801" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                                             </button>
                                             <div className='badge'>
-                                            <span>1</span>
+                                            <span>{cart? cart.length : 0}</span>
                                             </div>
                                         </div>
 
@@ -640,7 +647,7 @@ const Header = () => {
 
                             <div className="col-7 shofy-h-50  nav-chil-home ">
                                 <div className='d-flex shofy-h-50 align-items-center'>
-                                    <Link className='ms-3'>
+                                    <Link to={'/'} className='ms-3'>
                                         <span>{t('app.header.Home')}</span>
                                     </Link>
                                     <Link className='ms-3 nav-parent'>
@@ -782,15 +789,15 @@ const Header = () => {
                                     </Link>
                                     
                                    
-                                    <Link className='ms-3'>
-                                        <span>{t('app.header.About')}</span>
+                                    <Link to={'/product'} className='ms-3'>
+                                        <span>{t('app.header.Product')}</span>
                                     </Link>
                                     <Link className='ms-3'>
                                         <span>{t('app.header.Blog')}</span>
                                     </Link>
-                                    <Link className='ms-3'>
+                                    <a href='#footer' className='ms-3'>
                                         <span>{t('app.header.Contact')}</span>
-                                    </Link>
+                                    </a>
                                     <Link className='ms-3'>
                                         <span>{t('app.header.My Profile')}</span>
                                     </Link>

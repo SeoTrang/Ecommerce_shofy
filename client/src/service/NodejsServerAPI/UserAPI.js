@@ -3,8 +3,8 @@ import axiosCustom from '../../config/axiosBaseUrl/axiosCustom'
 
 const UserAPI = {
     getUser: async()=>{
-        let accessToken = Cookies.get("accessToken");
-        if(!accessToken) return false;
+        // let accessToken = Cookies.get("accessToken");
+        // if(!accessToken) return false;
         let result = null;
         await axiosCustom.get('/get-user')
         .then(res=>{

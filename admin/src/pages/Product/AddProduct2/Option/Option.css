@@ -1,0 +1,17 @@
+.option-component{
+
+}
+
+.btn-add-color-code{
+    text-decoration: underline;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-add-color-code:hover{
+    color: #9a9a9a;
+}
+
+.input-color-field{
+    width: 20%;
+}

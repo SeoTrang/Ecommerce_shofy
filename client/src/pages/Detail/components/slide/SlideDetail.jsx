@@ -18,7 +18,7 @@ import { EffectFade, FreeMode, Navigation, Thumbs } from 'swiper/modules';
 
 const SlideDetail = ({listImg}) => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
-    const sortedListImg = [...listImg].sort((a, b) => a.Url.localeCompare(b.Url));
+    const sortedListImg = [...listImg].sort((a, b) => a.url.localeCompare(b.url));
 
     const [arrayImg, setArrayImg] = useState([]);
 
@@ -44,7 +44,7 @@ const SlideDetail = ({listImg}) => {
           arrayImg.map((value,index)=>{
             return (
               <SwiperSlide key={index}>
-                <img src={import.meta.env.VITE_API_URL+value.Url} />
+                <img src={import.meta.env.VITE_API_URL+value.url} />
               </SwiperSlide>
             )
           })
@@ -89,7 +89,7 @@ const SlideDetail = ({listImg}) => {
           arrayImg.map((value,index)=>{
             return (
               <SwiperSlide key={index}>
-                <img src={import.meta.env.VITE_API_URL+value.Url} />
+                <img src={import.meta.env.VITE_API_URL+value.url} />
               </SwiperSlide>
             )
           })

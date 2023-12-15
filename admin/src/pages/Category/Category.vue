@@ -52,7 +52,7 @@
                     <tbody class="table-group-divider">
                       <tr v-for="(category, index) in Categories" :key="category.id">
                         <th scope="row">{{ index + 1 }}</th>
-                        <td>{{category.Name}}</td>
+                        <td>{{category.name}}</td>
                         <td>{{category.BrandCount}}</td>
                         <td>
                           <div class="action">
@@ -78,7 +78,7 @@
                                 <v-list-item>
                                   <v-list-item-title>
                                     <div 
-                                    @click = "handleShowModalEdit(category.Name,category.id)"
+                                    @click = "handleShowModalEdit(category.name,category.id)"
                                     class="edit action">
                                       <i class="fa-solid fa-pen-to-square"></i>
                                       <span class="ms-3">Sửa</span>

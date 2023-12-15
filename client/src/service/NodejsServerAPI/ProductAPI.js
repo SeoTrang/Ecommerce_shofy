@@ -6,6 +6,7 @@ const ProductAPI = {
             let result = null;
             await axiosCustom.get('/product')
             .then(res=>{
+                console.log(res.data);
                 result = res.data;
             })
             .catch(err=>{
@@ -17,11 +18,12 @@ const ProductAPI = {
             return false;
         }
     },
-    GetDetail: async (ProductId) => {
+    GetDetail: async (product_id,linkTo) => {
         try {
-            if(!ProductId) return false;
+            if(!product_id) return false;
             let result = null;
-            await axiosCustom.get(`/detail/${ProductId}`)
+            // product-detail/1?arrayParam=Xanh Lá,128GB
+            await axiosCustom.get(`/product-detail/${product_id}?arrayParam=${linkTo}`)
             .then(res=>{
                 result = res.data;
             })
@@ -42,6 +44,26 @@ const ProductAPI = {
             if(!Name) return false;
             let result = null;
             await axiosCustom.get(`/get-product-by-nane/${Name}`)
+            .then(res=>{
+                result = res.data;
+            })
+            .catch(err => {
+                console.log(err);
+            })
+
+            if(result) return result;
+            return false;
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
+    },
+
+    GetById: async (id) => {
+        try {
+            if(!id) return false;
+            let result = null;
+            await axiosCustom.get(`/product/${id}`)
             .then(res=>{
                 result = res.data;
             })

@@ -8,11 +8,11 @@ const Brand = sequelize.define('brands',{
         autoIncrement:true,
         primaryKey:true
     },
-    Name:{
+    name:{
         type:DataTypes.STRING,
         allowNull:false
     },
-    Avatar:{
+    avatar:{
         type:DataTypes.STRING,
         allowNull:true
     }
@@ -20,12 +20,12 @@ const Brand = sequelize.define('brands',{
 })
 
 Brand.belongsTo(Category, {
-    foreignKey: 'CategoryId', // This specifies the foreign key column name
+    foreignKey: 'category_id', // This specifies the foreign key column name
     
 });
 
 Category.hasMany(Brand, {
-    foreignKey: 'CategoryId', // This specifies the foreign key column name
+    foreignKey: 'category_id', // This specifies the foreign key column name
     
 })
 // Define the foreign key relationship in the Task model

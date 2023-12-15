@@ -54,3 +54,34 @@ Authorization: Bearer
 ###
 GET http://localhost:5000/get-user
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzAwMTI5MjkxLCJleHAiOjE3MDAxMzEwOTF9.bkgiFI1w0kbmF-kjjyY2_KMNkck9KqtY385AHLGFgMI
+
+
+###
+GET  http://localhost:5000/get-list-img/1
+
+
+###
+GET http://localhost:5000/get-attributesvalue/1
+
+###
+GET  http://localhost:5000/get-all-by-user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWRtaW4iOjAsImlhdCI6MTcwMTg1NjgwNCwiZXhwIjoxNzAxODU4NjA0fQ.0-PZG1eRLz8qf-H-2LLIiA9KdZHLRaR9SQITRNf-Wr8
+
+
+###
+POST  http://localhost:5000/add-cart
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWRtaW4iOjAsImlhdCI6MTcwMjExNDA0MiwiZXhwIjoxNzAyMTE1ODQyfQ.y8CZ2-SkrNR2uUg47rqFqdsIcNcJ39A_l0LN6Ab9YRM
+
+{
+    "data": { 
+        "quantity": 1, 
+        "variation_id": 1, 
+        "user_id": 1 
+    }
+}
+
+
+###
+GET  http://localhost:5000/get-order-detail/5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWRtaW4iOjAsImlhdCI6MTcwMjU2MDI0NywiZXhwIjoxNzAyNTYyMDQ3fQ.zr99tlgyV4XTuvqkNAYyAKvLYsLeSrCmTMENk8ivIsg

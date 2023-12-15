@@ -10,7 +10,7 @@ const cartReducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_CART_DATA:
             return {
-                carts: [...action.carts]
+                carts: action.carts
             }
         
         default:

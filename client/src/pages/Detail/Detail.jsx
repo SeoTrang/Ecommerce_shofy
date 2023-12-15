@@ -12,80 +12,180 @@ import formatCurrencyVND from '../../../util/formatCurrencyVND';
 import ListImgAPI from '../../service/NodejsServerAPI/ListImgAPI';
 import DetailBottom from './components/DetailBottom/DetailBottom';
 import RelatedProducts from './components/RelatedProducts/RelatedProducts';
+import OptionAPI from '../../service/NodejsServerAPI/OptionAPI';
+import { useDispatch } from 'react-redux';
+import { addToCart, fetchCartData } from '../../redux/actions/cartAction';
 
 const Detail = () => {
 
     const search = useLocation().search;
     const productId = new URLSearchParams(search).get('id');
+    // const [productId,setProductId] = useState();
     console.log(productId);
 
-    const [btnShowText,setBtnShowText] = useState(false);
-
-    const handleShowText = () => {
-        const text = document.getElementsByClassName('short-des-text')[0];
-        text.classList.add('text-show')
-        setBtnShowText(true);
-    }
-
-    
-
-    const handleHiddenText = () => {
-        const text = document.getElementsByClassName('short-des-text')[0];
-        setBtnShowText(false);
-        text.classList.remove('text-show')
-    }
-
-    
-
-    const notify = () => toast.success('Add to cart successfully!');
-    // toast.success('Add to cart successfully!');
-
-    // products
-    const [productName, setProductName] = useState();
-    const [products,setProducts] = useState();
     const [product,setProduct] = useState();
-    const [colorActive,setColorActive] = useState();
-
-    useEffect(()=>{
-        async function fetchData(){
-            const result = await ProductAPI.GetDetail(productId);
-            if(result) {
-                console.log(result);
-                setProduct(result);
-                setProductName(result.Name)
-                setColorActive(result.colors[0].id);
-            }
+    const [quantity,setQuantity] = useState(1);
+    
+    const minusQuantity = () =>{
+        if(quantity <= 1){
+            toast.error('Giá trị không được nhỏ hơn 1')
+            return;
         }
-        fetchData();
-    },[productId])
-
-    useEffect(()=>{
-        async function fetchData(){
-            const result = await ProductAPI.GetByName(productName);
-            if(result) {
-                console.log(result);
-                setProducts(result);
-            }
-        }
-        fetchData();
-    },[productName])
-
-    const handleChangColorActive = (value) => {
-        setColorActive(value);
+        setQuantity(quantity-1)
     }
 
+    const plusQuantity = () =>{
+        setQuantity(quantity+1)
+    }
+
+    const [option,setOption] = useState();
+    const [variantion,setVariantion] = useState();
+    useEffect(()=>{
+        // console.log(item);
+        if(!productId) return;
+        async function fetchData() {
+            let result = await ProductAPI.GetById(productId);
+            if(result) {
+                console.log(result);
+                setOption(result.options)
+                return setProduct(result);
+            }
+
+        }
+
+        fetchData();
+        
+    },[productId])
+   
+
+    
 
     const [listImg,setListImg] = useState([]);
-    useEffect(()=>{
-        // console.log(colorActive);
-        async function fetchDataListImg(){
-            let result = await ListImgAPI.GetByColor(colorActive);
-            // console.log(result);
-            if(result) setListImg(result);
-        }
-        fetchDataListImg();
-    },[colorActive])
+    let [optionActive,setOptionActive] = useState({})
 
+
+
+
+    // useEffect(()=>{
+    //     console.log(optionActive);
+    // },[optionActive])
+
+    const [arrayParams,setArrayParams] = useState();
+    const [objectParams,setObjectParams] = useState();
+
+
+    useEffect(()=>{
+        console.log(option);
+    },[option])
+
+    
+
+    const handleChangArrayParams = (type,value) => {
+        console.log(type);
+        console.log(value);
+        // Sử dụng map để tạo một mảng mới với giá trị được cập nhật
+        let tempParams = objectParams.map(item => {
+            if (item.type === type) {
+                return { ...item, value: value };
+            }
+            return item; // Trả về item nguyên vẹn nếu không phải là phần tử cần cập nhật
+        });
+
+        console.log(tempParams);
+        setObjectParams(tempParams);
+
+        if(!option) return;
+        let optiontTemp = {};
+        optiontTemp = {...optionActive}
+        optiontTemp[type] = value;
+        
+        setOptionActive(optiontTemp);
+    }
+
+    useEffect(()=>{
+        console.log(option);
+        let paramActive = [];
+        let optiontTemp = {};
+        if(!option) return;
+        option.forEach((item, index) => {
+            console.log(item);
+            paramActive.push({
+                type: item.name,
+                value: item.OptionValues[0].value
+            })
+
+            optiontTemp[item.name] = item.OptionValues[0].value;
+
+          
+        });
+        console.log(paramActive);
+        // console.log(optionActive);
+        // console.log(optionActive['Màu']);
+        setOptionActive(optiontTemp);
+        setObjectParams(paramActive);
+    },[option])
+
+    useEffect(()=>{
+        console.log(optionActive);
+    },[optionActive])
+
+    useEffect(()=> {
+        // console.log(objectParams);
+        let paramString = '';
+        if(objectParams){
+            objectParams.forEach((item,index) => {
+                paramString += item.value;
+                if (index < option.length - 1) {
+                    paramString += ','; // Thêm dấu phẩy nếu không phải là phần tử cuối cùng
+                }
+            });
+    
+            setArrayParams(paramString);
+        }
+        
+    },[objectParams])
+
+    useEffect(()=>{
+        async function fetchData(){
+            let result = await ProductAPI.GetDetail(product.id,arrayParams);
+            if(result) setVariantion(result);
+
+        }
+
+        fetchData();
+    },[arrayParams])
+
+    useEffect(()=> {
+        console.log(variantion);
+        if(variantion){
+            async function fetchData() {
+                let result = await ListImgAPI.GetByVariation(variantion[0].variation_id);
+                if(result) setListImg(result);
+                console.log(result);
+            }
+            fetchData();
+        }
+    },[variantion])
+
+    useEffect(()=>{
+        console.log(variantion);
+        console.log(listImg);
+    },[variantion,listImg])
+
+
+    const dispatch = useDispatch();
+
+    const handleAddToCart = async() => {
+        let data = {
+            quantity: quantity,
+            variation_id: variantion[0].variation_id
+        }
+        let result = await dispatch(addToCart(data));
+        dispatch(fetchCartData());
+        console.log(result);
+        if(result) return toast.success('Đã thêm vào giỏ hàng');
+    }
+    
 
     return (
         <div className='shofy-app'>
@@ -96,7 +196,7 @@ const Detail = () => {
                     /
                     <span>
                         {
-                            product?.Name
+                            product?.name
                         }
                     </span>
                 </section>
@@ -135,134 +235,142 @@ const Detail = () => {
                                     </div>
                                     
                                     
-                                    {/* <div className="short-des mt-2">
-                                        <div className="content">
-                                            <span className='short-des-text text-hidden'>
-                                            Jabra Evolve2 75 USB-A MS Teams Stereo Headset The Jabra Evolve2 75 USB-A MS Teams Stereo Headset has replaced previous hybrid working standards. Industry-leading call quality thanks to top-notch audio engineering. With this intelligent headset, you can stay connected and productive from the first call of the day to the last train home. With an ergonomic earcup design, this headset invented a brand-new dual-foam technology. You will be comfortable from the first call to the last thanks to the re-engineered leatherette ear cushion design that allows for better airflow. We can provide exceptional noise isolation and the best all-day comfort by mixing firm foam for the outer with soft foam for the interior of the ear cushions. So that you may receive Active Noise-Cancellation (ANC) performance that is even greater in a headset that you can wear for whatever length you wish. The headset also offers MS Teams Certifications and other features like Busylight, Calls controls, Voice guiding, and Wireless range (ft): Up to 100 feet. Best-in-class. Boom The most recent Jabra Evolve2 75 USB-A MS Teams Stereo Headset offers professional-grade call performance that leads the industry, yet Evolve2 75 wins best-in-class. Additionally, this includes a redesigned microphone boom arm that is 33 percent shorter than the Evolve 75 and offers the industry-leading call performance for which Jabra headsets are known. It complies with Microsoft's Open Office criteria and is specially tuned for outstanding conversations in open-plan workplaces and other loud environments when the microphone boom arm is lowered in Performance
-                                            
-                                            </span>
-                                            {
-                                                !btnShowText ? 
-                                                <button 
-                                                onClick={handleShowText} 
-                                                className='see-more'>
-                                                    See more
-                                                </button>
-                                                :
-                                                <button 
-                                                onClick={handleHiddenText} 
-                                                className='see-less'>
-                                                    See less
-                                                </button>
-                                            }
-                                        </div>
-                                        
-                                    </div> */}
+                                   
 
                                     <div className="price mt-3">
                                       
                                             <span className="old-price me-2">
-                                                {
-                                                    product &&
-                                                    product.colors.map((value,index)=>{
-                                                        let price = (product.colors[index].id == colorActive)? product.colors[index].Price : null;
-                                                        return (
-                                                            product.colors[index].id == colorActive?
-                                                            formatCurrencyVND(price)
-                                                            :
-                                                            null
-                                                        )
-                                                    })
-                                                }
-                                                ₫
+                                            {
+                                                variantion?
+                                                formatCurrencyVND(variantion[0].price)+'₫'
+                                                :
+                                                '120₫'
+                                            }
+                                        
                                             </span>
                                         
                                         
                                             <span className="current-price">
-                                                {
-                                                    product &&
-                                                    product.colors.map((value,index)=>{
-                                                        let price = (product.colors[index].id == colorActive)? product.colors[index].DiscountPrice : null;
-                                                        return (
-                                                            product.colors[index].id == colorActive?
-                                                            formatCurrencyVND(price)
-                                                            :
-                                                            null
-                                                        )
-                                                    })
-                                                }
-                                                ₫
+                                            {
+                                                variantion?
+                                                formatCurrencyVND(variantion[0].sale_price)+'₫'
+                                                :
+                                                '120₫'
+                                            }
                                             </span>
                                         
                                     </div>
-                                    <div className="versions mt-3 mb-3 d-flex flex-wrap align-items-center">
-                                        
-                                                {/* <Link className='me-2 version'>64GB</Link>
-                                                <Link className='me-2 version version-active'>128GB</Link> */}
-                                        {
-                                            products && 
-                                            products.map((value,index)=>{
-                                                return (
-                                                    <Link
-                                                    key={index} 
-                                                    className={'me-2 version '+(value.id == productId ? 'version-active' : '')}
-                                                    to={`?id=${value.id}`}>{value.Version}</Link>
-                                                )
-                                            })
-                                        }
-                                    </div>
-
-                                    <div className="colors mt-2">
-                                        <div className="title">
-                                            Color:
-                                        </div>
-                                        <div className="list-colors mt-2">
-                                            {
-                                                product &&
-                                                (
-                                                    product.colors.map((value,index)=>{
-                                                        return (
-                                                            <div 
-                                                            key={index} 
-                                                            className={"color "+(colorActive == value.id ? "color-active" : null)} 
-                                                            style={{backgroundColor:value?.Color}}
-                                                            onClick={()=>{handleChangColorActive(value.id)}}
-                                                            >
+                                    {
+                                        option &&
+                                        option.map((value,index)=> {
+                                            return (
+                                                value.name == 'Màu'
+                                                ?
+                                                <div className="colors mt-2">
+                                                    <div className="title">
+                                                        Màu:
+                                                        
+                                                    </div>
+                                                    <div className="list-colors mt-2">
+                                                        
+                                                        {
+                                                            value?
+                                                            (
+                                                                value.OptionValues.map((color,index)=>{
+                                                                    
+                                                                    return (
+                                                                        <div 
+                                                                        key={index} 
+                                                                        className={"color "+(color.value == optionActive[value.name] ? "color-active" : null)} 
+                                                                        // className={"color "} 
+                                                                        style={{backgroundColor:color?.color_code}}
+                                                                        onClick={()=>{handleChangArrayParams(value.name,color.value)}}
+                                                                        >
 
 
-                                                            </div>
-                                                        )
-                                                    })
-                                                )
-                                            }
-                                            {/* <div className="color color-active" style={{backgroundColor:"#c1bae4"}}>
+                                                                        </div>
+                                                                        // <div>
+                                                                        //     {
+                                                                        //         color.value == optionActive[value.name] ? 'hello' : 'no'
+                                                                        //         console.log(optionActive)
+                                                                        //         optionActive ? optionActive['Màu'] : null
+                                                                        //     }
+                                                                        // </div>
+                                                                    )
+                                                                })
+                                                            )
+                                                            :
+                                                            (
+                                                                <>
+                                                                    <div className="color " style={{backgroundColor:"#c1bae4"}}>
 
-                                            </div>
-                                            <div className="color " style={{backgroundColor:"#d8d7dd"}}>
+                                                                    </div>
+                                                                    <div className="color " style={{backgroundColor:"#d8d7dd"}}>
+                                                                        
+                                                                    </div>
+                                                                    <div className="color " style={{backgroundColor:"#f3c0d1"}}>
+                                                                        
+                                                                    </div>
+                                                                    <div className="color " style={{backgroundColor:"#64bfd1"}}>
+                                                                        
+                                                                    </div>
+                                                                </>
+                                                            )
+                                                        }
+                                                        
+                                                    </div>
+                                                </div>
+                                                :
+                                                <div className='versions mt-3 mb-3 '>
+                                                    <div className="title">
+                                                        {value.name}:
+                                                    </div>
+                                                    <div className="d-flex flex-wrap align-items-center">   
+                                                    
+                                                    {
+                                                        value && 
+                                                        value.OptionValues.map((optionValue,index)=>{
+                                                            return (
+                                                                <div
+                                                                key={index} 
+                                                                // className={'me-2 version '+(value.id == product.id ? 'version-active' : '')}
+                                                                className={'me-2 version '+(optionValue.value == optionActive[value.name] ? 'version-active' : '')}
+                                                                // to={`?id=${value.id}`}
+                                                                
+                                                                onClick={()=>{handleChangArrayParams(value.name,optionValue.value)}}
+                                                                >
+                                                                    {optionValue.value}
+                                                                </div>
+                                                            )
+                                                        })
+                                                    }
+                                                </div>
+                                                </div>
                                                 
-                                            </div>
-                                            <div className="color " style={{backgroundColor:"#f3c0d1"}}>
                                                 
-                                            </div>
-                                            <div className="color " style={{backgroundColor:"#64bfd1"}}>
-                                                
-                                            </div> */}
-                                        </div>
-                                    </div>
+                                            )
+                                        })
+                                    }
                                     <div className="title-quantity mt-3">
                                         <div className="title">
-                                            Quantity
+                                            Số lượng
                                         </div>
                                     </div>
                                     <div className="action-top mt-3">
                                         
                                         <div className="quantity">
-                                            <button><i class="fa-solid fa-minus me-4"></i></button>
-                                            <span>1</span>
-                                            <button><i class="fa-solid fa-plus ms-4"></i></button>
+                                            <button
+                                            onClick={minusQuantity}>
+                                                <i class="fa-solid fa-minus me-4"></i>
+                                            </button>
+                                            <span>{quantity}</span>
+                                            <button
+                                            onClick={plusQuantity}>
+                                                <i class="fa-solid fa-plus ms-4"></i>
+                                            </button>
                                         </div>
                                         <div className="add-to-cart ms-3"
-                                            onClick={notify}
+                                            onClick={handleAddToCart}
                                             >
                                             <button >Add To Cart</button>
                                             
@@ -360,7 +468,7 @@ const Detail = () => {
 
 
 
-                <DetailBottom product = {product}/>
+                <DetailBottom product = {product} variation_id={variantion && variantion[0].id}/>
 
                 <RelatedProducts/>
             </div>
@@ -369,3 +477,8 @@ const Detail = () => {
 };
 
 export default Detail;
+
+
+
+
+

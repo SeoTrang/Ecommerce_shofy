@@ -288,7 +288,7 @@ const Home = () => {
 
                 <NewArrivals/>
 
-                <ElectronicSmProducts/>
+                <ElectronicSmProducts/> 
 
                 <section className='news-articles'>
                     <div className="container">

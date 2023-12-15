@@ -21,10 +21,10 @@ const AttributeValueRepository = {
             return false;
         }
     },
-    getByProduct: async (ProductId) => {
+    GetByVariation: async (variation_id) => {
         try {
             const result = await AttributeValue.findAll({
-                where:{ProductId: ProductId},
+                where:{variation_id: variation_id},
                 include:[
                     {
                         model: Attribute

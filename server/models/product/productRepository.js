@@ -1,7 +1,13 @@
+const { QueryTypes } = require("sequelize");
+const Combination = require("../Combination/Combination");
+const OptionValue = require("../OptionValue/OptionValue");
+const Variation = require("../Variation/Variation");
 const Brand = require("../brand/Brand");
 const Category = require("../category/category");
-const Color = require("../color/color");
 const Product = require("./product");
+const sequelize = require("../../config/db");
+const Option = require("../Option/Option");
+const Rating = require("../rating/rating");
 
 const ProductRepository = {
     create: async (data) => {
@@ -26,8 +32,9 @@ const ProductRepository = {
                     {
                       model: Brand,
                     //   attributes: ['id', 'name'], // Chọn các trường bạn muốn lấy từ bảng Brand
-                    },{
-                        model: Color
+                    },
+                    {
+                        model: Rating
                     }
                 ],
             });
@@ -51,7 +58,12 @@ const ProductRepository = {
                         model: Brand,
                       //   attributes: ['id', 'name'], // Chọn các trường bạn muốn lấy từ bảng Brand
                       },{
-                          model: Color
+                          model: Option,
+                          include:[
+                            {
+                                model: OptionValue
+                            }
+                          ]
                       }
                 ]
                 
@@ -77,8 +89,6 @@ const ProductRepository = {
                       {
                         model: Brand,
                       //   attributes: ['id', 'name'], // Chọn các trường bạn muốn lấy từ bảng Brand
-                      },{
-                          model: Color
                       }
                 ]
             });
@@ -134,7 +144,50 @@ const ProductRepository = {
             console.log(error);
             return false;
         }
+    },
+
+   getDetailProduct: async (id,condition)=> {
+    try {
+        let queryString = `SELECT * FROM products as Product
+                            JOIN variations as Variation ON Product.id = Variation.product_id
+                            JOIN combinations as Combination ON Variation.id = Combination.variation_id`;
+        for (let index = 0; index < condition.length; index++) {
+            if(index == 0){
+                queryString += ` JOIN optionvalues as Option_value ON Combination.option_value_id = Option_value.id  AND Option_value.value = '`+condition[index]+"'";
+
+            }else{
+                queryString += ` JOIN (
+                    SELECT combinations.variation_id, combinations.option_value_id, Option_value.value, Option_value.color_code
+                    FROM combinations
+                    JOIN optionvalues as Option_value ON combinations.option_value_id = Option_value.id
+                    where
+                        Option_value.value  = '${condition[index]}'
+                ) AS option${index} ON Variation.id = option${index}.variation_id`;
+            }
+
+        }
+
+        queryString += ` WHERE 
+                        Product.id = ${id}`
+
+
+        // console.log(queryString);
+        
+        const products = await sequelize.query(
+            queryString
+        ,{
+            type: QueryTypes.SELECT 
+        })
+
+        if(products) return products;
+        return false;
+     
+    } catch (error) {
+        console.log(error);
+        return error;
     }
+      
+   }
 }
 
 module.exports = ProductRepository;

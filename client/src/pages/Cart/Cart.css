@@ -6,6 +6,11 @@
     width: 45px;
 }
 
+#cart table{
+    border-collapse: separate;
+    border-spacing: 0 20px;
+}
+
 #cart th{
     border-bottom: none;
 }
@@ -17,7 +22,7 @@
 
 @media screen and (min-width:426px) {
     #cart .list-carts .product-des img{
-        width:78px;
+        width:65px;
     }
     #cart .list-carts .quantity{
         width: 90px;

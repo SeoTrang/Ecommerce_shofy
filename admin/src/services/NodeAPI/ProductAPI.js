@@ -56,7 +56,9 @@ const ProductAPI = {
             console.log(error);
             return false;
         }
-    }
+    },
+
+    
 }
 
 export default ProductAPI;

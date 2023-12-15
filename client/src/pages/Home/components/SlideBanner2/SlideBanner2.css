@@ -51,11 +51,12 @@
     padding: 8px 25px;
     border: none;
     transition: 0.3s;
+    color: #fff !important;
 }
 
 .slide-banner2 .mySwiper .content-left .btn-buy a:hover{
     background-color: #fff;
-    color: #000;
+    color: #000 !important;
     border: none;
     transition: 0.3s;
 }

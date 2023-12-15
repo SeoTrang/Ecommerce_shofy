@@ -173,3 +173,18 @@ WHERE
     
 
 
+
+
+SELECT * FROM products as Product
+JOIN variations as Variation ON Product.id = Variation.product_id
+JOIN combinations as Combination ON Variation.id = Combination.variation_id
+JOIN optionvalues as Option_value ON Combination.option_value_id = Option_value.id  AND Option_value.value = '#7e779b'
+JOIN (
+    SELECT combinations.variation_id, combinations.option_value_id, Option_value.value
+    FROM combinations
+    JOIN optionvalues as Option_value ON combinations.option_value_id = Option_value.id
+	where
+		Option_value.value  = '64GB'
+) AS option2 ON Variation.id = option2.variation_id
+WHERE 
+    Product.id = 1

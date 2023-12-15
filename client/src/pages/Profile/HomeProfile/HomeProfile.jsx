@@ -6,7 +6,10 @@ import ProfileSideBar from '../../../components/ProfileSideBar/ProfileSideBar';
 import ProfileSideBarMobile from '../../../components/ProfileSideBar/ProfileSideBarMobile';
 
 import cartIcon from './work.svg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
+import { useDispatch } from 'react-redux';
+import { fetchUserData } from '../../../redux/actions/userAction';
 // import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 
 const HomeProfile = () => {
@@ -23,6 +26,18 @@ const HomeProfile = () => {
             console.log(error);
         }
     },[]);
+
+
+    const distpath = useDispatch();
+    const navigate = useNavigate();
+    const handleLogOut = () => {
+        console.log('handleLogOut');
+        Cookies.remove('accessToken');
+        Cookies.remove('refreshToken');
+        distpath(fetchUserData());
+        return navigate('/');
+        
+    }
     return (
         <div id='profile' className="container-profile">
             <div className='shofy-app'>
@@ -45,7 +60,9 @@ const HomeProfile = () => {
                                         </div>
                                     </div>
                                     <div className="action-logout">
-                                        <button className='btn btn-sm rounded-0 border-secondary'>
+                                        <button
+                                        onClick={handleLogOut}
+                                        className='btn btn-sm rounded-0 border-secondary'>
                                             Logout
                                         </button>
                                     </div>

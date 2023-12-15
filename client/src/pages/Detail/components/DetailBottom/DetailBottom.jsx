@@ -6,7 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 import AttributesAPI from '../../../../service/NodejsServerAPI/AttributesAPI';
 import AttributesValueAPI from '../../../../service/NodejsServerAPI/AttributesValueAPI';
 
-const DetailBottom = ({product}) => {
+const DetailBottom = ({product,variation_id}) => {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -21,13 +21,16 @@ const DetailBottom = ({product}) => {
 
     useEffect(()=>{
         async function fetchData() {
-            const result = await AttributesValueAPI.getByProductId(product.id)
+            console.log(product);
+            console.log(variation_id);
+            const result = await AttributesValueAPI.getVariationId(variation_id)
             console.log(result);
             if(result) setAttributes(result);
         }
         fetchData();
-    },[product])
+    },[product,variation_id])
     return (
+        // <></>
         <section className="detail-bottom mt-5">
                 <nav>
                     <div class="nav nav-tabs align-items-center justify-content-center" id="nav-tab" role="tablist">
@@ -54,18 +57,18 @@ const DetailBottom = ({product}) => {
                                     <span _ngcontent-ng-c4203954032="">
                                         {
                                             product &&
-                                            product.category.Name
+                                            product.category.name
                                         }
                                     </span>
                                     <h3 _ngcontent-ng-c4203954032="" class="tp-product-details-desc-title">
                                         {
                                             product &&
-                                            product.Name
+                                            product.name
                                         }
                                     </h3>
                                 </div>
                                 <div>
-                                    <div dangerouslySetInnerHTML={{ __html: product && product.Article}} />
+                                    <div dangerouslySetInnerHTML={{ __html: product && product.description}} />
                                 </div>
                             </div>
                     </div>
@@ -85,11 +88,11 @@ const DetailBottom = ({product}) => {
                                     attributes && 
                                     attributes.map((value,index) => {
                                         return (
-                                            <tr>
+                                            <tr key={index}>
                                                 <td>
-                                                    {value.attribute.Name}
+                                                    {value.attribute.name}
                                                 </td>
-                                                <td>{value.Value}</td>
+                                                <td>{value.value}</td>
                                             </tr>
                                         )
                                     })

@@ -1,11 +1,11 @@
 import axiosCustom from '../../config/axiosBaseUrl/axiosCustom'
 
 const ListImgAPI = {
-    GetByColor: async (colorId) => {
+    GetByVariation: async (variation_id) => {
         try {
             let result = null;
             // console.log(colorId);
-            await axiosCustom.get(`/get-list-img-color/${colorId}`)
+            await axiosCustom.get(`/get-list-img/${variation_id}`)
             .then(res=>{
                 result = res.data;
             })

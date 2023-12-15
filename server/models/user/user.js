@@ -7,23 +7,23 @@ const User = sequelize.define('users',{
         autoIncrement: true,
         primaryKey: true
     },
-    UserName:{
+    user_name:{
         type: DataTypes.STRING,
         allowNull: false,
     },
-    Email:{
+    email:{
         type: DataTypes.STRING,
         allowNull: false,
     },
-    Pass:{
+    pass:{
         type: DataTypes.STRING,
         allowNull: false
     },
-    Avatar:{
+    avatar:{
         type: DataTypes.STRING,
         allowNull: true
     },
-    Role:{
+    role:{
         type: DataTypes.INTEGER, //0 is client and 1 is admin
         allowNull: false,
         defaultValue: 0

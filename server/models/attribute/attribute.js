@@ -8,22 +8,22 @@ const Attribute = sequelize.define('attributes', {
         primaryKey:true,
         autoIncrement: true
     },
-    Name:{
+    name:{
         type: DataTypes.STRING,
         allowNull: false
     },
-    CategoryId:{
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references:{
-            model:'categories',
-            key:'id'
-        }
-    }
+    // CategoryId:{
+    //     type: DataTypes.INTEGER,
+    //     allowNull: false,
+    //     references:{
+    //         model:'categories',
+    //         key:'id'
+    //     }
+    // }
 });
 
 Attribute.belongsTo(Category, {
-    foreignKey: 'CategoryId', // This specifies the foreign key column name
+    foreignKey: 'category_id', // This specifies the foreign key column name
     
 });
 

@@ -18,16 +18,20 @@ import './SlideProduct.css';
 
 export default function SlideImgProduct({listImg}) {
   if(listImg){
-    console.log(listImg);
+    // console.log(listImg);
   }
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const sortedListImg = [...listImg].sort((a, b) => a.Url.localeCompare(b.Url));
+  const sortedListImg = [...listImg].sort((a, b) => a.url.localeCompare(b.url));
 
   const [arrayImg, setArrayImg] = useState([]);
 
   useEffect(() => {
     setArrayImg(sortedListImg);
   }, [listImg]);
+
+  useEffect(() => {
+    // console.log(arrayImg);
+  }, [arrayImg]);
   return (
       <div className="container">
         <div className='slide-product mb-3 row'>
@@ -47,7 +51,7 @@ export default function SlideImgProduct({listImg}) {
             arrayImg.map((value,index)=>{
               return (
                 <SwiperSlide key={index}>
-                  <img src={import.meta.env.VITE_API_URL+value.Url} />
+                  <img src={import.meta.env.VITE_API_URL+value.url} />
                 </SwiperSlide>
               )
             })
@@ -100,7 +104,7 @@ export default function SlideImgProduct({listImg}) {
             arrayImg.map((value,index)=>{
               return (
                 <SwiperSlide key={index}>
-                  <img src={import.meta.env.VITE_API_URL+value.Url} />
+                  <img src={import.meta.env.VITE_API_URL+value.url} />
                 </SwiperSlide>
               )
             })

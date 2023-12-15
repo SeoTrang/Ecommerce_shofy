@@ -63,8 +63,8 @@ const BrandController = {
             const brands = await BrandService.getAllByCategory(categoryId);
             if(brands) {
                 for (const key in brands) {
-                   const category = await categoryService.getOne(brands[key].CategoryId)
-                   brands[key].dataValues.CategoryName = category.Name;
+                   const category = await categoryService.getOne(brands[key].category_id)
+                   brands[key].dataValues.CategoryName = category.name;
 
                 }
                 return res.status(200).json(brands);

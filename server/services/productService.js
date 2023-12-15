@@ -18,6 +18,9 @@ const productService = {
     },
     delete: async (id) => {
         return await ProductRepository.delete(id);
+    },
+    getDetail: async (id, condition) => {
+        return await ProductRepository.getDetailProduct(id,condition);
     }
 }
 

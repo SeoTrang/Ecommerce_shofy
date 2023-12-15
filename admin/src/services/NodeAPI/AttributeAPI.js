@@ -37,13 +37,10 @@ const AttributeAPI = {
         }
     },
 
-    Create: async (categoryId, attribute)=>{
+    Create: async (data)=>{
         try {
             let result = null;
-            let data = {
-                Name: attribute,
-                CategoryId: categoryId
-            }
+            
             await axios.post('/attribute',{data: data})
             .then(res => {
                 result = res.status;

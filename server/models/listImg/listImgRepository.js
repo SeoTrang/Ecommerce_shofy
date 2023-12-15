@@ -21,13 +21,14 @@ const ListImgRepository = {
             return false;
         }
     },
-    getByColor:async (ColorId) => {
+    getByVariantion:async (variantion_id) => {
         try {
             const result = await ListImg.findAll({
                 where:{
-                    ColorId	: ColorId
+                    variation_id	: variantion_id
                 }
             });
+            console.log(result);
             if(result) return result;
             return false;
         } catch (error) {

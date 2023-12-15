@@ -1,5 +1,5 @@
 //category =============================================================
-GET http://localhost:5000/admin/category?type=all
+GET http://localhost:5000/admin/category
 
 ###
 GET http://localhost:5000/admin/get-one-category?id=2
@@ -10,7 +10,7 @@ content-type: application/json
 
 {
     "data": {
-        "Name": "Test Category 2"
+        "name": "Giày"
     }
 }
 
@@ -39,9 +39,9 @@ content-type: application/json
 
 {
     "data": {
-        "Name": "Test Brand 2",
-        "Avatar": "/img/imgUpload/1de9df6e63e5b4bbedf4.jpg",
-        "CategoryId":"2"
+        "name": "Goya",
+        "avatar": "",
+        "category_id":"2"
     }
 }
 
@@ -79,15 +79,109 @@ content-type: application/json
 
 {
     "data": {
-        "Name": "iPhone 14 Pro Max",
-        "Version": "128GB",
-        "Article":"Article 1",
-        "BrandId": "9",
-        "CategoryId": "7"
+        "name": "iPhone 14 Pro Max",
+        "img_preview": "/img/imgUpload/iphone-12-violet-1-600x600 (1).webp",
+        "description":"Article 1",
+        "brand_id": "1",
+        "category_id": "1"
+    }
+}
+
+### 
+POST http://localhost:5000/admin/variation
+content-type: application/json
+
+{
+    "data": {
+        "name": "iPhone 14 Pro Max Đỏ 128GB",
+        "SKU": "IP14PMDD128",
+        "qty_in_stock":50,
+        "import_price":17000000,
+        "price":23000000,
+        "sale_price":21000000,
+        "product_id": "1"
     }
 }
 
 
+###
+POST http://localhost:5000/admin/variation
+content-type: application/json
+
+{
+    "data": {
+        "name": "Giày Chạy Bộ Goya Training Plus 2023 Màu Vàng Đỏ Size 39",
+        "SKU": "GCBGTP2023D39",
+        "qty_in_stock":50,
+        "import_price":350000,
+        "price":750000,
+        "sale_price":550000,
+        "product_id": "2"
+    }
+}
+
+
+###
+POST http://localhost:5000/admin/product
+content-type: application/json
+
+{
+    "data": {
+        "name": "Giày Chạy Bộ Goya Training Plus 2023 ",
+        "img_preview": "/img/imgUpload/Giày Chạy Bộ Goya Training Plus 2023.webp",
+        "description":"Article 2",
+        "brand_id": "3",
+        "category_id": "2"
+    }
+}
+
+
+
+###
+POST http://localhost:5000/admin/option
+content-type: application/json
+
+{
+    "data": {
+        "name": "Size",
+        "product_id": "2"
+    }
+}
+
+
+###
+GET http://localhost:5000/admin/option/1
+
+###
+GET http://localhost:5000/option/1
+
+###
+POST http://localhost:5000/admin/option-value
+content-type: application/json
+
+{
+    "data": {
+        "value": "#e70505",
+        "option_id": "1"
+    }
+}
+
+
+###
+GET http://localhost:5000/admin/option-value/1
+
+
+
+###
+POST http://localhost:5000/admin/combination
+content-type: application/json
+
+{
+    "data": {
+        "option_value_id": "7",
+        "variation_id": "6"
+    }
+}
 
 /// attribute ===================================================================
 ###
@@ -97,8 +191,8 @@ content-type: application/json
 
 {
     "data": {
-        "Name": "Ram",
-        "CategoryId": "7"
+        "name": "Dung lượng lưu trữ",
+        "category_id": "1"
     }
 }
 
@@ -107,9 +201,12 @@ content-type: application/json
 GET  http://localhost:5000/admin/attribute
 
 ###
+GET  http://localhost:5000/admin/get-attribute-by-category/1
 
-GET  http://localhost:5000/admin/get-attribute-by-category/9
 
+
+###
+GET  http://localhost:5000/admin/get-variation-by-product/4
 
 /// attribute ===================================================================
 ###
@@ -128,7 +225,13 @@ content-type: application/json
 }
 
 ###
-GET  http://localhost:5000/admin/product
+GET http://localhost:5000/admin/product
+
+###
+GET http://localhost:5000/admin/product/1
+
+###
+GET http://localhost:5000/product-detail/1?arrayParam=64GB,đỏ
 
 
 /// color ===================================================================
@@ -166,34 +269,34 @@ content-type: application/json
     "data": 
         [
             {
-                "ColorId": 1,
-                "AttributeId": 1,
-                "Value": "OLED"
+                "variation_id": 1,
+                "attribute_id": 1,
+                "value": "OLED"
             },
             {
-                "ColorId": 1,
-                "AttributeId": 2,
-                "Value": "4 GB"
+                "variation_id": 1,
+                "attribute_id": 2,
+                "value": "4 GB"
             },
             {
-                "ColorId": 1,
-                "AttributeId": 5,
-                "Value": "12 MP"
+                "variation_id": 1,
+                "attribute_id": 5,
+                "value": "12 MP"
             },
             {
-                "ColorId": 1,
-                "AttributeId": 6,
-                "Value": "Hỗ trợ 5G"
+                "variation_id": 1,
+                "attribute_id": 6,
+                "value": "Hỗ trợ 5G"
             },
             {
-                "ColorId": 1,
-                "AttributeId": 7,
-                "Value": " 2815 mAh"
+                "variation_id": 1,
+                "attribute_id": 7,
+                "value": " 2815 mAh"
             },
             {
-                "ColorId": 1,
-                "AttributeId": 8,
-                "Value": " 20 W"
+                "variation_id": 1,
+                "attribute_id": 8,
+                "value": " 20 W"
             }
         ]
 
@@ -212,16 +315,16 @@ content-type: application/json
     "data": 
         [
             {
-                "ColorId": 1,
-                "Url": "/img/imgUpload/logo_xiaomi.png"
+                "variation_id": 1,
+                "url": "/img/imgUpload/logo_xiaomi.png"
             },
             {
-                "ColorId": 1,
-                "Url": "/img/imgUpload/logo_xiaomi1.png"
+                "variation_id": 1,
+                "url": "/img/imgUpload/logo_xiaomi1.png"
             },
             {
-                "ColorId": 1,
-                "Url": "/img/imgUpload/logo_xiaomi2.png"
+                "variation_id": 1,
+                "url": "/img/imgUpload/logo_xiaomi2.png"
             }
         ]
 
@@ -230,5 +333,7 @@ content-type: application/json
 
 
 ###
-GET  http://localhost:5000/admin/get-list-img-color/1
+GET  http://localhost:5000/admin/get-list-img/1
 
+###
+GET  http://localhost:5000/admin/get-variation-by-product/1

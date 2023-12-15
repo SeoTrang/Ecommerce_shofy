@@ -14,7 +14,7 @@
       <div v-if="fileList1.length > 0">
         <div class="list-img">
           <div v-for="(file, index) in fileList1" :key="file.uid" class="list-item">
-            <img :src="file.url" alt="avatar" class="avatar-image" />
+            <img :src="API_URL+file" alt="avatar" class="avatar-image" />
             <div class="action">
               <i class="fa-solid fa-eye"></i>
               <i @click="actionDelete" class="fa-solid fa-trash"></i>
@@ -34,10 +34,11 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, watch, watchEffect } from 'vue';
 import { message } from 'ant-design-vue';
 import { defineProps } from 'vue';
 
+const fileList = ref([]);
 const fileList1 = ref([]); // Mảng chứa danh sách các ảnh
 const loading = ref(false);
 
@@ -49,6 +50,12 @@ const props = defineProps({
   handleGetLinkImg: Function,
   height: Number,
   ListImg: [],
+});
+
+watchEffect(() => {
+  console.log(props.ListImg);
+  fileList1.value = props.ListImg;
+  fileList.value.push =  props.ListImg;
 });
 
 if(props?.imageUrl){
@@ -68,7 +75,7 @@ const handleChange = info => {
     };
     console.log(newFile);
     // Thêm ảnh mới vào danh sách fileList
-    fileList1.value.push(newFile);
+    // fileList1.value.push(newFile);
    } else if (info.file.status === 'error') {
     loading.value = false;
     message.error('Upload error');
@@ -83,6 +90,9 @@ const actionDelete = (e) => {
     console.log("hello");
     // Thêm xử lý khi click vào biểu tượng xóa ở đây
 };
+
+
+
 
 // const propsHeight = defineProps(['height']);
 </script>

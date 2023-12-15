@@ -10,8 +10,8 @@ const ListImgService = {
     getAll: async () => {
         return await ListImgRepository.getAll();
     },
-    getByColor:async (ColorId) => {
-        return await ListImgRepository.getByColor(ColorId);
+    getByVariantion:async (variantion_id) => {
+        return await ListImgRepository.getByVariantion(variantion_id);
     },
     update: async (id,data) => {
         return await ListImgRepository.update(id,data);

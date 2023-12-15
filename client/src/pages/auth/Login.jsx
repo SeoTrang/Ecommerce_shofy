@@ -7,8 +7,20 @@ import { TextField } from '@mui/material';
 import toast from 'react-hot-toast';
 import isValidEmail from '../../../util/isValidEmail';
 import AuthAPI from '../../service/NodejsServerAPI/AuthAPI';
+import Cookies from 'js-cookie';
+import { useDispatch } from 'react-redux';
+import { fetchUserData } from '../../redux/actions/userAction';
 
 const Login = () => {
+    // Lấy giá trị của tham số 'redirect' từ query string
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const redirectParam = urlParams.get('redirect');
+    const dispatch = useDispatch();
+
+    // Giải mã giá trị redirect nếu có
+    const decodedRedirect = redirectParam ? decodeURIComponent(redirectParam) : '/';
+
     const [email,setEmail] = useState();
     const [pass,setPass] = useState();
     const navigate = useNavigate();
@@ -19,11 +31,15 @@ const Login = () => {
         if(!email || !pass) return toast.error('Vui lòng nhập đầy đủ dữ liệu 😔 !')
         if(!isValidEmail(email)) return toast.error('Email không hợp lệ 😔 !')
         const data = {
-            Email : email,
-            Pass : pass
+            email : email,
+            pass : pass
         }
         const result = await AuthAPI.login(data);
         if(result) {
+            // let accessTokenTemp = Cookies.get("accessToken");
+            // console.log(accessTokenTemp);
+            // await dispatch(fetchUserData());
+            if(redirectParam) return window.location.href = decodedRedirect;
             navigate('/')
             return toast.success('Đăng nhập thành công 😊 !')
         }

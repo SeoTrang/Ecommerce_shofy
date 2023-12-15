@@ -1,6 +1,7 @@
 const { DataTypes, QueryTypes } = require('sequelize');
 const sequelize = require('../../config/db');
-const Color = require('../color/color');
+const Variation = require('../Variation/Variation');
+// const Color = require('../color/color');
 
 const ListImg = sequelize.define('listImgs', {
     id:{
@@ -8,14 +9,14 @@ const ListImg = sequelize.define('listImgs', {
         primaryKey:true,
         autoIncrement: true
     },
-    Url:{
+    url:{
         type: DataTypes.STRING,
         allowNull: false
     }
 });
 
-Color.hasMany(ListImg, {
-    foreignKey: 'ColorId', // This specifies the foreign key column name
+Variation.hasMany(ListImg, {
+    foreignKey: 'variation_id', // This specifies the foreign key column name
     
 });
 

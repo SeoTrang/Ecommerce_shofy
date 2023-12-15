@@ -26,7 +26,7 @@ const CategoryAPI = {
     create: async (category)=>{
         try {
             const data = {
-                "Name": category
+                "name": category
             }
 
         

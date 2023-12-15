@@ -20,12 +20,12 @@ const listImgController = {
             return res.status(500).json({error: error});
         }
     },
-    getByColor:async (req,res)=>{
+    getByVariantion:async (req,res)=>{
 
         try {
-            const ColorId = req.params.ColorId;
-            console.log(ColorId);
-            const result = await ListimgService.getByColor(ColorId);
+            const variantion_id = req.params.variantion_id;
+            // console.log(ColorId);
+            const result = await ListimgService.getByVariantion(variantion_id);
             if(!result) return res.status(400).json('lỗi lấy dữ liệu databases');
           
             return res.status(200).json(result);

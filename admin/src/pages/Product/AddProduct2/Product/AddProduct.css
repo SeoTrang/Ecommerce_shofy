@@ -1,0 +1,16 @@
+.add-pd-component{
+
+}
+.add-pd-component .action-bottom button{
+    padding: 12px 0;
+
+}
+.add-pd-component .action-bottom .btn-cancel{
+    background-color: #e94560;
+    color: white;
+}
+
+.add-pd-component .action-bottom .btn-add{
+    background-color: #0989FF;
+    color: white;
+}

@@ -1,4 +1,4 @@
-const { DataTypes, QueryTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const sequelize = require('../../config/db');
 
 const Category = sequelize.define('categories',{
@@ -7,7 +7,7 @@ const Category = sequelize.define('categories',{
         autoIncrement:true,
         primaryKey:true
     },
-    Name:{
+    name:{
         type:DataTypes.STRING,
         allowNull:false
     }
@@ -15,9 +15,7 @@ const Category = sequelize.define('categories',{
 
 // sequelize.sync().then(() => {
 //     console.log('categories table created successfully!');
-  
-    
-  
+
 //   }).catch((error) => {
 //     console.error('Unable to create table categories : ', error);
 //   });

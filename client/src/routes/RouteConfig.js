@@ -4,6 +4,7 @@ import Detail from "../pages/Detail/Detail";
 import Home from "../pages/Home/Home";
 import Product from "../pages/Product/Product";
 import HomeProfile from "../pages/Profile/HomeProfile/HomeProfile";
+import OrderDetail from "../pages/Profile/OrderDetail/OrderDetail";
 import ProfileAddress from "../pages/Profile/ProfileAddress/ProfileAddress";
 import ProfileChangePass from "../pages/Profile/ProfileChangePass/ProfileChangePass";
 import ProfileInfo from "../pages/Profile/ProfileInfo/ProfileInfo";
@@ -86,6 +87,11 @@ const RouteConfig =  [
           component: Register,
           layout:false
         },
+        {
+          path: "/order-detail",
+          component: OrderDetail,
+          layout:true
+        }
 
 
     ]

@@ -1,21 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './Checkout.css';
 import { TextField } from '@mui/material';
 import toast from 'react-hot-toast';
+import { useDispatch, useSelector } from 'react-redux';
+import formatCurrencyVND from '../../../util/formatCurrencyVND';
+import OrderAPI from '../../service/NodejsServerAPI/OrderAPI';
+import { fetchCartData } from '../../redux/actions/cartAction';
+import { useNavigate } from 'react-router-dom';
 
 const Checkout = () => {
     const notifySuccess = () => toast.success('Order successfully!');
     const notifyWarning = () => toast.success('Successfully reduced 1 product!');
     const notifyError = () => toast.error('product cannot be less than 1!');
-
+    const cart = useSelector((state) => state.cart.carts);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         firstName: '',
         phoneNumber: '',
         detailAddress: '',
-        note: '',
-        // Thêm nhiều trường dữ liệu khác ở đây
+        note: ''
       });
     
       const handleInputChange = (e) => {
@@ -46,8 +52,89 @@ const Checkout = () => {
         }
       };
 
-    const handleCheckout = () => {
+    
+    //   handle box right
+    const [totalPrice,setTotalPrice] = useState();
+    // handle total price
+    const calculateTotalPrice = () => {
+        let sum = 0;
+        for (let index = 0; index < cart.length; index++) {
+            if(cart[index].active){
+                sum += (cart[index].variation.sale_price*cart[index].quantity);
+            }
+        }
+        return sum;
+    }
+    useEffect(()=>{
+        const tempTotalPrice = calculateTotalPrice();
+        setTotalPrice(tempTotalPrice);
+    },[cart]);
+
+
+    const validateForm = () => {
+        if(formData.firstName.trim() === '') {
+            setFormData({
+                ...formData,
+                [`firstNameError`]: true,
+            });
+            return false;
+        }
+
+        if(formData.phoneNumber.trim() === '') {
+            setFormData({
+                ...formData,
+                [`phoneNumberError`]: true,
+            });
+            return false;
+        }
+        if(formData.detailAddress.trim() === '') {
+            setFormData({
+                ...formData,
+                [`detailAddressError`]: true,
+            });
+            return false;
+        }
+
+        return true;
+    }
+
+    const handleCheckout = async() => {
+        let validate = validateForm();
+        if(!validate) return toast.error('Vui lòng nhập đầy đủ thông tin !');
+        // lấy ra các sản phẩm trong giỏ hàng được tích
+        const cartActive = cart.filter((value) => value.active)
+        // console.log(cartActive);
+        let orderDetail = [];
+        let cartDelete = []; // chứa danh sách id các item trong giỏ hàng sẽ bị xóa khi đặt hàng thành công
+        for (let index = 0; index < cartActive.length; index++) {
+            let orderDetailItem = {
+                avatar: cartActive[index].variation.product.img_preview,
+                name: cartActive[index].variation.name,
+                quantity: cartActive[index].quantity,
+                price: cartActive[index].variation.sale_price
+            }
+            orderDetail.push(orderDetailItem);
+            cartDelete.push(cartActive[index].id);
+        }
+        let data = {
+            order:{
+                customer_name: formData.firstName,
+                phone_number: formData.phoneNumber,
+                address: formData.detailAddress,
+                subtotal_price: totalPrice,
+                discount: 0,
+                shiping: 34000,
+                total_price: totalPrice
+            },
+            orderDetail:orderDetail,
+            cartDelete: cartDelete
+        }
+
+        let result = await OrderAPI.create(data);
+        if(!result) return notifyError(); 
+        dispatch(fetchCartData());
         notifySuccess();
+        return navigate('/');
     }
     return (
         <div className="checkout-bg">
@@ -55,12 +142,12 @@ const Checkout = () => {
             <div id='checkout' className="mt-3 pb-5">
                 <div className="container">
                     <div className="title">
-                        <h2>Checkout</h2>
+                        <h2>Đặt hàng</h2>
                         <section className="route">
                             <i class="fa-solid fa-house"></i>
-                            <span className='ms-1 me-1'>Home</span>
+                            <span className='ms-1 me-1'>Trang chủ</span>
                             /
-                            <span className='me-1 ms-1'>Checkout</span>
+                            <span className='me-1 ms-1'>Đặt hàng</span>
                         </section>
                     </div>
 
@@ -69,7 +156,8 @@ const Checkout = () => {
                             <div className="col-12 col-lg-6 col-xl-6 mb-3">
                                 <div className="billing-details">
                                     <div className="title">
-                                        <h3>Billing Details</h3>
+                                        {/* <h3>Billing Details</h3> */}
+                                        <h3>Thông tin nhận hàng</h3>
                                     </div>
                                     <div className="address mt-3">
                                         <div class="vtrWey"></div>
@@ -78,7 +166,7 @@ const Checkout = () => {
                                             <h5 className='ms-2'>Delivery address</h5>
                                         </div>
 
-                                        <div className="user-address row mt-2">
+                                        {/* <div className="user-address row mt-2">
                                             <div className="addr col-12 col-lg-10">
                                                 
                                                 <span>Xóm nước 2, Xã Quyết Thắng, Thành Phố Thái Nguyên, Thái Nguyên</span>
@@ -88,12 +176,12 @@ const Checkout = () => {
                                                     Thay Đổi
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> */}
 
                                         <div className="form-input mt-4">
                                             <div className="row">
                                                 <div className="user-name col-12 col-md-6 col-lg-6 mb-3">
-                                                    <label htmlFor="UserName">User Name <span className='require'> *</span></label>
+                                                    <label htmlFor="UserName">Tên người nhận <span className='require'> *</span></label>
                                                     <input 
                                                         type="text" 
                                                         className='form-control rounded-0 no-outline' 
@@ -105,11 +193,11 @@ const Checkout = () => {
                                                         onBlur={handleBlur}
                                                         />
                                                         {formData.firstNameError && (
-                                                            <div className="error">Phone Number is required</div>
+                                                            <div className="error">Trường bắt buộc</div>
                                                         )}
                                                 </div>
                                                 <div className="user-phone col-12 col-md-6 col-lg-6 mb-3">
-                                                    <label htmlFor="PhoneNumber">Phone Number <span className='require'> * </span></label>
+                                                    <label htmlFor="PhoneNumber">Số điện thoại người nhận <span className='require'> * </span></label>
                                                     <input 
                                                         type="text" 
                                                         className='form-control rounded-0 no-outline' 
@@ -121,7 +209,7 @@ const Checkout = () => {
                                                         onBlur={handleBlur}
                                                         />
                                                         {formData.phoneNumberError && (
-                                                            <div className="error">Phone Number is required</div>
+                                                            <div className="error">Trường bắt buộc</div>
                                                         )}
                                                 </div>
                                             </div>
@@ -129,7 +217,7 @@ const Checkout = () => {
                                             
 
                                             <div className="user-address-detail mb-3">
-                                                <label htmlFor="AddressDetail">Detail Address <span className='require'> *</span></label>
+                                                <label htmlFor="AddressDetail">Địa chỉ người nhận <span className='require'> *</span></label>
                                                 <input 
                                                     type="text" 
                                                     className='form-control rounded-0 no-outline' 
@@ -143,11 +231,11 @@ const Checkout = () => {
                                                     
                                                     />
                                                     {formData.detailAddressError && (
-                                                        <div className="error">Phone Number is required</div>
+                                                        <div className="error">Trường bắt buộc</div>
                                                     )}
                                             </div>
                                             <div className="note mb-3">
-                                                <label htmlFor="note">Note</label>
+                                                <label htmlFor="note">Ghi chú</label>
                                                 <textarea 
                                                     type="text" 
                                                     className='form-control rounded-0 no-outline' 
@@ -175,60 +263,53 @@ const Checkout = () => {
                                 <div className="your-order">
                                     
                                     <div className="title">
-                                        <h3>Your Order</h3>
+                                        <h3>Sản phẩm đặt</h3>
                                     </div>
 
                                     <div className="products">
                                         <div className="product-title row">
                                             <b className='col-9'>
-                                                Product
+                                                Sản phẩm
                                             </b>
                                             <b className='col-3'>
-                                                Total
+                                                Giá
                                             </b>
                                         </div>
                                         <hr />
-                                        <div className="product row">
-                                            <div className="product-name col-9">
-                                                <div className="row">
-                                                    <div className="name col-9">
-                                                        Apple iPad Air
+                                        {
+                                            cart &&
+                                            cart.filter(value => value.active)
+                                            .map((value,index)=>{
+                                                return (
+                                                    <>
+                                                    <div className="product row">
+                                                        <div className="product-name col-9">
+                                                            <div className="row">
+                                                                <div className="name col-9">
+                                                                    {value.variation.name}
+                                                                </div>
+                                                                <span className="quantity col-3">
+                                                                    x {value.quantity}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div className="price col-3">
+                                                            {formatCurrencyVND(value.variation.sale_price*value.quantity)+'₫'}
+                                                        </div>
                                                     </div>
-                                                    <span className="quantity col-3">
-                                                        x 2
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div className="price col-3">
-                                                $949.05
-                                            </div>
-                                        </div>
 
-                                        <hr />
-                                        <div className="product row">
-                                            <div className="product-name col-9">
-                                                <div className="row">
-                                                    <div className="name col-9">
-                                                        Headphones Wireless.
-                                                    </div>
-                                                    <span className="quantity col-3">
-                                                        x 3
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div className="price col-3">
-                                                $103.20
-                                            </div>
-                                        </div>
-
-                                        <hr />
+                                                    <hr />
+                                                    </>
+                                                )
+                                            })
+                                        }
 
                                         <div className="subtotal mt-5 row">
                                             {/* <hr /> */}
                                             <div className="product-name col-8">
                                                 <div className="row">
                                                     <div className="name col-9">
-                                                        Subtotal
+                                                        Tạm tính
                                                     </div>
                                                     {/* <b className="quantity col-3">
                                                         x 3
@@ -236,7 +317,7 @@ const Checkout = () => {
                                                 </div>
                                             </div>
                                             <div className="price col-4">
-                                                $1774.65
+                                                {formatCurrencyVND(totalPrice)+'₫'}
                                             </div>
                                         </div>
 
@@ -245,7 +326,7 @@ const Checkout = () => {
                                             <div className="product-name col-8">
                                                 <div className="row">
                                                     <div className="name col-9">
-                                                        Shipping
+                                                        Phí vận chuyển
                                                     </div>
                                                     {/* <b className="quantity col-3">
                                                         x 3
@@ -262,7 +343,7 @@ const Checkout = () => {
                                             <div className="product-name col-8">
                                                 <div className="row">
                                                     <div className="name col-9">
-                                                        Discout
+                                                        Giả giá
                                                     </div>
                                                     {/* <b className="quantity col-3">
                                                         x 3
@@ -279,7 +360,7 @@ const Checkout = () => {
                                             <div className="product-name col-8">
                                                 <div className="row">
                                                     <div className="name col-9">
-                                                        <h5>Total</h5>
+                                                        <h5>Tổng</h5>
                                                     </div>
                                                     {/* <b className="quantity col-3">
                                                         x 3
@@ -287,7 +368,9 @@ const Checkout = () => {
                                                 </div>
                                             </div>
                                             <div className="price col-4">
-                                                <h5>$1774.65</h5>
+                                                <h5>
+                                                    {formatCurrencyVND(totalPrice)+'₫'}
+                                                </h5>
                                             </div>
                                         </div>
 

@@ -228,6 +228,9 @@ content-type: application/json
 GET http://localhost:5000/admin/product
 
 ###
+GET http://localhost:5000/admin/all-orders
+
+###
 GET http://localhost:5000/admin/product/1
 
 ###

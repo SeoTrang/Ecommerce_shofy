@@ -70,6 +70,17 @@ const orderController = {
             console.log(error);
             return res.status(500).json({error: error});
         }
+    },
+
+    getAll: async(req,res) => {
+        try {
+            const result = await OrderService.getAll();
+            if(result) res.status(200).json(result);
+            
+        } catch (error) {
+            console.log(error);
+            return res.status(500).json({error: error});
+        }
     }
 }
 

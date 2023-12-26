@@ -34,7 +34,7 @@ const DetailBottom = ({product,variation_id}) => {
         <section className="detail-bottom mt-5">
                 <nav>
                     <div class="nav nav-tabs align-items-center justify-content-center" id="nav-tab" role="tablist">
-                        <button class="nav-link active ps-4 pe-4" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+                        <button class="nav-link  ps-4 pe-4" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
                             {/* Description */}
                             Mô tả
                         </button>
@@ -42,7 +42,7 @@ const DetailBottom = ({product,variation_id}) => {
                             {/* Additional information */}
                             Thông tin chi tiết
                         </button>
-                        <button class="nav-link ps-4 pe-4" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
+                        <button class="nav-link active ps-4 pe-4" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
                             {/* Reviews (3) */}
                             Đánh giá
                         </button>
@@ -50,7 +50,7 @@ const DetailBottom = ({product,variation_id}) => {
                     </div>
                 </nav>
                 <div class="tab-content mt-5 mb-5" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+                    <div class="tab-pane fade " id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
                         <div _ngcontent-ng-c4203954032="" class="row">
                             <div _ngcontent-ng-c4203954032="" class="col-lg-12 description">
                                 <div _ngcontent-ng-c4203954032="" class="tp-product-details-desc-content pt-25">
@@ -133,7 +133,7 @@ const DetailBottom = ({product,variation_id}) => {
                             </tbody>
                         </table>
                     </div>
-                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+                    <div class="tab-pane fade show active" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
                         
                         <div className="review">
                             <div className="title">

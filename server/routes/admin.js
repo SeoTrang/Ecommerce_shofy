@@ -12,6 +12,7 @@ const VariationController = require('../controllers/variationController');
 const OptionController = require('../controllers/optionController');
 const OptionValueController = require('../controllers/optionValueController');
 const CombinationController = require('../controllers/combinationController');
+const orderController = require('../controllers/orderController');
 
 // category
 router.get('/category',categoryController.getCategory);
@@ -82,5 +83,8 @@ router.get('/option-value/:option_id',OptionValueController.getByOption);
 
 // combination
 router.post('/combination',CombinationController.create);
+
+// order
+router.get('/all-orders',orderController.getAll);
 
 module.exports = router;

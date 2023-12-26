@@ -162,7 +162,7 @@
                                 </router-link>
                                 <router-link 
                                 @click="onClose"
-                                to="/add-product">
+                                to="/add-product-2">
                                     <v-expansion-panel-text>
                                         <div class="text-child">
                                             <span class="dot-text-child">
@@ -196,7 +196,7 @@
                                         </div>
                                     </div>
                                 </v-expansion-panel-title>
-                                <router-link to="">
+                                <router-link to="/order">
                                     <v-expansion-panel-text>
                                         <div class="text-child">
                                             <span class="dot-text-child">
@@ -445,7 +445,7 @@
                                         </div>
                                     </v-expansion-panel-text>
                                 </router-link>
-                                <router-link to="/add-product">
+                                <router-link to="/add-product-2">
                                     <v-expansion-panel-text>
                                         <div class="text-child">
                                             <span class="dot-text-child">
@@ -479,7 +479,7 @@
                                         </div>
                                     </div>
                                 </v-expansion-panel-title>
-                                <router-link to="">
+                                <router-link to="/order">
                                     <v-expansion-panel-text>
                                         <div class="text-child">
                                             <span class="dot-text-child">

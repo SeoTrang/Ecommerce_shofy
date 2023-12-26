@@ -1,4 +1,5 @@
 const OrderDetail = require("../orderDetail/OrderDetail");
+const User = require("../user/user");
 const Order = require("./Order");
 
 const OrderRepository = {
@@ -31,6 +32,18 @@ const OrderRepository = {
         try {
             const result = await Order.findByPk(id,{
                 include: OrderDetail
+            })
+            if(result) return result;
+            return null;
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
+    },
+    getAll: async () => {
+        try {
+            const result = await Order.findAll({
+                include: User
             })
             if(result) return result;
             return null;

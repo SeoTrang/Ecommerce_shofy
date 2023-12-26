@@ -9,6 +9,9 @@ const OrderService = {
     },
     getOneById: async( id ) => {
         return await OrderRepository.getOneById(id);
+    },
+    getAll: async() => {
+        return await OrderRepository.getAll();
     }
 }
 

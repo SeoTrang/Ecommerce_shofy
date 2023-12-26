@@ -134,68 +134,58 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col"></th>
-                                                    <th scope="col">Ảnh</th>
-                                                    <th scope="col">Tên </th>
-                                                    <th scope="col">Đã bán</th>
-                                                    <th scope="col">Tình trạng</th>
-                                                    <th scope="col">Giá</th>
+                                                    <th scope="col">Khách hàng</th>
+                                                    <th scope="col">Mã</th>
+                                                    <th scope="col">Giá </th>
+                                                    <th scope="col">Thời gian đặt</th>
                                                     <th scope="col">Trạng thái</th>
+                                                    <th scope="col">Địa chỉ</th>
                                                     <th scope="col"></th>
                                                 </tr>
                                             </thead>
                                             <tbody  class="table-group-divider">
-                                                <tr>
-                                                    <td><input type="checkbox"></td>
+                                                <tr v-for="(item, index) in Orders" :key="index">
                                                     <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_17.jpg" alt="">
-                                                        </div>
+                                                        <input type="checkbox">
                                                     </td>
                                                     <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
+                                                        <div class="customer">
+                                                            <div class="img d-flex align-items-center ">
+                                                                <img :src="VITE_API_URL+item.user.avatar" alt="">
                                                             </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
+                                                            <div class="customer-name mt-1">
+                                                                {{item.customer_name}}
                                                             </div>
                                                         </div>
                                                     </td>
-
+                                                    <td>
+                                                        <div class="code">
+                                                            {{item.code}}
+                                                        </div>
+                                                    </td>
                                                     
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-success">
-                                                                    <div class="progress-status progress-success" style="width:80%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                80 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
                                                     <td>
                                                         <div class="price">
-                                                            $93.68
+                                                            {{formatCurrencyVND(item.total_price)}}₫
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="createAt">
+                                                           21:27 11/12/2023
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="state">
+                                                            <div class="pedding">
+                                                                Chờ
+                                                            </div>
                                                         </div>
                                                     </td>
 
                                                     <td>
-                                                        <div class="status">
-                                                            <div class="publiced">
-                                                                Hiện
-                                                            </div>
+                                                        <div class="address">
+                                                            Thái nguyên
+                                                            
                                                         </div>
                                                     </td>
                                                     <td>
@@ -246,516 +236,8 @@
                                                     </td>
 
                                                 </tr>
-                                                <tr>
-                                                    <td><input type="checkbox"></td>
-                                                    <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_8.jpg" alt="">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
-                                                            </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
-                                                            </div>
-                                                        </div>
-                                                    </td>
-
-                                                    
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-warning">
-                                                                    <div class="progress-status progress-warning" style="width:50%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                50 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="price">
-                                                            $93.68
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="status">
-                                                            <div class="hidden">
-                                                                Ẩn
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action">
-                                                            <v-menu>
-                                                                <template v-slot:activator="{ props }">
-                                                                    
-                                                                    <button
-                                                                    v-bind="props">
-                                                                        <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
-                                                                    </button>
-                                                                </template>
-                                                                <v-list class="list-action-category">
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <router-link to="/brand">
-                                                                                <div class="view action">
-                                                                                    <i class="fa-solid fa-eye"></i>
-                                                                                    <span class="ms-3">Xem</span>
-                                                                                </div>
-                                                                            </router-link>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="edit action">
-                                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                                                <span class="ms-3">Sửa</span>
-                                                                            </div>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="delete action" @click="showModalDelete">
-                                                                                <i class="fa-solid fa-trash"></i>
-                                                                                <span class="ms-3">Xóa</span>
-                                                                            </div>
-                                                                            
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                </v-list>
-                                                                </v-menu>
-                                                        </div>
-                                                    
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td><input type="checkbox"></td>
-                                                    <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_20.jpg" alt="">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
-                                                            </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
-                                                            </div>
-                                                        </div>
-                                                    </td>
-
-                                                    
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-error">
-                                                                    <div class="progress-status progress-error" style="width:10%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                10 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="price">
-                                                            $93.68
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="status">
-                                                            <div class="publiced">
-                                                                Hiện
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action">
-                                                            <v-menu>
-                                                                <template v-slot:activator="{ props }">
-                                                                    
-                                                                    <button
-                                                                    v-bind="props">
-                                                                        <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
-                                                                    </button>
-                                                                </template>
-                                                                <v-list class="list-action-category">
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <router-link to="/brand">
-                                                                                <div class="view action">
-                                                                                    <i class="fa-solid fa-eye"></i>
-                                                                                    <span class="ms-3">Xem</span>
-                                                                                </div>
-                                                                            </router-link>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="edit action">
-                                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                                                <span class="ms-3">Sửa</span>
-                                                                            </div>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="delete action" @click="showModalDelete">
-                                                                                <i class="fa-solid fa-trash"></i>
-                                                                                <span class="ms-3">Xóa</span>
-                                                                            </div>
-                                                                            
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                </v-list>
-                                                                </v-menu>
-                                                        </div>
-                                                    
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td><input type="checkbox"></td>
-                                                    <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_20.jpg" alt="">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
-                                                            </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
-                                                            </div>
-                                                        </div>
-                                                    </td>
-
-                                                    
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-error">
-                                                                    <div class="progress-status progress-error" style="width:10%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                10 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="price">
-                                                            $93.68
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="status">
-                                                            <div class="publiced">
-                                                                Hiện
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action">
-                                                            <v-menu>
-                                                                <template v-slot:activator="{ props }">
-                                                                    
-                                                                    <button
-                                                                    v-bind="props">
-                                                                        <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
-                                                                    </button>
-                                                                </template>
-                                                                <v-list class="list-action-category">
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <router-link to="/brand">
-                                                                                <div class="view action">
-                                                                                    <i class="fa-solid fa-eye"></i>
-                                                                                    <span class="ms-3">Xem</span>
-                                                                                </div>
-                                                                            </router-link>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="edit action">
-                                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                                                <span class="ms-3">Sửa</span>
-                                                                            </div>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="delete action" @click="showModalDelete">
-                                                                                <i class="fa-solid fa-trash"></i>
-                                                                                <span class="ms-3">Xóa</span>
-                                                                            </div>
-                                                                            
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                </v-list>
-                                                                </v-menu>
-                                                        </div>
-                                                    
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td><input type="checkbox"></td>
-                                                    <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_20.jpg" alt="">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
-                                                            </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
-                                                            </div>
-                                                        </div>
-                                                    </td>
-
-                                                    
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-error">
-                                                                    <div class="progress-status progress-error" style="width:10%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                10 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="price">
-                                                            $93.68
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="status">
-                                                            <div class="publiced">
-                                                                Hiện
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action">
-                                                            <v-menu>
-                                                                <template v-slot:activator="{ props }">
-                                                                    
-                                                                    <button
-                                                                    v-bind="props">
-                                                                        <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
-                                                                    </button>
-                                                                </template>
-                                                                <v-list class="list-action-category">
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <router-link to="/brand">
-                                                                                <div class="view action">
-                                                                                    <i class="fa-solid fa-eye"></i>
-                                                                                    <span class="ms-3">Xem</span>
-                                                                                </div>
-                                                                            </router-link>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="edit action">
-                                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                                                <span class="ms-3">Sửa</span>
-                                                                            </div>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="delete action" @click="showModalDelete">
-                                                                                <i class="fa-solid fa-trash"></i>
-                                                                                <span class="ms-3">Xóa</span>
-                                                                            </div>
-                                                                            
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                </v-list>
-                                                                </v-menu>
-                                                        </div>
-                                                    
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td><input type="checkbox"></td>
-                                                    <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_20.jpg" alt="">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
-                                                            </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
-                                                            </div>
-                                                        </div>
-                                                    </td>
-
-                                                    
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-error">
-                                                                    <div class="progress-status progress-error" style="width:10%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                10 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="price">
-                                                            $93.68
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="status">
-                                                            <div class="publiced">
-                                                                Hiện
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action">
-                                                            <v-menu>
-                                                                <template v-slot:activator="{ props }">
-                                                                    
-                                                                    <button
-                                                                    v-bind="props">
-                                                                        <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
-                                                                    </button>
-                                                                </template>
-                                                                <v-list class="list-action-category">
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <router-link to="/brand">
-                                                                                <div class="view action">
-                                                                                    <i class="fa-solid fa-eye"></i>
-                                                                                    <span class="ms-3">Xem</span>
-                                                                                </div>
-                                                                            </router-link>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="edit action">
-                                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                                                <span class="ms-3">Sửa</span>
-                                                                            </div>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="delete action" @click="showModalDelete">
-                                                                                <i class="fa-solid fa-trash"></i>
-                                                                                <span class="ms-3">Xóa</span>
-                                                                            </div>
-                                                                            
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                </v-list>
-                                                                </v-menu>
-                                                        </div>
-                                                    
-                                                    </td>
-
-                                                </tr>
+                                                
+                                                
 
 
 
@@ -763,7 +245,7 @@
                                                 
                                             
                                             </tbody>
-                                            </table>
+                                        </table>
                                 </div>
                                 </div>
 
@@ -796,68 +278,58 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col"></th>
-                                                    <th scope="col">Ảnh</th>
-                                                    <th scope="col">Tên </th>
-                                                    <th scope="col">Đã bán</th>
-                                                    <th scope="col">Tình trạng</th>
-                                                    <th scope="col">Giá</th>
+                                                    <th scope="col">Khách hàng</th>
+                                                    <th scope="col">Mã</th>
+                                                    <th scope="col">Giá </th>
+                                                    <th scope="col">Thời gian đặt</th>
                                                     <th scope="col">Trạng thái</th>
+                                                    <th scope="col">Địa chỉ</th>
                                                     <th scope="col"></th>
                                                 </tr>
                                             </thead>
                                             <tbody  class="table-group-divider">
                                                 <tr>
-                                                    <td><input type="checkbox"></td>
                                                     <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_17.jpg" alt="">
-                                                        </div>
+                                                        <input type="checkbox">
                                                     </td>
                                                     <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
+                                                        <div class="customer">
+                                                            <div class="img d-flex align-items-center ">
+                                                                <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_17.jpg" alt="">
                                                             </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
+                                                            <div class="customer-name mt-1">
+                                                                Ma Seo Tráng
                                                             </div>
                                                         </div>
                                                     </td>
-
+                                                    <td>
+                                                        <div class="code">
+                                                            G1OILZQN2429
+                                                        </div>
+                                                    </td>
                                                     
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-success">
-                                                                    <div class="progress-status progress-success" style="width:80%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                80 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
                                                     <td>
                                                         <div class="price">
                                                             $93.68
                                                         </div>
                                                     </td>
+                                                    <td>
+                                                        <div class="createAt">
+                                                           21:27 11/12/2023
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="state">
+                                                            <div class="pedding">
+                                                                Chờ
+                                                            </div>
+                                                        </div>
+                                                    </td>
 
                                                     <td>
-                                                        <div class="status">
-                                                            <div class="publiced">
-                                                                Hiện
-                                                            </div>
+                                                        <div class="address">
+                                                            Thái nguyên
+                                                            
                                                         </div>
                                                     </td>
                                                     <td>
@@ -908,211 +380,8 @@
                                                     </td>
 
                                                 </tr>
-                                                <tr>
-                                                    <td><input type="checkbox"></td>
-                                                    <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_8.jpg" alt="">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
-                                                            </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
-                                                            </div>
-                                                        </div>
-                                                    </td>
-
-                                                    
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-warning">
-                                                                    <div class="progress-status progress-warning" style="width:50%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                50 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="price">
-                                                            $93.68
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="status">
-                                                            <div class="hidden">
-                                                                Ẩn
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action">
-                                                            <v-menu>
-                                                                <template v-slot:activator="{ props }">
-                                                                    
-                                                                    <button
-                                                                    v-bind="props">
-                                                                        <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
-                                                                    </button>
-                                                                </template>
-                                                                <v-list class="list-action-category">
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <router-link to="/brand">
-                                                                                <div class="view action">
-                                                                                    <i class="fa-solid fa-eye"></i>
-                                                                                    <span class="ms-3">Xem</span>
-                                                                                </div>
-                                                                            </router-link>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="edit action">
-                                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                                                <span class="ms-3">Sửa</span>
-                                                                            </div>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="delete action" @click="showModalDelete">
-                                                                                <i class="fa-solid fa-trash"></i>
-                                                                                <span class="ms-3">Xóa</span>
-                                                                            </div>
-                                                                            
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                </v-list>
-                                                                </v-menu>
-                                                        </div>
-                                                    
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td><input type="checkbox"></td>
-                                                    <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_20.jpg" alt="">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
-                                                            </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
-                                                            </div>
-                                                        </div>
-                                                    </td>
-
-                                                    
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-error">
-                                                                    <div class="progress-status progress-error" style="width:10%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                10 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="price">
-                                                            $93.68
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="status">
-                                                            <div class="publiced">
-                                                                Hiện
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action">
-                                                            <v-menu>
-                                                                <template v-slot:activator="{ props }">
-                                                                    
-                                                                    <button
-                                                                    v-bind="props">
-                                                                        <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
-                                                                    </button>
-                                                                </template>
-                                                                <v-list class="list-action-category">
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <router-link to="/brand">
-                                                                                <div class="view action">
-                                                                                    <i class="fa-solid fa-eye"></i>
-                                                                                    <span class="ms-3">Xem</span>
-                                                                                </div>
-                                                                            </router-link>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="edit action">
-                                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                                                <span class="ms-3">Sửa</span>
-                                                                            </div>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="delete action" @click="showModalDelete">
-                                                                                <i class="fa-solid fa-trash"></i>
-                                                                                <span class="ms-3">Xóa</span>
-                                                                            </div>
-                                                                            
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                </v-list>
-                                                                </v-menu>
-                                                        </div>
-                                                    
-                                                    </td>
-
-                                                </tr>
-                                               
+                                                
+                                                
 
 
 
@@ -1120,7 +389,7 @@
                                                 
                                             
                                             </tbody>
-                                            </table>
+                                        </table>
                                 </div>
                                 </div>
 
@@ -1152,68 +421,58 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col"></th>
-                                                    <th scope="col">Ảnh</th>
-                                                    <th scope="col">Tên </th>
-                                                    <th scope="col">Đã bán</th>
-                                                    <th scope="col">Tình trạng</th>
-                                                    <th scope="col">Giá</th>
+                                                    <th scope="col">Khách hàng</th>
+                                                    <th scope="col">Mã</th>
+                                                    <th scope="col">Giá </th>
+                                                    <th scope="col">Thời gian đặt</th>
                                                     <th scope="col">Trạng thái</th>
+                                                    <th scope="col">Địa chỉ</th>
                                                     <th scope="col"></th>
                                                 </tr>
                                             </thead>
                                             <tbody  class="table-group-divider">
                                                 <tr>
-                                                    <td><input type="checkbox"></td>
                                                     <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_17.jpg" alt="">
-                                                        </div>
+                                                        <input type="checkbox">
                                                     </td>
                                                     <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
+                                                        <div class="customer">
+                                                            <div class="img d-flex align-items-center ">
+                                                                <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_17.jpg" alt="">
                                                             </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
+                                                            <div class="customer-name mt-1">
+                                                                Ma Seo Tráng
                                                             </div>
                                                         </div>
                                                     </td>
-
+                                                    <td>
+                                                        <div class="code">
+                                                            G1OILZQN2429
+                                                        </div>
+                                                    </td>
                                                     
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-success">
-                                                                    <div class="progress-status progress-success" style="width:80%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                80 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
                                                     <td>
                                                         <div class="price">
                                                             $93.68
                                                         </div>
                                                     </td>
+                                                    <td>
+                                                        <div class="createAt">
+                                                           21:27 11/12/2023
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="state">
+                                                            <div class="pedding">
+                                                                Chờ
+                                                            </div>
+                                                        </div>
+                                                    </td>
 
                                                     <td>
-                                                        <div class="status">
-                                                            <div class="publiced">
-                                                                Hiện
-                                                            </div>
+                                                        <div class="address">
+                                                            Thái nguyên
+                                                            
                                                         </div>
                                                     </td>
                                                     <td>
@@ -1264,516 +523,8 @@
                                                     </td>
 
                                                 </tr>
-                                                <tr>
-                                                    <td><input type="checkbox"></td>
-                                                    <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_8.jpg" alt="">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
-                                                            </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
-                                                            </div>
-                                                        </div>
-                                                    </td>
-
-                                                    
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-warning">
-                                                                    <div class="progress-status progress-warning" style="width:50%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                50 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="price">
-                                                            $93.68
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="status">
-                                                            <div class="hidden">
-                                                                Ẩn
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action">
-                                                            <v-menu>
-                                                                <template v-slot:activator="{ props }">
-                                                                    
-                                                                    <button
-                                                                    v-bind="props">
-                                                                        <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
-                                                                    </button>
-                                                                </template>
-                                                                <v-list class="list-action-category">
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <router-link to="/brand">
-                                                                                <div class="view action">
-                                                                                    <i class="fa-solid fa-eye"></i>
-                                                                                    <span class="ms-3">Xem</span>
-                                                                                </div>
-                                                                            </router-link>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="edit action">
-                                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                                                <span class="ms-3">Sửa</span>
-                                                                            </div>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="delete action" @click="showModalDelete">
-                                                                                <i class="fa-solid fa-trash"></i>
-                                                                                <span class="ms-3">Xóa</span>
-                                                                            </div>
-                                                                            
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                </v-list>
-                                                                </v-menu>
-                                                        </div>
-                                                    
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td><input type="checkbox"></td>
-                                                    <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_20.jpg" alt="">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
-                                                            </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
-                                                            </div>
-                                                        </div>
-                                                    </td>
-
-                                                    
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-error">
-                                                                    <div class="progress-status progress-error" style="width:10%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                10 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="price">
-                                                            $93.68
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="status">
-                                                            <div class="publiced">
-                                                                Hiện
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action">
-                                                            <v-menu>
-                                                                <template v-slot:activator="{ props }">
-                                                                    
-                                                                    <button
-                                                                    v-bind="props">
-                                                                        <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
-                                                                    </button>
-                                                                </template>
-                                                                <v-list class="list-action-category">
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <router-link to="/brand">
-                                                                                <div class="view action">
-                                                                                    <i class="fa-solid fa-eye"></i>
-                                                                                    <span class="ms-3">Xem</span>
-                                                                                </div>
-                                                                            </router-link>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="edit action">
-                                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                                                <span class="ms-3">Sửa</span>
-                                                                            </div>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="delete action" @click="showModalDelete">
-                                                                                <i class="fa-solid fa-trash"></i>
-                                                                                <span class="ms-3">Xóa</span>
-                                                                            </div>
-                                                                            
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                </v-list>
-                                                                </v-menu>
-                                                        </div>
-                                                    
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td><input type="checkbox"></td>
-                                                    <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_20.jpg" alt="">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
-                                                            </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
-                                                            </div>
-                                                        </div>
-                                                    </td>
-
-                                                    
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-error">
-                                                                    <div class="progress-status progress-error" style="width:10%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                10 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="price">
-                                                            $93.68
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="status">
-                                                            <div class="publiced">
-                                                                Hiện
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action">
-                                                            <v-menu>
-                                                                <template v-slot:activator="{ props }">
-                                                                    
-                                                                    <button
-                                                                    v-bind="props">
-                                                                        <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
-                                                                    </button>
-                                                                </template>
-                                                                <v-list class="list-action-category">
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <router-link to="/brand">
-                                                                                <div class="view action">
-                                                                                    <i class="fa-solid fa-eye"></i>
-                                                                                    <span class="ms-3">Xem</span>
-                                                                                </div>
-                                                                            </router-link>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="edit action">
-                                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                                                <span class="ms-3">Sửa</span>
-                                                                            </div>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="delete action" @click="showModalDelete">
-                                                                                <i class="fa-solid fa-trash"></i>
-                                                                                <span class="ms-3">Xóa</span>
-                                                                            </div>
-                                                                            
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                </v-list>
-                                                                </v-menu>
-                                                        </div>
-                                                    
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td><input type="checkbox"></td>
-                                                    <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_20.jpg" alt="">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
-                                                            </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
-                                                            </div>
-                                                        </div>
-                                                    </td>
-
-                                                    
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-error">
-                                                                    <div class="progress-status progress-error" style="width:10%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                10 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="price">
-                                                            $93.68
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="status">
-                                                            <div class="publiced">
-                                                                Hiện
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action">
-                                                            <v-menu>
-                                                                <template v-slot:activator="{ props }">
-                                                                    
-                                                                    <button
-                                                                    v-bind="props">
-                                                                        <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
-                                                                    </button>
-                                                                </template>
-                                                                <v-list class="list-action-category">
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <router-link to="/brand">
-                                                                                <div class="view action">
-                                                                                    <i class="fa-solid fa-eye"></i>
-                                                                                    <span class="ms-3">Xem</span>
-                                                                                </div>
-                                                                            </router-link>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="edit action">
-                                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                                                <span class="ms-3">Sửa</span>
-                                                                            </div>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="delete action" @click="showModalDelete">
-                                                                                <i class="fa-solid fa-trash"></i>
-                                                                                <span class="ms-3">Xóa</span>
-                                                                            </div>
-                                                                            
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                </v-list>
-                                                                </v-menu>
-                                                        </div>
-                                                    
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td><input type="checkbox"></td>
-                                                    <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_20.jpg" alt="">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
-                                                            </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
-                                                            </div>
-                                                        </div>
-                                                    </td>
-
-                                                    
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-error">
-                                                                    <div class="progress-status progress-error" style="width:10%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                10 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="price">
-                                                            $93.68
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="status">
-                                                            <div class="publiced">
-                                                                Hiện
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action">
-                                                            <v-menu>
-                                                                <template v-slot:activator="{ props }">
-                                                                    
-                                                                    <button
-                                                                    v-bind="props">
-                                                                        <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
-                                                                    </button>
-                                                                </template>
-                                                                <v-list class="list-action-category">
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <router-link to="/brand">
-                                                                                <div class="view action">
-                                                                                    <i class="fa-solid fa-eye"></i>
-                                                                                    <span class="ms-3">Xem</span>
-                                                                                </div>
-                                                                            </router-link>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="edit action">
-                                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                                                <span class="ms-3">Sửa</span>
-                                                                            </div>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="delete action" @click="showModalDelete">
-                                                                                <i class="fa-solid fa-trash"></i>
-                                                                                <span class="ms-3">Xóa</span>
-                                                                            </div>
-                                                                            
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                </v-list>
-                                                                </v-menu>
-                                                        </div>
-                                                    
-                                                    </td>
-
-                                                </tr>
+                                                
+                                                
 
 
 
@@ -1781,7 +532,7 @@
                                                 
                                             
                                             </tbody>
-                                            </table>
+                                        </table>
                                 </div>
                                 </div>
 
@@ -1813,68 +564,58 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col"></th>
-                                                    <th scope="col">Ảnh</th>
-                                                    <th scope="col">Tên </th>
-                                                    <th scope="col">Đã bán</th>
-                                                    <th scope="col">Tình trạng</th>
-                                                    <th scope="col">Giá</th>
+                                                    <th scope="col">Khách hàng</th>
+                                                    <th scope="col">Mã</th>
+                                                    <th scope="col">Giá </th>
+                                                    <th scope="col">Thời gian đặt</th>
                                                     <th scope="col">Trạng thái</th>
+                                                    <th scope="col">Địa chỉ</th>
                                                     <th scope="col"></th>
                                                 </tr>
                                             </thead>
                                             <tbody  class="table-group-divider">
                                                 <tr>
-                                                    <td><input type="checkbox"></td>
                                                     <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_17.jpg" alt="">
-                                                        </div>
+                                                        <input type="checkbox">
                                                     </td>
                                                     <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
+                                                        <div class="customer">
+                                                            <div class="img d-flex align-items-center ">
+                                                                <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_17.jpg" alt="">
                                                             </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
+                                                            <div class="customer-name mt-1">
+                                                                Ma Seo Tráng
                                                             </div>
                                                         </div>
                                                     </td>
-
+                                                    <td>
+                                                        <div class="code">
+                                                            G1OILZQN2429
+                                                        </div>
+                                                    </td>
                                                     
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-success">
-                                                                    <div class="progress-status progress-success" style="width:80%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                80 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
                                                     <td>
                                                         <div class="price">
                                                             $93.68
                                                         </div>
                                                     </td>
+                                                    <td>
+                                                        <div class="createAt">
+                                                           21:27 11/12/2023
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="state">
+                                                            <div class="pedding">
+                                                                Chờ
+                                                            </div>
+                                                        </div>
+                                                    </td>
 
                                                     <td>
-                                                        <div class="status">
-                                                            <div class="publiced">
-                                                                Hiện
-                                                            </div>
+                                                        <div class="address">
+                                                            Thái nguyên
+                                                            
                                                         </div>
                                                     </td>
                                                     <td>
@@ -1925,516 +666,8 @@
                                                     </td>
 
                                                 </tr>
-                                                <tr>
-                                                    <td><input type="checkbox"></td>
-                                                    <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_8.jpg" alt="">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
-                                                            </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
-                                                            </div>
-                                                        </div>
-                                                    </td>
-
-                                                    
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-warning">
-                                                                    <div class="progress-status progress-warning" style="width:50%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                50 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="price">
-                                                            $93.68
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="status">
-                                                            <div class="hidden">
-                                                                Ẩn
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action">
-                                                            <v-menu>
-                                                                <template v-slot:activator="{ props }">
-                                                                    
-                                                                    <button
-                                                                    v-bind="props">
-                                                                        <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
-                                                                    </button>
-                                                                </template>
-                                                                <v-list class="list-action-category">
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <router-link to="/brand">
-                                                                                <div class="view action">
-                                                                                    <i class="fa-solid fa-eye"></i>
-                                                                                    <span class="ms-3">Xem</span>
-                                                                                </div>
-                                                                            </router-link>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="edit action">
-                                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                                                <span class="ms-3">Sửa</span>
-                                                                            </div>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="delete action" @click="showModalDelete">
-                                                                                <i class="fa-solid fa-trash"></i>
-                                                                                <span class="ms-3">Xóa</span>
-                                                                            </div>
-                                                                            
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                </v-list>
-                                                                </v-menu>
-                                                        </div>
-                                                    
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td><input type="checkbox"></td>
-                                                    <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_20.jpg" alt="">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
-                                                            </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
-                                                            </div>
-                                                        </div>
-                                                    </td>
-
-                                                    
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-error">
-                                                                    <div class="progress-status progress-error" style="width:10%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                10 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="price">
-                                                            $93.68
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="status">
-                                                            <div class="publiced">
-                                                                Hiện
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action">
-                                                            <v-menu>
-                                                                <template v-slot:activator="{ props }">
-                                                                    
-                                                                    <button
-                                                                    v-bind="props">
-                                                                        <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
-                                                                    </button>
-                                                                </template>
-                                                                <v-list class="list-action-category">
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <router-link to="/brand">
-                                                                                <div class="view action">
-                                                                                    <i class="fa-solid fa-eye"></i>
-                                                                                    <span class="ms-3">Xem</span>
-                                                                                </div>
-                                                                            </router-link>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="edit action">
-                                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                                                <span class="ms-3">Sửa</span>
-                                                                            </div>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="delete action" @click="showModalDelete">
-                                                                                <i class="fa-solid fa-trash"></i>
-                                                                                <span class="ms-3">Xóa</span>
-                                                                            </div>
-                                                                            
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                </v-list>
-                                                                </v-menu>
-                                                        </div>
-                                                    
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td><input type="checkbox"></td>
-                                                    <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_20.jpg" alt="">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
-                                                            </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
-                                                            </div>
-                                                        </div>
-                                                    </td>
-
-                                                    
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-error">
-                                                                    <div class="progress-status progress-error" style="width:10%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                10 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="price">
-                                                            $93.68
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="status">
-                                                            <div class="publiced">
-                                                                Hiện
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action">
-                                                            <v-menu>
-                                                                <template v-slot:activator="{ props }">
-                                                                    
-                                                                    <button
-                                                                    v-bind="props">
-                                                                        <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
-                                                                    </button>
-                                                                </template>
-                                                                <v-list class="list-action-category">
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <router-link to="/brand">
-                                                                                <div class="view action">
-                                                                                    <i class="fa-solid fa-eye"></i>
-                                                                                    <span class="ms-3">Xem</span>
-                                                                                </div>
-                                                                            </router-link>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="edit action">
-                                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                                                <span class="ms-3">Sửa</span>
-                                                                            </div>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="delete action" @click="showModalDelete">
-                                                                                <i class="fa-solid fa-trash"></i>
-                                                                                <span class="ms-3">Xóa</span>
-                                                                            </div>
-                                                                            
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                </v-list>
-                                                                </v-menu>
-                                                        </div>
-                                                    
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td><input type="checkbox"></td>
-                                                    <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_20.jpg" alt="">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
-                                                            </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
-                                                            </div>
-                                                        </div>
-                                                    </td>
-
-                                                    
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-error">
-                                                                    <div class="progress-status progress-error" style="width:10%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                10 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="price">
-                                                            $93.68
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="status">
-                                                            <div class="publiced">
-                                                                Hiện
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action">
-                                                            <v-menu>
-                                                                <template v-slot:activator="{ props }">
-                                                                    
-                                                                    <button
-                                                                    v-bind="props">
-                                                                        <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
-                                                                    </button>
-                                                                </template>
-                                                                <v-list class="list-action-category">
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <router-link to="/brand">
-                                                                                <div class="view action">
-                                                                                    <i class="fa-solid fa-eye"></i>
-                                                                                    <span class="ms-3">Xem</span>
-                                                                                </div>
-                                                                            </router-link>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="edit action">
-                                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                                                <span class="ms-3">Sửa</span>
-                                                                            </div>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="delete action" @click="showModalDelete">
-                                                                                <i class="fa-solid fa-trash"></i>
-                                                                                <span class="ms-3">Xóa</span>
-                                                                            </div>
-                                                                            
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                </v-list>
-                                                                </v-menu>
-                                                        </div>
-                                                    
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td><input type="checkbox"></td>
-                                                    <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_20.jpg" alt="">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
-                                                            </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
-                                                            </div>
-                                                        </div>
-                                                    </td>
-
-                                                    
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-error">
-                                                                    <div class="progress-status progress-error" style="width:10%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                10 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="price">
-                                                            $93.68
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="status">
-                                                            <div class="publiced">
-                                                                Hiện
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action">
-                                                            <v-menu>
-                                                                <template v-slot:activator="{ props }">
-                                                                    
-                                                                    <button
-                                                                    v-bind="props">
-                                                                        <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
-                                                                    </button>
-                                                                </template>
-                                                                <v-list class="list-action-category">
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <router-link to="/brand">
-                                                                                <div class="view action">
-                                                                                    <i class="fa-solid fa-eye"></i>
-                                                                                    <span class="ms-3">Xem</span>
-                                                                                </div>
-                                                                            </router-link>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="edit action">
-                                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                                                <span class="ms-3">Sửa</span>
-                                                                            </div>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="delete action" @click="showModalDelete">
-                                                                                <i class="fa-solid fa-trash"></i>
-                                                                                <span class="ms-3">Xóa</span>
-                                                                            </div>
-                                                                            
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                </v-list>
-                                                                </v-menu>
-                                                        </div>
-                                                    
-                                                    </td>
-
-                                                </tr>
+                                                
+                                                
 
 
 
@@ -2442,7 +675,7 @@
                                                 
                                             
                                             </tbody>
-                                            </table>
+                                        </table>
                                 </div>
                                 </div>
 
@@ -2474,68 +707,58 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col"></th>
-                                                    <th scope="col">Ảnh</th>
-                                                    <th scope="col">Tên </th>
-                                                    <th scope="col">Đã bán</th>
-                                                    <th scope="col">Tình trạng</th>
-                                                    <th scope="col">Giá</th>
+                                                    <th scope="col">Khách hàng</th>
+                                                    <th scope="col">Mã</th>
+                                                    <th scope="col">Giá </th>
+                                                    <th scope="col">Thời gian đặt</th>
                                                     <th scope="col">Trạng thái</th>
+                                                    <th scope="col">Địa chỉ</th>
                                                     <th scope="col"></th>
                                                 </tr>
                                             </thead>
                                             <tbody  class="table-group-divider">
                                                 <tr>
-                                                    <td><input type="checkbox"></td>
                                                     <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_17.jpg" alt="">
-                                                        </div>
+                                                        <input type="checkbox">
                                                     </td>
                                                     <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
+                                                        <div class="customer">
+                                                            <div class="img d-flex align-items-center ">
+                                                                <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_17.jpg" alt="">
                                                             </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
+                                                            <div class="customer-name mt-1">
+                                                                Ma Seo Tráng
                                                             </div>
                                                         </div>
                                                     </td>
-
+                                                    <td>
+                                                        <div class="code">
+                                                            G1OILZQN2429
+                                                        </div>
+                                                    </td>
                                                     
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-success">
-                                                                    <div class="progress-status progress-success" style="width:80%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                80 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
                                                     <td>
                                                         <div class="price">
                                                             $93.68
                                                         </div>
                                                     </td>
+                                                    <td>
+                                                        <div class="createAt">
+                                                           21:27 11/12/2023
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="state">
+                                                            <div class="pedding">
+                                                                Chờ
+                                                            </div>
+                                                        </div>
+                                                    </td>
 
                                                     <td>
-                                                        <div class="status">
-                                                            <div class="publiced">
-                                                                Hiện
-                                                            </div>
+                                                        <div class="address">
+                                                            Thái nguyên
+                                                            
                                                         </div>
                                                     </td>
                                                     <td>
@@ -2586,516 +809,8 @@
                                                     </td>
 
                                                 </tr>
-                                                <tr>
-                                                    <td><input type="checkbox"></td>
-                                                    <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_8.jpg" alt="">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
-                                                            </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
-                                                            </div>
-                                                        </div>
-                                                    </td>
-
-                                                    
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-warning">
-                                                                    <div class="progress-status progress-warning" style="width:50%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                50 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="price">
-                                                            $93.68
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="status">
-                                                            <div class="hidden">
-                                                                Ẩn
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action">
-                                                            <v-menu>
-                                                                <template v-slot:activator="{ props }">
-                                                                    
-                                                                    <button
-                                                                    v-bind="props">
-                                                                        <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
-                                                                    </button>
-                                                                </template>
-                                                                <v-list class="list-action-category">
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <router-link to="/brand">
-                                                                                <div class="view action">
-                                                                                    <i class="fa-solid fa-eye"></i>
-                                                                                    <span class="ms-3">Xem</span>
-                                                                                </div>
-                                                                            </router-link>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="edit action">
-                                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                                                <span class="ms-3">Sửa</span>
-                                                                            </div>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="delete action" @click="showModalDelete">
-                                                                                <i class="fa-solid fa-trash"></i>
-                                                                                <span class="ms-3">Xóa</span>
-                                                                            </div>
-                                                                            
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                </v-list>
-                                                                </v-menu>
-                                                        </div>
-                                                    
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td><input type="checkbox"></td>
-                                                    <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_20.jpg" alt="">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
-                                                            </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
-                                                            </div>
-                                                        </div>
-                                                    </td>
-
-                                                    
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-error">
-                                                                    <div class="progress-status progress-error" style="width:10%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                10 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="price">
-                                                            $93.68
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="status">
-                                                            <div class="publiced">
-                                                                Hiện
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action">
-                                                            <v-menu>
-                                                                <template v-slot:activator="{ props }">
-                                                                    
-                                                                    <button
-                                                                    v-bind="props">
-                                                                        <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
-                                                                    </button>
-                                                                </template>
-                                                                <v-list class="list-action-category">
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <router-link to="/brand">
-                                                                                <div class="view action">
-                                                                                    <i class="fa-solid fa-eye"></i>
-                                                                                    <span class="ms-3">Xem</span>
-                                                                                </div>
-                                                                            </router-link>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="edit action">
-                                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                                                <span class="ms-3">Sửa</span>
-                                                                            </div>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="delete action" @click="showModalDelete">
-                                                                                <i class="fa-solid fa-trash"></i>
-                                                                                <span class="ms-3">Xóa</span>
-                                                                            </div>
-                                                                            
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                </v-list>
-                                                                </v-menu>
-                                                        </div>
-                                                    
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td><input type="checkbox"></td>
-                                                    <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_20.jpg" alt="">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
-                                                            </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
-                                                            </div>
-                                                        </div>
-                                                    </td>
-
-                                                    
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-error">
-                                                                    <div class="progress-status progress-error" style="width:10%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                10 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="price">
-                                                            $93.68
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="status">
-                                                            <div class="publiced">
-                                                                Hiện
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action">
-                                                            <v-menu>
-                                                                <template v-slot:activator="{ props }">
-                                                                    
-                                                                    <button
-                                                                    v-bind="props">
-                                                                        <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
-                                                                    </button>
-                                                                </template>
-                                                                <v-list class="list-action-category">
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <router-link to="/brand">
-                                                                                <div class="view action">
-                                                                                    <i class="fa-solid fa-eye"></i>
-                                                                                    <span class="ms-3">Xem</span>
-                                                                                </div>
-                                                                            </router-link>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="edit action">
-                                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                                                <span class="ms-3">Sửa</span>
-                                                                            </div>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="delete action" @click="showModalDelete">
-                                                                                <i class="fa-solid fa-trash"></i>
-                                                                                <span class="ms-3">Xóa</span>
-                                                                            </div>
-                                                                            
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                </v-list>
-                                                                </v-menu>
-                                                        </div>
-                                                    
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td><input type="checkbox"></td>
-                                                    <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_20.jpg" alt="">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
-                                                            </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
-                                                            </div>
-                                                        </div>
-                                                    </td>
-
-                                                    
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-error">
-                                                                    <div class="progress-status progress-error" style="width:10%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                10 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="price">
-                                                            $93.68
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="status">
-                                                            <div class="publiced">
-                                                                Hiện
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action">
-                                                            <v-menu>
-                                                                <template v-slot:activator="{ props }">
-                                                                    
-                                                                    <button
-                                                                    v-bind="props">
-                                                                        <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
-                                                                    </button>
-                                                                </template>
-                                                                <v-list class="list-action-category">
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <router-link to="/brand">
-                                                                                <div class="view action">
-                                                                                    <i class="fa-solid fa-eye"></i>
-                                                                                    <span class="ms-3">Xem</span>
-                                                                                </div>
-                                                                            </router-link>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="edit action">
-                                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                                                <span class="ms-3">Sửa</span>
-                                                                            </div>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="delete action" @click="showModalDelete">
-                                                                                <i class="fa-solid fa-trash"></i>
-                                                                                <span class="ms-3">Xóa</span>
-                                                                            </div>
-                                                                            
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                </v-list>
-                                                                </v-menu>
-                                                        </div>
-                                                    
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td><input type="checkbox"></td>
-                                                    <td>
-                                                        <div class="img d-flex align-items-center ">
-                                                            <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_20.jpg" alt="">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="name-category">
-                                                            <div class="name">
-                                                                2750 Cotu Classic Sneaker
-                                                            </div>
-
-                                                            <div class="category mt-1">
-                                                                Shose
-                                                            </div>
-                                                        </div>
-                                                    </td>
-
-                                                    
-
-                                                    <td>
-                                                        <div class="sold">
-                                                            235
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="stock">
-                                                            <div class="time-line">
-                                                                <div class="progress-bg progress-bg-error">
-                                                                    <div class="progress-status progress-error" style="width:10%">
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="value mt-1">
-                                                                10 sản phẩm
-                                                            </div>
-
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="price">
-                                                            $93.68
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="status">
-                                                            <div class="publiced">
-                                                                Hiện
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action">
-                                                            <v-menu>
-                                                                <template v-slot:activator="{ props }">
-                                                                    
-                                                                    <button
-                                                                    v-bind="props">
-                                                                        <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
-                                                                    </button>
-                                                                </template>
-                                                                <v-list class="list-action-category">
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <router-link to="/brand">
-                                                                                <div class="view action">
-                                                                                    <i class="fa-solid fa-eye"></i>
-                                                                                    <span class="ms-3">Xem</span>
-                                                                                </div>
-                                                                            </router-link>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="edit action">
-                                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                                                <span class="ms-3">Sửa</span>
-                                                                            </div>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="delete action" @click="showModalDelete">
-                                                                                <i class="fa-solid fa-trash"></i>
-                                                                                <span class="ms-3">Xóa</span>
-                                                                            </div>
-                                                                            
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                </v-list>
-                                                                </v-menu>
-                                                        </div>
-                                                    
-                                                    </td>
-
-                                                </tr>
+                                                
+                                                
 
 
 
@@ -3103,7 +818,7 @@
                                                 
                                             
                                             </tbody>
-                                            </table>
+                                        </table>
                                 </div>
                                 </div>
 
@@ -3149,11 +864,14 @@
    
 </template>
 <script>
-import { ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { toast } from 'vue3-toastify';
+import OrderAPI from '../../services/NodeAPI/OrderAPI';
+import formatCurrencyVND from '../../util/formatCurrencyVND.js';
 export default {
     
     setup(){
+        const VITE_API_URL = import.meta.env.VITE_API_URL;
         const currentPage = ref(6);
         const changePage = (page, pageSize) => {
             console.log(page);
@@ -3192,6 +910,19 @@ export default {
         // tabs
 
         const activeKey = ref('1')
+
+        const Orders = ref([]);
+        onMounted(()=>{
+            let ordersTemp = OrderAPI.getAll();
+            ordersTemp
+            .then( data => Orders.value = data)
+            .catch( err => console.log(err))
+        })
+
+        watch(Orders,(newVal,oldVal)=>{
+            console.log(Orders.value);
+        })
+
         return {
             itemsStock,
             selectStock,
@@ -3203,7 +934,10 @@ export default {
             showModalDelete,
             currentPage,
             changePage,
-            activeKey
+            activeKey,
+            Orders,
+            VITE_API_URL,
+            formatCurrencyVND
 
             
         }

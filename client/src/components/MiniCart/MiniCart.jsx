@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 import './MiniCart.css';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCartData } from '../../redux/actions/cartAction';
+import formatCurrencyVND from '../../../util/formatCurrencyVND';
 
 const customModalClass = 'your-custom-modal-class';
 
@@ -26,6 +29,22 @@ const MiniCart = ({open,handleCloseMiniCart}) => {
         return handleCloseMiniCart(false);
     }
 
+
+    // cart state
+    const cart = useSelector((state) => state.cart.carts);
+    
+    const dispatch = useDispatch();
+    // console.log(user);
+
+    useEffect(()=>{
+        
+        dispatch(fetchCartData());
+        
+    },[])
+
+    useEffect(()=>{
+        console.log(cart);
+    },[cart])
 
     
 
@@ -70,191 +89,53 @@ const MiniCart = ({open,handleCloseMiniCart}) => {
                             <dir className="mt-4"></dir>
                             <hr />
                             <div className="box-cart-items mt-4">                       
-                                <div className='cart-item row mt-3'>
-                                    <div className="img col-3 ">
-                                        <img src="https://i.ibb.co/WVdTgR8/headphone-1.png" alt="" />
-                                    </div>
+                                {
+                                    cart &&
+                                    cart.map((value,index)=> {
+                                        return (
+                                            <>
+                                            <div className='cart-item row mt-3'>
+                                                <div className="img col-3 ">
+                                                    <img src={import.meta.env.VITE_API_URL+value.variation.product.img_preview} alt="" />
+                                                </div>
 
-                                    <div className="short-des col-7">
-                                        <div className="name">
-                                        Tai nghe Bluetooth AirPods Pro (2nd Gen) MagSafe Charge Apple MQD83 
-                                        </div>
-                                        <div className="price mt-2 d-flex">
-                                            <div className="product-price me-2">
-                                                103.20 
-                                            </div>
-                                            <div>
-                                                <span className='multiply'>
-                                                    x
-                                                </span>
-                                            </div>
-                                            <div className="quantity-product ms-2 d-flex align-items-end">
-                                                <span>1</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                                <div className="short-des col-7">
+                                                    <div className="name">
+                                                        {
+                                                            value.variation.name
+                                                        }
+                                                    </div>
+                                                    <div className="price mt-2 d-flex">
+                                                        <div className="product-price me-2">
+                                                            {formatCurrencyVND(value.variation.sale_price)+'₫'}
+                                                        </div>
+                                                        <div>
+                                                            <span className='multiply'>
+                                                                x
+                                                            </span>
+                                                        </div>
+                                                        <div className="quantity-product ms-2 d-flex align-items-end">
+                                                            <span>
+                                                                {
+                                                                    value.quantity
+                                                                }
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-                                    <div className="action col-2">
-                                        <div onClick={handleShow} className="delete-cart">
-                                            <i class="fa-solid fa-x"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr />
-                                <div className='cart-item row mt-3'>
-                                    <div className="img col-3 ">
-                                        <img src="https://i.ibb.co/kxGMcrw/ipad-1.png" alt="" />
-                                    </div>
-
-                                    <div className="short-des col-7">
-                                        <div className="name">
-                                        Apple iPad Air
-                                        </div>
-                                        <div className="price mt-2 d-flex">
-                                            <div className="product-price me-2">
-                                                103.20 
+                                                <div className="action col-2">
+                                                    <div onClick={handleShow} className="delete-cart">
+                                                        <i class="fa-solid fa-x"></i>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <span className='multiply'>
-                                                    x
-                                                </span>
-                                            </div>
-                                            <div className="quantity-product ms-2 d-flex align-items-end">
-                                                <span>1</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="action col-2">
-                                        <div onClick={handleShow} className="delete-cart">
-                                            <i class="fa-solid fa-x"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr />
-                                <div className='cart-item row mt-3'>
-                                    <div className="img col-3 ">
-                                        <img src="https://i.ibb.co/WVdTgR8/headphone-1.png" alt="" />
-                                    </div>
-
-                                    <div className="short-des col-7">
-                                        <div className="name">
-                                        Tai nghe Bluetooth AirPods Pro (2nd Gen) MagSafe Charge Apple MQD83 
-                                        </div>
-                                        <div className="price mt-2 d-flex">
-                                            <div className="product-price me-2">
-                                                103.20 
-                                            </div>
-                                            <div>
-                                                <span className='multiply'>
-                                                    x
-                                                </span>
-                                            </div>
-                                            <div className="quantity-product ms-2 d-flex align-items-end">
-                                                <span>1</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="action col-2">
-                                        <div onClick={handleShow} className="delete-cart">
-                                            <i class="fa-solid fa-x"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr />
-                                <div className='cart-item row mt-3'>
-                                    <div className="img col-3 ">
-                                        <img src="https://i.ibb.co/WVdTgR8/headphone-1.png" alt="" />
-                                    </div>
-
-                                    <div className="short-des col-7">
-                                        <div className="name">
-                                        Tai nghe Bluetooth AirPods Pro (2nd Gen) MagSafe Charge Apple MQD83 
-                                        </div>
-                                        <div className="price mt-2 d-flex">
-                                            <div className="product-price me-2">
-                                                103.20 
-                                            </div>
-                                            <div>
-                                                <span className='multiply'>
-                                                    x
-                                                </span>
-                                            </div>
-                                            <div className="quantity-product ms-2 d-flex align-items-end">
-                                                <span>1</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="action col-2">
-                                        <div onClick={handleShow} className="delete-cart">
-                                            <i class="fa-solid fa-x"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr />
-                                <div className='cart-item row mt-3'>
-                                    <div className="img col-3 ">
-                                        <img src="https://i.ibb.co/kxGMcrw/ipad-1.png" alt="" />
-                                    </div>
-
-                                    <div className="short-des col-7">
-                                        <div className="name">
-                                        Apple iPad Air
-                                        </div>
-                                        <div className="price mt-2 d-flex">
-                                            <div className="product-price me-2">
-                                                103.20 
-                                            </div>
-                                            <div>
-                                                <span className='multiply'>
-                                                    x
-                                                </span>
-                                            </div>
-                                            <div className="quantity-product ms-2 d-flex align-items-end">
-                                                <span>1</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="action col-2">
-                                        <div onClick={handleShow} className="delete-cart">
-                                            <i class="fa-solid fa-x"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr />
-                                <div className='cart-item row mt-3'>
-                                    <div className="img col-3 ">
-                                        <img src="https://i.ibb.co/WVdTgR8/headphone-1.png" alt="" />
-                                    </div>
-
-                                    <div className="short-des col-7">
-                                        <div className="name">
-                                        Tai nghe Bluetooth AirPods Pro (2nd Gen) MagSafe Charge Apple MQD83 
-                                        </div>
-                                        <div className="price mt-2 d-flex">
-                                            <div className="product-price me-2">
-                                                103.20 
-                                            </div>
-                                            <div>
-                                                <span className='multiply'>
-                                                    x
-                                                </span>
-                                            </div>
-                                            <div className="quantity-product ms-2 d-flex align-items-end">
-                                                <span>1</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="action col-2">
-                                        <div onClick={handleShow} className="delete-cart">
-                                            <i class="fa-solid fa-x"></i>
-                                        </div>
-                                    </div>
-                                </div>
+                                            <hr />
+                                            </>
+                                        )
+                                    })
+                                }
+                                
                                 
 
                                 

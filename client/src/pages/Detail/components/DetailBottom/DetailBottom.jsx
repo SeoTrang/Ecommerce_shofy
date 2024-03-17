@@ -20,6 +20,7 @@ const DetailBottom = ({product,variation_id}) => {
     const [attributes,setAttributes] = useState();
 
     useEffect(()=>{
+        // console.log(at)
         async function fetchData() {
             console.log(product);
             console.log(variation_id);

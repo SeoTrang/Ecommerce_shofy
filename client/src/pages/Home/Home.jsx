@@ -83,12 +83,12 @@ const Home = () => {
                                     <img src="https://i.ibb.co/sVxYFDY/product-cat-1.png" alt="" />
                                 </div>
                                 <div className="title mt-3">
-                                    Headphones
+                                    Tai nghe
                                     {/* {t('content.functional')} */}
                                 </div>
-                                <div onClick={()=>changeLanguage('en')} className="des">
+                                {/* <div onClick={()=>changeLanguage('en')} className="des">
                                     3 Product
-                                </div>
+                                </div> */}
                             </Link>
                             
 
@@ -100,11 +100,11 @@ const Home = () => {
                                 </div>
               
                                 <div className="title mt-3">
-                                    Mobile Tablets
+                                    Điện thoại
                                 </div>
-                                <div className="des">
+                                {/* <div className="des">
                                     3 Product
-                                </div>
+                                </div> */}
                             </Link>
                         </div>
                         <div className="col mb-5">
@@ -114,11 +114,11 @@ const Home = () => {
                                 </div>
               
                                 <div className="title mt-3">
-                                    CPU Heat Pipes
+                                    CPU
                                 </div>
-                                <div className="des">
+                                {/* <div className="des">
                                     2 Product
-                                </div>
+                                </div> */}
                             </Link>
                         </div>
                         <div className="col mb-5">
@@ -130,9 +130,9 @@ const Home = () => {
                                 <div className="title mt-3">
                                     Smart Watch
                                 </div>
-                                <div className="des">
+                                {/* <div className="des">
                                     3 Product
-                                </div>
+                                </div> */}
                             </Link>
                         </div>
                         <div className="col mb-5">
@@ -144,9 +144,9 @@ const Home = () => {
                                 <div className="title mt-3">
                                     Bluetooth
                                 </div>
-                                <div className="des">
+                                {/* <div className="des">
                                     2 Product
-                                </div>
+                                </div> */}
                             </Link>
                         </div>
                     </div>
@@ -163,10 +163,12 @@ const Home = () => {
                                 </div>
                                 <div className="text-right">
                                     <div className="title">
-                                        Free Delivery
+                                        {/* Free Delivery */}
+                                        Miễn phí giao hàng
                                     </div>
                                     <div className="des">
-                                        Orders from all item
+                                        {/* Orders from all item */}
+                                        Đơn hàng từ 200k trở lên
                                     </div>
                                 </div>
 
@@ -181,10 +183,12 @@ const Home = () => {
                                 </div>
                                 <div className="text-right">
                                     <div className="title">
-                                        Return & Refund
+                                        {/* Return & Refund */}
+                                        Hoàn lại tiền
                                     </div>
                                     <div className="des">
-                                        Money back guarantee
+                                        {/* Money back guarantee */}
+                                        Nếu phát sinh sự cố
                                     </div>
                                 </div>
 
@@ -199,10 +203,12 @@ const Home = () => {
                                 </div>
                                 <div className="text-right">
                                     <div className="title">
-                                        Member Discount
+                                        {/* Member Discount */}
+                                        Giảm giá thành viên
                                     </div>
                                     <div className="des">
-                                        Onevery order over $140.00
+                                        {/* Onevery order over $140.00 */}
+                                        Mỗi đơn hàng trên 500k
                                     </div>
                                 </div>
 
@@ -219,10 +225,12 @@ const Home = () => {
                                 </div>
                                 <div className="text-right">
                                     <div className="title">
-                                        Support 24/7
+                                        {/* Support 24/7 */}
+                                        Hỗ trợ 24/7
                                     </div>
                                     <div className="des">
-                                        Contact us 24 hours a day
+                                        {/* Contact us 24 hours a day */}
+                                        Liên hệ ngay 
                                     </div>
                                 </div>
 

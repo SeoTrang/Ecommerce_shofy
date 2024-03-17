@@ -23,14 +23,17 @@ const AttributeValueRepository = {
     },
     GetByVariation: async (variation_id) => {
         try {
+            console.log(variation_id);
             const result = await AttributeValue.findAll({
                 where:{variation_id: variation_id},
+                logging: true,
                 include:[
                     {
                         model: Attribute
                     }
                 ]
             });
+            console.log(result);
             if(result) return result;
             return false;
         } catch (error) {

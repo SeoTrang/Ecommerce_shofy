@@ -22,7 +22,8 @@ const TrendingProduct = () => {
                 <div className="row">
                     <div className="col-xl-4 col-lg-4 col-md-6 col-sm-12 title">
                         <h1>
-                            Trending Products
+                            {/* Trending Products */}
+                            Thịnh hành
                         </h1>
                     </div>
                     <div className="col-xl-4 col-lg-4 d-none d-xl-block d-lg-block line">

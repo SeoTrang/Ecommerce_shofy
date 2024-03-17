@@ -26,9 +26,10 @@ const ListImgRepository = {
             const result = await ListImg.findAll({
                 where:{
                     variation_id	: variantion_id
-                }
+                },
+                // logging: true
             });
-            console.log(result);
+            // console.log(result);
             if(result) return result;
             return false;
         } catch (error) {

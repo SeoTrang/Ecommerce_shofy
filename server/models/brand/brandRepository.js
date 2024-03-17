@@ -3,6 +3,7 @@ const Brand = require('./Brand');
 const BrandRepository = {
     create: async (data) => {
         try {
+            console.log(data);
             await Brand.create(data);
             return true;
         } catch (error) {

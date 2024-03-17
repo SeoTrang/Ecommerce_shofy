@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import styles from './Header.module.scss';
 import Logo from '../../assets/img/logo.svg';
+import Logo2 from '../../assets/img/logo_bonik.svg';
 
 import usFlag from './flag-us.svg';
 import vnFlag from './flag-vietnam.svg';
@@ -139,7 +140,7 @@ const Header = () => {
                         <div className="row">
                             <div className="col-6 col-xl-3 col-lg-3  ">
                                 <div className="logo d-flex align-items-center shofy-h-66">
-                                    <img src={Logo} alt="" />
+                                    <img src={Logo2} alt="" />
                                 </div>
                             </div>
                             <div className="col-xl-6 col-lg-6  d-none d-lg-block">
@@ -444,7 +445,7 @@ const Header = () => {
                         <div class="row align-items-center mt-4 shofy-h-50">
                             <div class="col-xl-2 col-lg-2 col-md-4 col-6 img shofy-h-50">
                                 <div className="logo d-flex align-items-center shofy-h-50">
-                                    <img src={Logo} alt="" />
+                                    <img src={Logo2} alt="" />
                                 </div>
                             </div>
                             <div class="col-xl-7 col-lg-6 d-none d-lg-block search shofy-h-50">

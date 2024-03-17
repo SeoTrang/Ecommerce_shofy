@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './Footer.css';
+import Logo2 from '../../assets/img/logo_bonik.svg';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -10,7 +11,7 @@ const Footer = () => {
                 <div className="row pt-95 pb-40">
                     <div className="col-xl-4 col-lg-3 col-md-4 col-sm-6">
                         <div className="logo">
-                            <img src="https://shofy-angular.vercel.app/assets/img/logo/logo.svg" alt="" />
+                            <img src={Logo2} alt="" />
                         </div>
                         <div className="short-description mt-4">
                             We are a team of designers and developers that create high quality WordPress

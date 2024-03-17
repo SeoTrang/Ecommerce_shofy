@@ -148,6 +148,7 @@ const Detail = () => {
     useEffect(()=>{
         async function fetchData(){
             let result = await ProductAPI.GetDetail(product.id,arrayParams);
+            console.log(result);
             if(result) setVariantion(result);
 
         }
@@ -468,7 +469,7 @@ const Detail = () => {
 
 
 
-                <DetailBottom product = {product} variation_id={variantion && variantion[0].id}/>
+                <DetailBottom product = {product} variation_id={variantion && variantion[0].variation_id}/>
 
                 <RelatedProducts/>
             </div>

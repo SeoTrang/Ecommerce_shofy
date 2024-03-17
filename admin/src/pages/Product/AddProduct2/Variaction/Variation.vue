@@ -128,10 +128,12 @@
         const getOptionData = async () => {
             let product_id = localStorage.getItem('productId');
             let data = await OptionAPI.getByProduct(product_id);
+            console.log(data);
             if (data) optionDatas.value = data;
         };
     
         onMounted(() => {
+            console.log("hello world");
             getOptionData();
         });
     
@@ -192,7 +194,9 @@
           let addListImg = VariationAction.AddListImg(newProuctImgsURL,addVariation);
           let addCombination = VariationAction.AddCombination(dynamicVariables,addVariation);
           
-          resetVariable();
+          // resetVariable();
+          // xoa anh cu
+          newProuctImgsURL.value = [];
           return notify.success("Thêm thành công 😊 !");
           // console.log(dynamicVariables);
           // console.log(fieldData);
